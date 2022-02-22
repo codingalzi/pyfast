@@ -1,8 +1,8 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: 파이썬 프로그래밍 기초
-author: 코딩알지
+title: 파이썬 프로그래밍 특강
+author: 코딩알지 & hj617kim
 # logo: logo.png
 
 # Force re-execution of notebooks on each build.
