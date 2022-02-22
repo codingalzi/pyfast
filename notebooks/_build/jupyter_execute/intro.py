@@ -1,131 +1,430 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 컴퓨터 과학과 파이썬
+# # 데이터 과학과 파이썬
 
-# 데이터 분석, 수치계산 등 컴퓨터 과학의 핵심은 **문제해결을 위한 컴퓨터 활용**이다. 
-# 여기서는 컴퓨터를 이용한 문제 해결 분야에서 
-# 가장 중요하게 활용되는 파이썬 프로그래밍의 기초를 전달한다. 
+# **감사의 말**: 아래 내용은 [SciPy Lecture Notes](https://scipy-lectures.org/_downloads/ScipyLectures-simple.pdf)의 1장 내용을 많이 참고합니다. 
 
-# ## 컴퓨터 과학
+# ## Why Python?
 
-# 컴퓨터 과학이 단순히 컴퓨터에 대한 연구를 의미하지는 않는다.
-# 컴퓨터 과학자는 주어진 문제를 해결하는 **알고리즘**<font size="2">algorithm</font>을 개발한다.
-# 여기서 알고리즘은 주어진 문제<font size="2">problem</font>의 
-# 모든 사례<font size="2">instance</font>를 일괄적으로 해결하는 
-# **단계별 명령의 목록**이다.
+# ### The scientist's needs
+
+# * Get data (simulation, experiment control),
+# * Manipulate and process data,
+# * Visualize results, quickly to understand, but also with high quality
+#   figures, for reports or publications.
+
+# ### Python's strengths
+
+# * **Batteries included** Rich collection of already existing **bricks**
+#   of classic numerical methods, plotting or data processing tools. We
+#   don't want to re-program the plotting of a curve, a Fourier transform
+#   or a fitting algorithm. Don't reinvent the wheel!
 # 
-# 반면에 (여기서 자세히 설명하지 않겠지만) 컴퓨터로 해결이 불가능한 문제도 존재한다. 
-# 따라서 컴퓨터 과학은 문제해결책뿐만 아니라,
-# 해결책이 존재하지 않는 문제에 대한 연구도 포함한다. 
-# 해결이 가능한 문제를 **계산 가능한**<font size="2">computable</font> 문제라고 말한다.
-# 특정 컴퓨터나 특정 프로그래밍언어에 의존하는 해결책이 아니라
-# 어느 정도의 기본만 갖추고 있는 컴퓨터나 프로그래밍언어를 이용하면
-# 해결할 수 있는 문제를 의미함에 주의해야 한다. 
-
-# ## 프로그래밍과 알고리즘
-
-# (컴퓨터) **프로그래밍**은 특정 프로그래밍 언어를 이용하여 컴퓨터에서 실행 가능한 
-# 프로그램으로 작성하는 과정이다. 
-# 컴퓨터 과학이 프로그래밍에 대한 연구는 아니다.
-# 하지만 프로그래밍은 컴퓨터 과학자의 주요 활동 중 하나이다. 
-# 문제 해결을 위한 **알고리즘**은 
-# 문제의 사례들을 표현하는 데에 필요한 데이터<font size="2">data</font>와
-# 의도한 결과를 생성하는 데 필요한 과정<font size="2">step</font>을 묘사한다.
-
-# 주어진 문제를 해결하려면 
-# **API**<font size="2">Application Programming Interface</font>를
-# 조합해야 한다.
-# 경우에 따라 필요한 API를 직접 구현해야 하지만,
-# 사용자 입장에서는 일반적으로 필요한 API의 기능과 활용법을 익히는 것에 집중해야 한다.
-# 이런 의미에서 컴퓨터 과학을 **추상화**<font size="2">abstraction</font>에 대한 연구라 부르기도 한다.
+# * **Easy to learn** Most scientists are not payed as programmers, neither
+#   have they been trained so. They need to be able to draw a curve, smooth
+#   a signal, do a Fourier transform in a few minutes.
 # 
-# 예를 들어, 제곱근을 계산하는 함수 `sqrt()`는 `math` 모듈에 정의되어 있으며 아래와 같이 활용한다.
-
-# In[1]:
-
-
-import math
-
-math.sqrt(16)
-
-
-# 위 코드는 **절차적 추상화**<font size="2">procedural abstraction</font>를 보여준다. 
-# 즉, `sqrt()` 함수가 어떻게 정의되었는가는 전혀 중요하지 않다.
-# 대신 제곱근을 계산하는 함수라는 사실과 어떻게 활용하는가를 알기만 하면 된다.
-# 이런 의미에서 함수를 아래 그림에서처럼 **블랙박스**로 이해할 수 있다.
-
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/algopy/master/notebooks/pythonds01-Introduction/Figures/blackbox.png" width="50%"></div>
-
-# ## 파이썬 프로그래밍 언어
-
-# 문제 해결을 위한 절차와 명령 등을 작성하기 위해 사용되는 언어를 프로그래밍 언어라 한다. 
-# 파이썽, C, C++, C#, 자바, 자바스크립트, OCaml, Haskell 등 다양한 종류의 프로그래밍 언어가 존재한다.
+# * **Easy communication** To keep code alive within a lab or a company
+#   it should be as readable as a book by collaborators, students, or
+#   maybe customers. Python syntax is simple, avoiding strange symbols or
+#   lengthy routine specifications that would divert the reader from
+#   mathematical or scientific understanding of the code.
 # 
-# 파이썬은 객체지향 프로그래밍(OOP) 언어이며
-# 다양하며 중요한 자료형을 기본적으로 제공한다. 
-# 또한 다른 언어에 비교해서 보다 쉽게 프로그램을 작성할 수 있는 프로그래밍의 기본 요소를 제공한다. 
-
-# ### 필수 구성요소
-
-# 파이썬을 비롯한 대부분의 프로그래밍 언어의 필수 구성요소는 다음과 같다.
+# * **Efficient code** Python numerical modules are computationally
+#   efficient. But needless to say that a very fast code becomes useless if
+#   too much time is spent writing it. Python aims for quick development
+#   times and quick execution times.
 # 
-# - 값 저장 및 변경
-# - `if ... else ...` 등의 조건문
-# - `for`, `while` 반복문
-# - 순차적 실행
+# * **Universal** Python is a language used for many different problems.
+#   Learning Python avoids learning a new software for each new problem.
 
-# ### 기본 자료형
+# ### How does Python compare to other solutions?
 
-# 대부분의 프로그래밍언어는 아래 데이터에 대한 자료형<font size="2">data type</font>과
-# 관련 함수를 기본으로 제공한다.
+# **Compiled languages: C, C++, Fortran, ...**
 # 
-# - 정수<font size="2">integer</font>
-# - 문자열<font size="2">string</font>
-# - 부동소수점<font size="2">floating point</font>
-# - 진리값<font size="2">boolean</font>
+# Pros
 # 
-# 언급된 자료형과 관련된 연산 함수는 예를 들어 사칙연산,  논리 연산자 등이 포함된다.
-# 원칙적으로는 언급된 필수 구성요소와 기본 자료형만을 이용하여 모든 문제를 해결할 수 있다. 
-# 하지만 복잡한 문제를 순전히 필수 구성요소와 기본 자료형만을 이용하여 해결하는 일은 매우
-# 복잡하고 비효율적이다. 
-# 따라서 알고리즘의 복잡도와 효율성을 높혀주는 방법과 도구가 요구된다. 
+#   * Very fast. For heavy computations, it's difficult to outperform these
+#     languages.
+# 
+# Cons
+# 
+#   * Painful usage: no interactivity during development, mandatory
+#     compilation steps, verbose syntax, manual memory management. These
+#     are **difficult languages** for non programmers.
 
-# ### 추상 자료형과 클래스
+# #### Matlab scripting language
 
-# 파이썬과 같은 객체지향 프로그래밍 언어는
-# 특정 데이터 및 그 데이터와 관련된 성질 및 기능을 
-# 하나로 묶어 **클래스**<font size="2">class</font>라는
-# **추상 자료형**<font size="2">abstract data type(ADT)</font>으로
-# 정의하는 기능을 제공한다. 
-# 이와같이 추상 자료형을 정의하는 방식을 **데이터 추상화**라고 한다. 
+# Pros
 # 
-# 앞서 소개한 절차적 추상화의 경우처럼 사용자의 입장에서 데이터와 함수가 어떻게 구현되었는가는
-# 중요하지 않다. 
-# 대신에 해당 데이터가 무엇을 표현하며 관련 함수의 기능이 무엇인가만이 중요하다.
-# 이런 의미에서 데이터 추상화를 **데이터 캡슐화**라고 부르기도 한다. 
+#   * Very rich collection of libraries with numerous algorithms, for many
+#     different domains. Fast execution because these libraries are often written
+#     in a compiled language.
 # 
-# 아래 그림에서 볼 수 있듯이 사용자는 **인터페이스**<font size="2">interface</font>에서 
-# 제공하는 함수인 **메서드**<font size="2">method</font>를 통해 데이터를 활용하며,
-# 데이터와 함수가 어떻게 구현되었는가는 알 필요 없다. 
+#   * Pleasant development environment comprehensive and help, integrated
+#     editor, etc.
+# 
+#   * Commercial support is available.
+# 
+# Cons
+# 
+#   * Base language is quite poor and can become restrictive for advanced users.
+# 
+#   * Not free.
 
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/algopy/master/notebooks/pythonds01-Introduction/Figures/adt.png" width="30%"></div>
+# #### Julia
 
-# ### 자료구조와 데이터
+# Pros
+# 
+#   * Fast code, yet interactive and simple.
+# 
+#   * Easily connects to Python or C.
+# 
+# Cons
+# 
+#   * Ecosystem limited to numerical computing.
+# 
+#   * Still young.
 
-# **자료구조**는 구현된 추상 자료형을 가리킨다. 
-# 추상 자료형을 구현하는 방식이 다양하다. 
-# 하지만 앞서 설명하였듯이 구현된 자료구조는 기본적으로 구현 방식과 무관하게
-# 의도한 데이터와 함수의 기능을 제공하기만 하면 된다. 
-# 그럼에도 불구하고 구현방식에 따른 알고리즘의 효율성에는 차이가 발생할 수 있다.
+# #### Other scripting languages: Scilab, Octave, R, IDL, etc.
+
+# Pros
 # 
-# 파이썬과 같은 객체지향 프로그래밍언어는 클래스를 이용하여 추상 자료형을 정의하며,
-# 해당 추상 자료형의 데이터는 지정된 클래스의 **객체**<font size="2">instance</font>다.
-# 앞서 언급한 기본 자료형 이외에 파이썬이 제공하는 주요 추상 자료형은 다음과 같다.
+#   * Open-source, free, or at least cheaper than Matlab.
 # 
-# - 리스트<font size="2">list</font>
-# - 튜플<font size="2">tuple</font>
-# - 집합<font size="2">set</font>
-# - 사전<font size="2">dictionary</font>
+#   * Some features can be very advanced (statistics in R, etc.)
 # 
-# 앞으로 다양한 추상 자료형의 성질과 활용법을 학습하면서 파이썬 프로그래밍의 기초를 다지게 된다.
+# Cons
+# 
+#   * Fewer available algorithms than in Matlab, and the language
+#     is not more advanced.
+# 
+#   * Some software are dedicated to one domain. Ex: Gnuplot to draw
+#     curves. These programs are very powerful, but they are restricted to
+#     a single type of usage, such as plotting.
+
+# #### Python
+
+# Pros
+# 
+#   * Very rich scientific computing libraries
+# 
+#   * Well thought out language, allowing to write very readable and well
+#     structured code: we "code what we think".
+# 
+#   * Many libraries beyond scientific computing (web server,
+#     serial port access, etc.)
+# 
+#   * Free and open-source software, widely spread, with a vibrant community.
+# 
+#   * A variety of powerful environments to work in, such as
+#     [IPython](http://ipython.readthedocs.io/en/stable/),
+#     [Spyder](https://www.spyder-ide.org/),
+#     [Jupyter notebooks](http://jupyter.org/),
+#     [Pycharm](https://www.jetbrains.com/pycharm),
+#     [Visual Studio Code](https://code.visualstudio.com/docs/languages/python)
+# 
+# Cons
+# 
+#   * Not all the algorithms that can be found in more specialized
+#     software or toolboxes.
+
+# ## The Scientific Python ecosystem
+
+# Unlike Matlab, or R, Python does not come with a prebundled set
+# of modules for scientific computing. Below are the basic building blocks
+# that can be combined to obtain a scientific computing environment:
+
+# **Python**, a generic and modern computing language
+# 
+# * The language: flow control, data types (`string`, `int`),
+#   data collections (lists, dictionaries), etc.
+# 
+# * Modules of the standard library: string processing, file
+#   management, simple network protocols.
+# 
+# * A large number of specialized modules or applications written in
+#   Python: web framework, etc. ... and scientific
+#   computing.
+# 
+# * Development tools (automatic testing, documentation generation)
+# 
+# **참고**: `<python_language_chapter>`
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/pyfast/master/notebooks/images/random_c.jpg" width="50%"></div>
+
+# **Core numeric libraries**
+# 
+# * **Numpy**: numerical computing with powerful **numerical arrays**
+#   objects, and routines to manipulate them. [http://www.numpy.org/](http://www.numpy.org/)
+# 
+# **참고**: `<numpy>`
+# 
+# * **Scipy** : highlevel numerical routines.
+#   Optimization, regression, interpolation, etc [http://www.scipy.org/](http://www.scipy.org/)
+# 
+# **참고**: `<scipy>`
+# 
+# * **Matplotlib** : 2D visualization, "publicationready" plots
+#   [http://matplotlib.org/](http://matplotlib.org/)
+# 
+# **참고**: `<matplotlib>`
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/pyfast/master/notebooks/images/snapshot_ipython.png" width="50%"></div>
+
+# **Advanced interactive environments**:
+# 
+# * **IPython**, an advanced **Python console** [http://ipython.org/](http://ipython.org/)
+# 
+# * **Jupyter**, **notebooks** in the browser [http://jupyter.org/](http://jupyter.org/)
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/pyfast/master/notebooks/images/example_surface_from_irregular_data.jpg" width="50%"></div>
+
+# **Domainspecific packages**,
+# 
+# * **Mayavi** for [3D visualization](mayavilabel)
+# 
+# * **pandas, statsmodels, seaborn** for [statistics](statistics)
+# 
+# * **sympy** for [symbolic computing](sympy)
+# 
+# * **scikitimage** for [image processing](scikit_image)
+# 
+# * **scikitlearn** for [machine learning](scikitlearn_chapter)
+# 
+# and much more packages not documented in the scipy lectures.
+# 
+# **참고**: [chapters on advanced topics](advanced_topics_part),
+#    [chapters on packages and applications](applications_part)
+
+# ## Before starting: Installing a working environment
+
+# Python comes in many flavors, and there are many ways to install it.
+# However, we recommend to install a scientificcomputing distribution,
+# that comes readily with optimized versions of scientific modules.
+# 
+# **Under Linux**
+# 
+# If you have a recent distribution, most of the tools are probably
+# packaged, and it is recommended to use your package manager.
+# 
+# **Other systems**
+# 
+# There are several fullyfeatured Scientific Python distributions:
+# 
+# * [Anaconda](https://www.anaconda.com/download/)
+# * [EPD](https://store.enthought.com/downloads)
+# * [WinPython](https://winpython.github.io)
+
+# ## The workflow: interactive environments and text editors
+
+# **Interactive work to test and understand algorithms:** In this section, we
+# describe a workflow combining interactive work and consolidation.
+# 
+# Python is a generalpurpose language. As such, there is not one blessed
+# environment to work in, and not only one way of using it. Although
+# this makes it harder for beginners to find their way, it makes it
+# possible for Python to be used for programs, in web servers, or
+# embedded devices.
+
+# ### Interactive work
+
+# We recommend an interactive work with the 
+# [IPython](http://ipython.org) console, or its offspring, the 
+# [Jupyter notebook](http://jupyter.readthedocs.io/en/latest/contentquickstart.html). They are handy to explore and understand algorithms.
+
+# **Under the notebook**
+# 
+# To execute code, press "shift enter"
+
+# ```python
+# In [1]: print('Hello world')
+# Hello world
+# ```
+
+# Getting help by using the **?** operator after an object:
+
+# ```python
+# In [2]: print?
+# 
+# Docstring:
+# print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
+# 
+# Prints the values to a stream, or to sys.stdout by default.
+# Optional keyword arguments:
+# file:  a file-like object (stream); defaults to the current sys.stdout.
+# sep:   string inserted between values, default a space.
+# end:   string appended after the last value, default a newline.
+# flush: whether to forcibly flush the stream.
+# Type:      builtin_function_or_method
+# ```
+
+# **참고**
+# 
+# * IPython user manual: https://ipython.readthedocs.io/en/stable/
+# 
+# * Jupyter Notebook QuickStart:
+#   http://jupyter.readthedocs.io/en/latest/contentquickstart.html
+
+# ### Elaboration of the work in an editor
+
+# As you move forward, it will be important to not only work interactively,
+# but also to create and reuse Python files. For this, a powerful code editor
+# will get you far. Here are several good easytouse editors:
+# 
+#   * [Spyder](https://www.spyderide.org/): integrates an IPython
+#     console, a debugger, a profiler...
+#   * [PyCharm](https://www.jetbrains.com/pycharm): integrates an IPython
+#     console, notebooks, a debugger... (freely available,
+#     but commercial)
+#   * [Visual Studio Code](https://code.visualstudio.com/docs/languages/python):
+#     integrates a Python console, notebooks, a debugger, ...
+#   * [Atom](https://atom.io)
+# 
+# Some of these are shipped by the various scientific Python distributions,
+# and you can find them in the menus.
+
+# As an exercise, create a file *my_file.py* in a code editor, and add the
+# following lines:
+# 
+# ```python
+# s = 'Hello world'
+# print(s)
+# ```
+
+# Now, you can run it in IPython console or a notebook and explore the
+# resulting variables:
+
+# ```python
+# In [1]: %run my_file.py
+# Hello world
+# 
+# In [2]: s
+# Out[2]: 'Hello world'
+# 
+# In [3]: %whos
+# Variable   Type    Data/Info
+# ----------------------------
+# s          str     Hello world
+# ```
+
+# **From a script to functions**
+# 
+# While it is tempting to work only with scripts, that is a file full
+# of instructions following each other, do plan to progressively evolve
+# the script to a set of functions:
+# 
+# * A script is not reusable, functions are.
+# 
+# * Thinking in terms of functions helps breaking the problem in small
+#   blocks.
+
+# ### IPython and Jupyter Tips and Tricks
+
+# The user manuals contain a wealth of information. Here we give a quick
+# introduction to four useful features: *history*, *tab completion*, *magic
+# functions*, and *aliases*.
+
+# **Command history** Like a UNIX shell, the IPython console supports
+# command history. Type *up* and *down* to navigate previously typed
+# commands:
+
+# ```python
+# In [1]: x = 10
+# 
+# In [2]: <UP>
+# 
+# In [2]: x = 10
+# ```
+
+# **Tab completion** Tab completion, is a convenient way to explore the
+# structure of any object you’re dealing with. Simply type object_name.<TAB> to
+# view the object’s attributes. Besides Python objects and keywords, tab
+# completion also works on file and directory names.*
+
+# ```python
+# In [1]: x = 10
+# 
+# In [2]: x.<TAB>
+# x.bit_length   x.denominator  x.imag         x.real
+# x.conjugate    x.from_bytes   x.numerator    x.to_bytes
+# ```
+
+# **Magic functions**
+# The console and the notebooks support socalled *magic* functions by prefixing a command with the
+# `%` character. For example, the `run` and `whos` functions from the
+# previous section are magic functions. Note that, the setting `automagic`,
+# which is enabled by default, allows you to omit the preceding `%` sign. Thus,
+# you can just type the magic function and it will work.
+# 
+# Other useful magic functions are:
+# 
+# * `%cd` to change the current directory.
+# 
+#     ```python
+#     In [1]: cd /tmp
+#     /tmp
+#     ```
+# 
+# * `%cpaste` allows you to paste code, especially code from websites which has
+#   been prefixed with the standard Python prompt (e.g. `>>>`) or with an ipython
+#   prompt, (e.g. `in [3]`):
+# 
+#     ```python
+#     In [2]: %cpaste
+#     Pasting code; enter '' alone on the line to stop or use CtrlD.
+#     :>>> for i in range(3):
+#     :...     print(i)
+#     :--
+#     0
+#     1
+#     2
+#     ```
+#     
+# * `%timeit` allows you to time the execution of short snippets using the
+#   `timeit` module from the standard library:
+# 
+#     ```python
+#     In [3]: %timeit x = 10
+#     10000000 loops, best of 3: 39 ns per loop
+#     ```
+#     
+#     **참고**: `<optimizing_code_chapter>`
+# 
+# * `%debug` allows you to enter postmortem debugging. That is to say, if the
+#   code you try to execute, raises an exception, using `%debug` will enter the
+#   debugger at the point where the exception was thrown.
+# 
+#     ```python
+#     In [4]: x === 10
+#     File "<ipythoninput612fd421b5f28>", line 1
+#         x === 10
+#         ^
+#     SyntaxError: invalid syntax
+# 
+#     In [5]: %debug
+#     > /.../IPython/core/compilerop.py (87)ast_parse()
+#          86         and are passed to the builtin compile function."""
+#     ---> 87         return compile(source, filename, symbol, self.flags  PyCF_ONLY_AST, 1)
+#          88
+# 
+#     ipdb>locals()
+#     {'source': u'x === 10\n', 'symbol': 'exec', 'self':
+#     <IPython.core.compilerop.CachingCompiler instance at 0x2ad8ef0>,
+#     'filename': '<ipythoninput612fd421b5f28>'}
+#     ```
+# 
+#     **참고**: `<debugging_chapter>`
+
+# **Aliases**
+# Furthermore IPython ships with various *aliases* which emulate common UNIX
+# command line tools such as `ls` to list files, `cp` to copy files and `rm` to
+# remove files (a full list of aliases is shown when typing `alias`).
+
+# **Getting help**
+# 
+# * The builtin cheatsheet is accessible via the `%quickref` magic
+#     function.
+# 
+# * A list of all available magic functions is shown when typing `%magic`.
