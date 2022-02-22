@@ -152,7 +152,7 @@
 # 
 # **참고**: `<python_language_chapter>`
 
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/pyfast/master/notebooks/images/random_c.jpg" width="50%"></div>
+# <div align="center"><img src="https://github.com/codingalzi/pyfast/blob/master/notebooks/images/random_c.jpg?raw=true" width="50%"></div>
 
 # **Core numeric libraries**
 # 
@@ -171,7 +171,7 @@
 # 
 # **참고**: `<matplotlib>`
 
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/pyfast/master/notebooks/images/snapshot_ipython.png" width="50%"></div>
+# <div align="center"><img src="https://github.com/codingalzi/pyfast/blob/master/notebooks/images/snapshot_ipython.png?raw=true" width="50%"></div>
 
 # **Advanced interactive environments**:
 # 
@@ -179,24 +179,23 @@
 # 
 # * **Jupyter**, **notebooks** in the browser [http://jupyter.org/](http://jupyter.org/)
 
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/pyfast/master/notebooks/images/example_surface_from_irregular_data.jpg" width="50%"></div>
+# <div align="center"><img src="https://github.com/codingalzi/pyfast/blob/master/notebooks/images/example_surface_from_irregular_data.jpg?raw=true" width="50%"></div>
 
 # **Domainspecific packages**,
 # 
-# * **Mayavi** for [3D visualization](mayavilabel)
+# * **Mayavi** for 3D visualization (link to chapter `mayavilabel`)
 # 
-# * **pandas, statsmodels, seaborn** for [statistics](statistics)
+# * **pandas, statsmodels, seaborn** for statistics (link to chapter `statistics`)
 # 
-# * **sympy** for [symbolic computing](sympy)
+# * **sympy** for symbolic computing (link to chapter `sympy`)
 # 
-# * **scikitimage** for [image processing](scikit_image)
+# * **scikitimage** for image processing (link to chapter `scikit_image`)
 # 
-# * **scikitlearn** for [machine learning](scikitlearn_chapter)
+# * **scikitlearn** for machine learning (link to chapter `scikitlearn_chapter`)
 # 
 # and much more packages not documented in the scipy lectures.
 # 
-# **참고**: [chapters on advanced topics](advanced_topics_part),
-#    [chapters on packages and applications](applications_part)
+# **참고**: chapters on advanced topics, chapters on packages and applications
 
 # ## Before starting: Installing a working environment
 
@@ -238,16 +237,17 @@
 # 
 # To execute code, press "shift enter"
 
-# ```python
+# Start *ipython*:
+# 
+# ```
 # In [1]: print('Hello world')
 # Hello world
 # ```
 
 # Getting help by using the **?** operator after an object:
 
-# ```python
+# ```
 # In [2]: print?
-# 
 # Docstring:
 # print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 # 
@@ -262,10 +262,10 @@
 
 # **참고**
 # 
-# * IPython user manual: https://ipython.readthedocs.io/en/stable/
+# * IPython user manual: [https://ipython.readthedocs.io/en/stable/](https://ipython.readthedocs.io/en/stable/)
 # 
 # * Jupyter Notebook QuickStart:
-#   http://jupyter.readthedocs.io/en/latest/contentquickstart.html
+#   [http://jupyter.readthedocs.io/en/latest/contentquickstart.html](http://jupyter.readthedocs.io/en/latest/contentquickstart.html)
 
 # ### Elaboration of the work in an editor
 
@@ -288,7 +288,7 @@
 # As an exercise, create a file *my_file.py* in a code editor, and add the
 # following lines:
 # 
-# ```python
+# ```
 # s = 'Hello world'
 # print(s)
 # ```
@@ -296,7 +296,7 @@
 # Now, you can run it in IPython console or a notebook and explore the
 # resulting variables:
 
-# ```python
+# ```
 # In [1]: %run my_file.py
 # Hello world
 # 
@@ -309,6 +309,8 @@
 # s          str     Hello world
 # ```
 
+# ```{seealso}
+# 
 # **From a script to functions**
 # 
 # While it is tempting to work only with scripts, that is a file full
@@ -319,6 +321,7 @@
 # 
 # * Thinking in terms of functions helps breaking the problem in small
 #   blocks.
+# ```
 
 # ### IPython and Jupyter Tips and Tricks
 
@@ -330,7 +333,7 @@
 # command history. Type *up* and *down* to navigate previously typed
 # commands:
 
-# ```python
+# ```
 # In [1]: x = 10
 # 
 # In [2]: <UP>
@@ -343,7 +346,7 @@
 # view the object’s attributes. Besides Python objects and keywords, tab
 # completion also works on file and directory names.*
 
-# ```python
+# ```
 # In [1]: x = 10
 # 
 # In [2]: x.<TAB>
@@ -362,7 +365,7 @@
 # 
 # * `%cd` to change the current directory.
 # 
-#     ```python
+#     ```
 #     In [1]: cd /tmp
 #     /tmp
 #     ```
@@ -371,7 +374,7 @@
 #   been prefixed with the standard Python prompt (e.g. `>>>`) or with an ipython
 #   prompt, (e.g. `in [3]`):
 # 
-#     ```python
+#     ```
 #     In [2]: %cpaste
 #     Pasting code; enter '' alone on the line to stop or use CtrlD.
 #     :>>> for i in range(3):
@@ -385,7 +388,7 @@
 # * `%timeit` allows you to time the execution of short snippets using the
 #   `timeit` module from the standard library:
 # 
-#     ```python
+#     ```
 #     In [3]: %timeit x = 10
 #     10000000 loops, best of 3: 39 ns per loop
 #     ```
@@ -396,7 +399,7 @@
 #   code you try to execute, raises an exception, using `%debug` will enter the
 #   debugger at the point where the exception was thrown.
 # 
-#     ```python
+#     ```
 #     In [4]: x === 10
 #     File "<ipythoninput612fd421b5f28>", line 1
 #         x === 10
