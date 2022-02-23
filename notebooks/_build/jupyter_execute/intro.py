@@ -5,132 +5,74 @@
 
 # **감사의 말**: 아래 내용은 [SciPy Lecture Notes](https://scipy-lectures.org/_downloads/ScipyLectures-simple.pdf)의 1장 내용을 많이 참고합니다. 
 
-# ## Why Python?
+# ## 파이썬
 
-# ### The scientist's needs
+# 데이터 과학자는 보통 다음 세 가지를 필요로 한다.
+# 
+# * 데이터 구하기: 모의 실험
+# * 데이터 처리: 데이터로부터 정보 얻기
+# * 데이터 시각화: 얻어진 정보 이해 및 전달
 
-# * Get data (simulation, experiment control),
-# * Manipulate and process data,
-# * Visualize results, quickly to understand, but also with high quality
-#   figures, for reports or publications.
+# 파이썬의 장점은 다음과 같다.
+# 
+# * 수치 계산, 데이터 처리 및 시각화와 관련된 많고 다양한 툴을 제공한다.
+# * 배우고 사용하기 쉽다.
+# * 문법이 단순하다.
+# * 효율적인 코드를 작성하기 쉽다.
+# * 데이터 분석 이외에 프로그래밍 관련 모든 분야에서 사용된다.
 
-# ### Python's strengths
+# ## 파이썬 대 기타 언어
 
-# * **Batteries included** Rich collection of already existing **bricks**
-#   of classic numerical methods, plotting or data processing tools. We
-#   don't want to re-program the plotting of a curve, a Fourier transform
-#   or a fitting algorithm. Don't reinvent the wheel!
+# **컴파일 언어**
 # 
-# * **Easy to learn** Most scientists are not payed as programmers, neither
-#   have they been trained so. They need to be able to draw a curve, smooth
-#   a signal, do a Fourier transform in a few minutes.
+# C, C++, C#, 자바 등 작성된 코드를 컴파일<font size="2">compile</font>한 후에 실행하도록 하는 
+# 컴파일 언어<font size="2">compiled language</font>의
+# 장점과 단점은 다음과 같다.
 # 
-# * **Easy communication** To keep code alive within a lab or a company
-#   it should be as readable as a book by collaborators, students, or
-#   maybe customers. Python syntax is simple, avoiding strange symbols or
-#   lengthy routine specifications that would divert the reader from
-#   mathematical or scientific understanding of the code.
-# 
-# * **Efficient code** Python numerical modules are computationally
-#   efficient. But needless to say that a very fast code becomes useless if
-#   too much time is spent writing it. Python aims for quick development
-#   times and quick execution times.
-# 
-# * **Universal** Python is a language used for many different problems.
-#   Learning Python avoids learning a new software for each new problem.
+# * 장점
+#     * 실행이 매우 빠르다. 따라서 매우 많은 양의 계산에 적합하다.
+# * 단점
+#     * 사용하기 어렵다. 메모리 수동 관리, 복잡한 구문 등 일반 사용자가 접근하기에는 
+#         조금 어려운 프로그래밍 언어이다.
 
-# ### How does Python compare to other solutions?
+# **매트랩**<font size="2">Matlab</font>
+# 
+# * 장점
+#     * 다양한 분야에서 활용될 수 있는 효율적인 수치 계산용 알고리즘을 포함하는 라이브러리를 제공한다.
+#     * 편리한 개발환경을 제공한다.
+#     * (유료) 기술 지원이 제공된다.
+# * 단점
+#     * 언어 자체가 고수준의 기능을 지원하지 않는다.
+#     * 유료.
 
-# **Compiled languages: C, C++, Fortran, ...**
+# **R**
 # 
-# Pros
-# 
-#   * Very fast. For heavy computations, it's difficult to outperform these
-#     languages.
-# 
-# Cons
-# 
-#   * Painful usage: no interactivity during development, mandatory
-#     compilation steps, verbose syntax, manual memory management. These
-#     are **difficult languages** for non programmers.
+# * 장점
+#     * 오픈 소스<font size="2">open source</font>이며 무료.
+#     * 통계 관련 고수준의 기능을 지원한다.
+#     
+# * 단점
+#     * 매트랩보다 지원되는 알고리즘이 적으며, 언어 자체도 고수준의 기능을 제대로 지원하지 않는다.
+#     * 지원되는 기능도 제한적인 영역에서만 활용되어 보편성이 떨어진다.
 
-# #### Matlab scripting language
+# **파이썬**
+# 
+# * 장점
+#     * 계산 관련 라이브러리가 풍부하다.
+#     * 체계적이며 가독성이 높은 코드 작성을 지원한다.
+#     * 웹서버 등 계산 과학 이외의 기타 분야에서도 활용되는 라이브러리를 지원한다.
+#     * 오픈 소스이자 무료이고 많은 사용자 그룹이 존재한다.
+#     * 다양한 개발환경이 지원된다.
+#         * [IPython](http://ipython.readthedocs.io/en/stable/)
+#         * [Spyder](https://www.spyder-ide.org/)
+#         * [Jupyter notebooks](http://jupyter.org/)
+#         * [Visual Studio Code](https://code.visualstudio.com/docs/languages/python)
+#         
+# * 단점
+#     * 컴파일 언어로 작성된 프로그램에 비해 상대적으로 느리게 작동한다.
+#     * 시스템 개발 등에 사용되기에는 제한적이다.
 
-# Pros
-# 
-#   * Very rich collection of libraries with numerous algorithms, for many
-#     different domains. Fast execution because these libraries are often written
-#     in a compiled language.
-# 
-#   * Pleasant development environment comprehensive and help, integrated
-#     editor, etc.
-# 
-#   * Commercial support is available.
-# 
-# Cons
-# 
-#   * Base language is quite poor and can become restrictive for advanced users.
-# 
-#   * Not free.
-
-# #### Julia
-
-# Pros
-# 
-#   * Fast code, yet interactive and simple.
-# 
-#   * Easily connects to Python or C.
-# 
-# Cons
-# 
-#   * Ecosystem limited to numerical computing.
-# 
-#   * Still young.
-
-# #### Other scripting languages: Scilab, Octave, R, IDL, etc.
-
-# Pros
-# 
-#   * Open-source, free, or at least cheaper than Matlab.
-# 
-#   * Some features can be very advanced (statistics in R, etc.)
-# 
-# Cons
-# 
-#   * Fewer available algorithms than in Matlab, and the language
-#     is not more advanced.
-# 
-#   * Some software are dedicated to one domain. Ex: Gnuplot to draw
-#     curves. These programs are very powerful, but they are restricted to
-#     a single type of usage, such as plotting.
-
-# #### Python
-
-# Pros
-# 
-#   * Very rich scientific computing libraries
-# 
-#   * Well thought out language, allowing to write very readable and well
-#     structured code: we "code what we think".
-# 
-#   * Many libraries beyond scientific computing (web server,
-#     serial port access, etc.)
-# 
-#   * Free and open-source software, widely spread, with a vibrant community.
-# 
-#   * A variety of powerful environments to work in, such as
-#     [IPython](http://ipython.readthedocs.io/en/stable/),
-#     [Spyder](https://www.spyder-ide.org/),
-#     [Jupyter notebooks](http://jupyter.org/),
-#     [Pycharm](https://www.jetbrains.com/pycharm),
-#     [Visual Studio Code](https://code.visualstudio.com/docs/languages/python)
-# 
-# Cons
-# 
-#   * Not all the algorithms that can be found in more specialized
-#     software or toolboxes.
-
-# ## The Scientific Python ecosystem
+# ## 데이터 과학용 파이썬 생태계
 
 # Unlike Matlab, or R, Python does not come with a prebundled set
 # of modules for scientific computing. Below are the basic building blocks
