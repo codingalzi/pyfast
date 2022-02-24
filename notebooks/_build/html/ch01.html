@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. 기본 자료형 &#8212; 데이터 과학용 파이썬 프로그래밍 특강</title>
+    <title>1. 기본 자료형 &#8212; 파이썬 프로그래밍 특강</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -77,7 +77,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">데이터 과학용 파이썬 프로그래밍 특강</h1>
+      <h1 class="site-logo" id="site-title">파이썬 프로그래밍 특강</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -233,8 +233,8 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#first-steps">
-   1.1. First steps
+  <a class="reference internal nav-link" href="#id2">
+   1.1. 파이썬 시작하기
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -302,8 +302,8 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#first-steps">
-   1.1. First steps
+  <a class="reference internal nav-link" href="#id2">
+   1.1. 파이썬 시작하기
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -361,53 +361,143 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1><span class="section-number">1. </span>기본 자료형<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>We introduce here the Python language. Only the bare minimum
-necessary for getting started with Numpy and Scipy is addressed here.
-To learn more about the language, consider going through the
-excellent tutorial <a class="reference external" href="https://docs.python.org/tutorial">https://docs.python.org/tutorial</a>. Dedicated books
-are also available, such as <a class="reference external" href="https://diveintopython3.net/">Dive into Python 3</a>.</p>
-<div class="section" id="first-steps">
-<h2><span class="section-number">1.1. </span>First steps<a class="headerlink" href="#first-steps" title="Permalink to this headline">¶</a></h2>
-<p>Start the <strong>Ipython</strong> shell (an enhanced interactive Python shell).</p>
-<p>Once you have started the interpreter, type</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span>
-<span class="go">Hello, world!</span>
+<p>데이터 과학을 위해 필수적으로 알아야 하는
+파이썬 프로그래밍 언어의 사용법을 소개한다.
+파이썬 프로그래밍의 보다 체계적인 학습은
+<a class="reference external" href="https://codingalzi.github.io/pybook/intro.html">파이썬 프로그래밍 기초</a>를
+추천한다.</p>
+<div class="section" id="id2">
+<h2><span class="section-number">1.1. </span>파이썬 시작하기<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>다음 명령을 실행하면 <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world</span></code> 문장이 화면에 출력된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The message “Hello, world!” is then displayed. You just executed your
-first Python instruction, congratulations!</p>
-<p>To get yourself started, type the following stack of instructions.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">a</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>     
-<span class="go">&lt;type &#39;int&#39;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-<span class="go">6</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">*</span><span class="n">b</span> 
-<span class="go">18</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span> 
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>    
-<span class="go">&lt;type &#39;str&#39;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">+</span> <span class="n">b</span>
-<span class="go">&#39;hellohello&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="o">*</span><span class="n">b</span>
-<span class="go">&#39;hellohello&#39;</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, world!
 </pre></div>
 </div>
-<p>Two variables <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> have been defined above. Note that one does
-not declare the type of a variable before assigning its value. In C,
-conversely, one should write:</p>
+</div>
+</div>
+<p>계속해서 아래 명령문도 실행해보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">a</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">코드 셀 실행</p>
+<p>주피터 노트북의 코드 셀<font size="2">code cell</font>은
+IPython 콘솔처럼 명령문을 실행할 수 있으며
+이어지는 코드 셀은 이전에 실행된 코드 셀의
+내용을 이어 받는다.</p>
+<p>하지만 코드 셀은 콘솔과는 달리 여러 줄의 파이썬 명령문을
+마치 편집기로 작성된 하나의 코드 파일을 실행하는 것처럼
+전체 명령문을 차례대로 실행할 수 있다.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span> 
+<span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;hellohello&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;hellohello&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;hellohello&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>변수를 선언할 때 변수의 자료형<font size="2">data type</font>을
+지정하지 않는다.
+변수의 자료형을 지정하지 않기 때문에
+변수가 가리키는 값을 다른 자료형의 값으로 변경할 수 있다.
+앞서 보았듯이 변수 <code class="docutils literal notranslate"><span class="pre">b</span></code> 가 처음에는 정수 <code class="docutils literal notranslate"><span class="pre">6</span></code> 을
+가리켰다가 이후엔 문자열 <code class="docutils literal notranslate"><span class="pre">'hello'</span></code> 를 가리킨다.</p>
+<div class="tip admonition">
+<p class="admonition-title">변수의 자료형</p>
+<p>C, C++, C#, 자바 등 다른 프로그래밍 언어와의 차이점 중에 하나다.
+예를 들어, C 언어에서 변수 선언은 아래 방식으로 이루어진다.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>In addition, the type of a variable may change, in the sense that at
-one point in time it can be equal to a value of a certain type, and a
-second point in time, it can be equal to a value of a different
-type. <code class="docutils literal notranslate"><span class="pre">b</span></code> was first equal to an integer, but it became equal to a
-string when it was assigned the value <code class="docutils literal notranslate"><span class="pre">'hello'</span></code>. Operations on
-integers (<code class="docutils literal notranslate"><span class="pre">b=2*a</span></code>) are coded natively in Python, and so are some
-operations on strings such as additions and multiplications, which
-amount respectively to concatenation and repetition.</p>
+</div>
+<p>곱셈 기호 <code class="docutils literal notranslate"><span class="pre">*</span></code> 는 인자의 자료형에 따라 다른 연산자로 작동한다.
+<code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">6</span></code> 은 두 정수의 곱셈이지만
+<code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">'hello'</span></code> 와 <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">'hello'</span></code> 는 문자열 <code class="docutils literal notranslate"><span class="pre">'hello'</span></code> 를 두 번
+이어붙인다.
+덧셈 기호 <code class="docutils literal notranslate"><span class="pre">+</span></code> 도 사용되는 인자에 따라 다르게 작동한다.</p>
 </div>
 <div class="section" id="basic-types">
 <h2><span class="section-number">1.2. </span>Basic types<a class="headerlink" href="#basic-types" title="Permalink to this headline">¶</a></h2>

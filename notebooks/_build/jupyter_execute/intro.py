@@ -149,13 +149,25 @@
 # 간단한 파이썬 코딩 설명을 위해서 대화식 프로그래밍<font size="2">interactive programming</font>을
 # 지원하는 
 # 주피터 노트북<font size="2">Jupyter notebook</font>을 기본적으로 사용한다.
-# 주피터 노트북은 IPython 콘솔<font size="2">console</font>을 포함한다.
+# 주피터 노트북은 
+# 파이썬의 기본 콘솔의 기능을 확장한 IPython 콘솔을 포함한다.
 # 
+# 파이썬 기본 콘솔은 다음 모양의 대화식 코딩을 지원하는다.
+# 
+# ```python
+# print('Hello world')
+# Hello world
+# ```
+# 
+# 반면에 IPython 콘솔의 대화식 코딩은 다음과 같다.
 # 
 # ```python
 # In [1]: print('Hello world')
 # Hello world
 # ```
+# 
+# IPython 콘솔은 이외에 아래에서 설명하는 매직 커맨드 보다
+# 유용한 기능을 지원한다.
 
 # :::{admonition} 아나콘다 설치와 주피터 노트북 사용법
 # :class: tip

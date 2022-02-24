@@ -3,62 +3,106 @@
 
 # # 기본 자료형
 
-# We introduce here the Python language. Only the bare minimum
-# necessary for getting started with Numpy and Scipy is addressed here.
-# To learn more about the language, consider going through the
-# excellent tutorial https://docs.python.org/tutorial. Dedicated books
-# are also available, such as [Dive into Python 3](https://diveintopython3.net/).
-
-# ## First steps
-
-# Start the **Ipython** shell (an enhanced interactive Python shell).
-
-# Once you have started the interpreter, type
+# 데이터 과학을 위해 필수적으로 알아야 하는 
+# 파이썬 프로그래밍 언어의 사용법을 소개한다.
+# 파이썬 프로그래밍의 보다 체계적인 학습은
+# [파이썬 프로그래밍 기초](https://codingalzi.github.io/pybook/intro.html)를
+# 추천한다.
 # 
-# ```python
-# >>> print("Hello, world!")
-# Hello, world!
-# ```
 
-# The message "Hello, world!" is then displayed. You just executed your
-# first Python instruction, congratulations!
+# ## 파이썬 시작하기
 
-# To get yourself started, type the following stack of instructions.
+# 다음 명령을 실행하면 `Hello, world` 문장이 화면에 출력된다.
 
-# ```python
-# >>> a = 3
-# >>> b = 2*a
-# >>> type(b)     # doctest: +SKIP
-# <type 'int'>
-# >>> print(b)
-# 6
-# >>> a*b 
-# 18
-# >>> b = 'hello' 
-# >>> type(b)    # doctest: +SKIP
-# <type 'str'>
-# >>> b + b
-# 'hellohello'
-# >>> 2*b
-# 'hellohello'
-# ```
+# In[1]:
 
-# Two variables `a` and `b` have been defined above. Note that one does
-# not declare the type of a variable before assigning its value. In C,
-# conversely, one should write:
 
+print("Hello, world!")
+
+
+# 계속해서 아래 명령문도 실행해보자. 
+
+# In[2]:
+
+
+a = 3
+b = 2 * a
+type(b)
+
+
+# :::{admonition} 코드 셀 실행
+# :class: tip
+# 
+# 주피터 노트북의 코드 셀<font size="2">code cell</font>은
+# IPython 콘솔처럼 명령문을 실행할 수 있으며 
+# 이어지는 코드 셀은 이전에 실행된 코드 셀의
+# 내용을 이어 받는다.
+# 
+# 하지만 코드 셀은 콘솔과는 달리 여러 줄의 파이썬 명령문을 
+# 마치 편집기로 작성된 하나의 코드 파일을 실행하는 것처럼
+# 전체 명령문을 차례대로 실행할 수 있다.
+# :::
+
+# In[3]:
+
+
+print(b)
+
+
+# In[4]:
+
+
+a * b 
+
+
+# In[5]:
+
+
+b = 'hello' 
+type(b)
+
+
+# In[6]:
+
+
+b + b
+
+
+# In[7]:
+
+
+2 * b
+
+
+# In[8]:
+
+
+b * 2
+
+
+# 변수를 선언할 때 변수의 자료형<font size="2">data type</font>을 
+# 지정하지 않는다.
+# 변수의 자료형을 지정하지 않기 때문에
+# 변수가 가리키는 값을 다른 자료형의 값으로 변경할 수 있다.
+# 앞서 보았듯이 변수 `b` 가 처음에는 정수 `6` 을 
+# 가리켰다가 이후엔 문자열 `'hello'` 를 가리킨다.
+
+# :::{admonition} 변수의 자료형
+# :class: tip
+# 
+# C, C++, C#, 자바 등 다른 프로그래밍 언어와의 차이점 중에 하나다.
+# 예를 들어, C 언어에서 변수 선언은 아래 방식으로 이루어진다.
+# 
 # ```c
 # int a = 3;
 # ```
+# :::
 
-# In addition, the type of a variable may change, in the sense that at
-# one point in time it can be equal to a value of a certain type, and a
-# second point in time, it can be equal to a value of a different
-# type. `b` was first equal to an integer, but it became equal to a
-# string when it was assigned the value `'hello'`. Operations on
-# integers (`b=2*a`) are coded natively in Python, and so are some
-# operations on strings such as additions and multiplications, which
-# amount respectively to concatenation and repetition.
+# 곱셈 기호 `*` 는 인자의 자료형에 따라 다른 연산자로 작동한다. 
+# `3 * 6` 은 두 정수의 곱셈이지만
+# `2 * 'hello'` 와 `2 * 'hello'` 는 문자열 `'hello'` 를 두 번 
+# 이어붙인다.
+# 덧셈 기호 `+` 도 사용되는 인자에 따라 다르게 작동한다.
 
 # ## Basic types
 
