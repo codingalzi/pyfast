@@ -3,7 +3,7 @@
 
 # # 데이터 과학과 파이썬
 
-# **감사의 말**: [SciPy Lecture Notes](https://scipy-lectures.org/_downloads/ScipyLectures-simple.pdf)의 1장 내용을 많이 참고합니다. 
+# **감사의 말**: [SciPy Lecture Notes](https://scipy-lectures.org/_downloads/ScipyLectures-simple.pdf)의 1장 내용을 참고합니다. 
 
 # ## 파이썬
 
