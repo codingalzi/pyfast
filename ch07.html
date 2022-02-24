@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7. 함수의 인터페이스 &#8212; 파이썬 프로그래밍 특강</title>
+    <title>7. 객체 지향 프로그래밍(OOP) &#8212; 파이썬 프로그래밍 특강</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -38,9 +38,12 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -52,8 +55,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="8. 조건문" href="ch08.html" />
-    <link rel="prev" title="6. 함수" href="ch06.html" />
+    <link rel="prev" title="6. 예외 처리" href="ch06.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -95,47 +97,37 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="ch01.html">
-   1. 1장 강좌소개 1부
+   1. 기본 자료형
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch02.html">
-   2. 추가 중…
+   2. 기본 명령문
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch03.html">
-   3. 프로그래밍 시작하기
+   3. 함수
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch04.html">
-   4. 변수, 값, 표현식, 명령문
+   4. 모듈과 패키지
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch05.html">
-   5. 기본 자료형
+   5. 입력과 출력
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch06.html">
-   6. 함수
+   6. 예외 처리
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   7. 함수의 인터페이스
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ch08.html">
-   8. 조건문
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ch09.html">
-   9. 재귀 함수
+   7. 객체 지향 프로그래밍(OOP)
   </a>
  </li>
 </ul>
@@ -195,11 +187,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/codingalzi/pybook"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/codingalzi/pyfast"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/codingalzi/pybook/issues/new?title=Issue%20on%20page%20%2Fch07.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/codingalzi/pyfast/issues/new?title=Issue%20on%20page%20%2Fch07.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -220,7 +212,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/codingalzi/pybook/master?urlpath=tree/notebooks/ch07.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/codingalzi/pyfast/master?urlpath=tree/notebooks/ch07.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -244,7 +236,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>함수의 인터페이스</h1>
+                <h1>객체 지향 프로그래밍(OOP)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -255,8 +247,57 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">7. </span>함수의 인터페이스<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="oop">
+<h1><span class="section-number">7. </span>객체 지향 프로그래밍(OOP)<a class="headerlink" href="#oop" title="Permalink to this headline">¶</a></h1>
+<p>Python supports object-oriented programming (OOP). The goals of OOP are:</p>
+<ul class="simple">
+<li><p>to organize the code, and</p></li>
+<li><p>to re-use code in similar contexts.</p></li>
+</ul>
+<p>Here is a small example: we create a Student <em>class</em>, which is an object
+gathering several custom functions (<em>methods</em>) and variables (<em>attributes</em>),
+we will be able to use::</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">set_age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">set_major</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">major</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">major</span> <span class="o">=</span> <span class="n">major</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">anna</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s1">&#39;anna&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">anna</span><span class="o">.</span><span class="n">set_age</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">anna</span><span class="o">.</span><span class="n">set_major</span><span class="p">(</span><span class="s1">&#39;physics&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the previous example, the Student class has <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, <code class="docutils literal notranslate"><span class="pre">set_age</span></code> and
+<code class="docutils literal notranslate"><span class="pre">set_major</span></code> methods. Its attributes are <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">age</span></code> and <code class="docutils literal notranslate"><span class="pre">major</span></code>. We
+can call these methods and attributes with the following notation:
+<code class="docutils literal notranslate"><span class="pre">classinstance.method</span></code> or  <code class="docutils literal notranslate"><span class="pre">classinstance.attribute</span></code>.  The <code class="docutils literal notranslate"><span class="pre">__init__</span></code>
+constructor is a special method we call with: <code class="docutils literal notranslate"><span class="pre">MyClass(init</span> <span class="pre">parameters</span> <span class="pre">if</span> <span class="pre">any)</span></code>.</p>
+<p>Now, suppose we want to create a new class MasterStudent with the same
+methods and attributes as the previous one, but with an additional
+<code class="docutils literal notranslate"><span class="pre">internship</span></code> attribute. We won’t copy the previous class, but
+<strong>inherit</strong> from it::</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MasterStudent</span><span class="p">(</span><span class="n">Student</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">internship</span> <span class="o">=</span> <span class="s1">&#39;mandatory, from March to June&#39;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">james</span> <span class="o">=</span> <span class="n">MasterStudent</span><span class="p">(</span><span class="s1">&#39;james&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">james</span><span class="o">.</span><span class="n">internship</span>
+<span class="go">&#39;mandatory, from March to June&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">james</span><span class="o">.</span><span class="n">set_age</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">james</span><span class="o">.</span><span class="n">age</span>
+<span class="go">23</span>
+</pre></div>
+</div>
+<p>The MasterStudent class inherited from the Student attributes and methods.</p>
+<p>Thanks to classes and object-oriented programming, we can organize code
+with different classes corresponding to different objects we encounter
+(an Experiment class, an Image class, a Flow class, etc.), with their own
+methods and attributes. Then we can use inheritance to consider
+variations around a base class and <strong>re-use</strong> code. Ex : from a Flow
+base class, we can create derived StokesFlow, TurbulentFlow,
+PotentialFlow, etc.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -288,15 +329,8 @@
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">6. </span>함수</p>
+            <p class="prev-next-title"><span class="section-number">6. </span>예외 처리</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="ch08.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>조건문</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             

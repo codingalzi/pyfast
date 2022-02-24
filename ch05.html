@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5. 기본 자료형 &#8212; 파이썬 프로그래밍 특강</title>
+    <title>5. 입력과 출력 &#8212; 파이썬 프로그래밍 특강</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -38,9 +38,12 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -52,8 +55,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="6. 함수" href="ch06.html" />
-    <link rel="prev" title="4. 변수, 값, 표현식, 명령문" href="ch04.html" />
+    <link rel="next" title="6. 예외 처리" href="ch06.html" />
+    <link rel="prev" title="4. 모듈과 패키지" href="ch04.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -95,47 +98,37 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="ch01.html">
-   1. 1장 강좌소개 1부
+   1. 기본 자료형
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch02.html">
-   2. 추가 중…
+   2. 기본 명령문
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch03.html">
-   3. 프로그래밍 시작하기
+   3. 함수
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch04.html">
-   4. 변수, 값, 표현식, 명령문
+   4. 모듈과 패키지
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   5. 기본 자료형
+   5. 입력과 출력
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch06.html">
-   6. 함수
+   6. 예외 처리
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch07.html">
-   7. 함수의 인터페이스
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ch08.html">
-   8. 조건문
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ch09.html">
-   9. 재귀 함수
+   7. 객체 지향 프로그래밍(OOP)
   </a>
  </li>
 </ul>
@@ -195,11 +188,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/codingalzi/pybook"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/codingalzi/pyfast"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/codingalzi/pybook/issues/new?title=Issue%20on%20page%20%2Fch05.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/codingalzi/pyfast/issues/new?title=Issue%20on%20page%20%2Fch05.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -220,7 +213,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/codingalzi/pybook/master?urlpath=tree/notebooks/ch05.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/codingalzi/pyfast/master?urlpath=tree/notebooks/ch05.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -237,6 +230,119 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#iterating-over-a-file">
+   5.1. Iterating over a file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#standard-library">
+   5.2. Standard Library
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#os-module-operating-system-functionality">
+     5.2.1.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       os
+      </span>
+     </code>
+     module: operating system functionality
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#directory-and-file-manipulation">
+       5.2.1.1. Directory and file manipulation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#os-path-path-manipulations">
+       5.2.1.2.
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         os.path
+        </span>
+       </code>
+       : path manipulations
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#running-an-external-command">
+       5.2.1.3. Running an external command
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#walking-a-directory">
+       5.2.1.4. Walking a directory
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#environment-variables">
+       5.2.1.5. Environment variables:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shutil-high-level-file-operations">
+     5.2.2.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       shutil
+      </span>
+     </code>
+     : high-level file operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#glob-pattern-matching-on-files">
+     5.2.3.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glob
+      </span>
+     </code>
+     : Pattern matching on files
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sys-module-system-specific-information">
+     5.2.4.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sys
+      </span>
+     </code>
+     module: system-specific information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pickle-easy-persistence">
+     5.2.5.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pickle
+      </span>
+     </code>
+     : easy persistence
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   5.3. Exercise
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -244,11 +350,124 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>기본 자료형</h1>
+                <h1>입력과 출력</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#iterating-over-a-file">
+   5.1. Iterating over a file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#standard-library">
+   5.2. Standard Library
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#os-module-operating-system-functionality">
+     5.2.1.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       os
+      </span>
+     </code>
+     module: operating system functionality
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#directory-and-file-manipulation">
+       5.2.1.1. Directory and file manipulation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#os-path-path-manipulations">
+       5.2.1.2.
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         os.path
+        </span>
+       </code>
+       : path manipulations
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#running-an-external-command">
+       5.2.1.3. Running an external command
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#walking-a-directory">
+       5.2.1.4. Walking a directory
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#environment-variables">
+       5.2.1.5. Environment variables:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shutil-high-level-file-operations">
+     5.2.2.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       shutil
+      </span>
+     </code>
+     : high-level file operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#glob-pattern-matching-on-files">
+     5.2.3.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glob
+      </span>
+     </code>
+     : Pattern matching on files
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sys-module-system-specific-information">
+     5.2.4.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sys
+      </span>
+     </code>
+     module: system-specific information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pickle-easy-persistence">
+     5.2.5.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pickle
+      </span>
+     </code>
+     : easy persistence
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   5.3. Exercise
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -256,27 +475,332 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">5. </span>기본 자료형<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>참고: <a class="reference external" href="https://scipy-lectures.org/intro/language/basic_types.html">SciPy 2.2장</a></p>
-<ol class="simple">
-<li><p>기본자료형이란?</p></li>
-<li><p>정수 자료형(int)</p></li>
-<li><p>부동소수점 자료형(float)</p></li>
-<li><p>부울 자료형(bool) (간단히, 나중에 if, for 명령문과 함께 자세히.)</p></li>
-<li><p>문자열 자료형(str) (간단히, 나중에 모음 자료형 다룰 때 보다 자세히.)</p>
+<h1><span class="section-number">5. </span>입력과 출력<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>To be exhaustive, here are some information about input and output in
+Python. Since we will use the Numpy methods to read and write files,
+<strong>you may skip this chapter at first reading</strong>.</p>
+<p>We write or read <strong>strings</strong> to/from files (other types must be converted to
+strings). To write in a file::</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;workfile&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="c1"># opens the workfile file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>    
+<span class="go">&lt;type &#39;file&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;This is a test </span><span class="se">\n</span><span class="s1">and another test&#39;</span><span class="p">)</span>   
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>To read from a file</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;workfile&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">s</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">test</span> 
+<span class="ow">and</span> <span class="n">another</span> <span class="n">test</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="iterating-over-a-file">
+<h2><span class="section-number">5.1. </span>Iterating over a file<a class="headerlink" href="#iterating-over-a-file" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;workfile&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+   <span class="o">...</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+   <span class="o">...</span><span class="p">:</span>
+<span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">test</span> 
+
+<span class="ow">and</span> <span class="n">another</span> <span class="n">test</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>File modes</strong></p>
 <ul class="simple">
-<li><p>input() 함수 소개 및 활용. print() 명령문과 함께.\</p></li>
-<li><p>whitespace 언급할 것: <a class="reference external" href="https://www.unf.edu/~cwinton/html/cop3601/s10/class.notes/C4-PurgeBlnkLns.pdf">여기</a>와 <a class="reference external" href="https://www.geeksforgeeks.org/string-whitespace-in-python/">여기</a> 참고.</p></li>
-<li><p>다음 사항고 언급</p></li>
+<li><p>Read-only: <code class="docutils literal notranslate"><span class="pre">r</span></code></p></li>
+<li><p>Write-only: <code class="docutils literal notranslate"><span class="pre">w</span></code></p>
+<ul>
+<li><p>Note: Create a new file or <em>overwrite</em> existing file.</p></li>
 </ul>
 </li>
-</ol>
-<div class="info admonition">
-<p class="admonition-title">문자열 <code class="docutils literal notranslate"><span class="pre">''</span></code> 와 문자의 <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code> 차이점</p>
-<p>빈 문자열<font size="2">empty string</font> <code class="docutils literal notranslate"><span class="pre">''</span></code> 는
-아무런 문자를 포함하지 않으며 따라서 문자열의 길이, 즉 문자열에 포함된 문자의 개수가 0이다.
-반면에 <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code> 는 눈에 보이지는 않지만 공백 문자 하나를 포함하는 문자열이며 길이가 1이다.</p>
-<p>참고: <code class="xref std std-numref docutils literal notranslate"><span class="pre">%s</span> <span class="pre">절</span></code></p>
+<li><p>Append a file: <code class="docutils literal notranslate"><span class="pre">a</span></code></p></li>
+<li><p>Read and Write: <code class="docutils literal notranslate"><span class="pre">r+</span></code></p></li>
+<li><p>Binary mode: <code class="docutils literal notranslate"><span class="pre">b</span></code></p>
+<ul>
+<li><p>Note: Use for binary files, especially on Windows.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="standard-library">
+<h2><span class="section-number">5.2. </span>Standard Library<a class="headerlink" href="#standard-library" title="Permalink to this headline">¶</a></h2>
+<p><strong>Note</strong>: Reference document for this section:</p>
+<ul class="simple">
+<li><p>The Python Standard Library documentation: <a class="reference external" href="https://docs.python.org/library/index.html">https://docs.python.org/library/index.html</a></p></li>
+<li><p>Python Essential Reference, David Beazley, ddison-Wesley Professional</p></li>
+</ul>
+<div class="section" id="os-module-operating-system-functionality">
+<h3><span class="section-number">5.2.1. </span><code class="docutils literal notranslate"><span class="pre">os</span></code> module: operating system functionality<a class="headerlink" href="#os-module-operating-system-functionality" title="Permalink to this headline">¶</a></h3>
+<p><em>“A portable way of using operating system dependent functionality.”</em></p>
+<div class="section" id="directory-and-file-manipulation">
+<h4><span class="section-number">5.2.1.1. </span>Directory and file manipulation<a class="headerlink" href="#directory-and-file-manipulation" title="Permalink to this headline">¶</a></h4>
+<p>Current directory:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="s1">&#39;/Users/cburns/src/scipy2009/scipy_2009_tutorial/source&#39;</span>
+</pre></div>
+</div>
+<p>List a directory:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">31</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">31</span><span class="p">]:</span>
+<span class="p">[</span><span class="s1">&#39;.index.rst.swo&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;.python_language.rst.swp&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;.view_array.py.swp&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;_static&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;_templates&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;basic_types.rst&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;conf.py&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;control_flow.rst&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;debugging.rst&#39;</span><span class="p">,</span>
+ <span class="o">...</span>
+</pre></div>
+</div>
+<p>Make a directory:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">32</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s1">&#39;junkdir&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">33</span><span class="p">]:</span> <span class="s1">&#39;junkdir&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">33</span><span class="p">]:</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>Rename the directory:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">36</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;junkdir&#39;</span><span class="p">,</span> <span class="s1">&#39;foodir&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">37</span><span class="p">]:</span> <span class="s1">&#39;junkdir&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">37</span><span class="p">]:</span> <span class="kc">False</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">38</span><span class="p">]:</span> <span class="s1">&#39;foodir&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">38</span><span class="p">]:</span> <span class="kc">True</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">41</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="s1">&#39;foodir&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">42</span><span class="p">]:</span> <span class="s1">&#39;foodir&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">42</span><span class="p">]:</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>Delete a file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">44</span><span class="p">]:</span> <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;junk.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">45</span><span class="p">]:</span> <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">46</span><span class="p">]:</span> <span class="s1">&#39;junk.txt&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">46</span><span class="p">]:</span> <span class="kc">True</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">47</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;junk.txt&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">48</span><span class="p">]:</span> <span class="s1">&#39;junk.txt&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">48</span><span class="p">]:</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="os-path-path-manipulations">
+<h4><span class="section-number">5.2.1.2. </span><code class="docutils literal notranslate"><span class="pre">os.path</span></code>: path manipulations<a class="headerlink" href="#os-path-path-manipulations" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">os.path</span></code> provides common operations on pathnames.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">70</span><span class="p">]:</span> <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;junk.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">71</span><span class="p">]:</span> <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">72</span><span class="p">]:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;junk.txt&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">73</span><span class="p">]:</span> <span class="n">a</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">73</span><span class="p">]:</span> <span class="s1">&#39;/Users/cburns/src/scipy2009/scipy_2009_tutorial/source/junk.txt&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">74</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">74</span><span class="p">]:</span> <span class="p">(</span><span class="s1">&#39;/Users/cburns/src/scipy2009/scipy_2009_tutorial/source&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;junk.txt&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">78</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">78</span><span class="p">]:</span> <span class="s1">&#39;/Users/cburns/src/scipy2009/scipy_2009_tutorial/source&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">79</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">79</span><span class="p">]:</span> <span class="s1">&#39;junk.txt&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">80</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">80</span><span class="p">]:</span> <span class="p">(</span><span class="s1">&#39;junk&#39;</span><span class="p">,</span> <span class="s1">&#39;.txt&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">84</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;junk.txt&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">84</span><span class="p">]:</span> <span class="kc">True</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">86</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;junk.txt&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">86</span><span class="p">]:</span> <span class="kc">True</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">87</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s1">&#39;junk.txt&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">87</span><span class="p">]:</span> <span class="kc">False</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">88</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/local&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">88</span><span class="p">]:</span> <span class="s1">&#39;/Users/cburns/local&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">92</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">),</span> <span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;bin&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">92</span><span class="p">]:</span> <span class="s1">&#39;/Users/cburns/local/bin&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-an-external-command">
+<h4><span class="section-number">5.2.1.3. </span>Running an external command<a class="headerlink" href="#running-an-external-command" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;ls&#39;</span><span class="p">)</span>
+<span class="n">basic_types</span><span class="o">.</span><span class="n">rst</span>   <span class="n">demo</span><span class="o">.</span><span class="n">py</span>          <span class="n">functions</span><span class="o">.</span><span class="n">rst</span>  <span class="n">python_language</span><span class="o">.</span><span class="n">rst</span>  <span class="n">standard_library</span><span class="o">.</span><span class="n">rst</span>
+<span class="n">control_flow</span><span class="o">.</span><span class="n">rst</span>  <span class="n">exceptions</span><span class="o">.</span><span class="n">rst</span>   <span class="n">io</span><span class="o">.</span><span class="n">rst</span>         <span class="n">python</span><span class="o">-</span><span class="n">logo</span><span class="o">.</span><span class="n">png</span>
+<span class="n">demo2</span><span class="o">.</span><span class="n">py</span>          <span class="n">first_steps</span><span class="o">.</span><span class="n">rst</span>  <span class="n">oop</span><span class="o">.</span><span class="n">rst</span>        <span class="n">reusing_code</span><span class="o">.</span><span class="n">rst</span>
+</pre></div>
+</div>
+<p><strong>Note</strong>: Alternative to <code class="docutils literal notranslate"><span class="pre">os.system</span></code></p>
+<p>A noteworthy alternative to <code class="docutils literal notranslate"><span class="pre">os.system</span></code> is the
+<a class="reference external" href="http://amoffat.github.com/sh/">sh module</a>.
+Which provides much more convenient ways to
+obtain the output, error stream and exit code of the external command.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">sh</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="n">com</span> <span class="o">=</span> <span class="n">sh</span><span class="o">.</span><span class="n">ls</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="n">com</span><span class="p">)</span>
+<span class="n">basic_types</span><span class="o">.</span><span class="n">rst</span>   <span class="n">exceptions</span><span class="o">.</span><span class="n">rst</span>   <span class="n">oop</span><span class="o">.</span><span class="n">rst</span>              <span class="n">standard_library</span><span class="o">.</span><span class="n">rst</span>
+<span class="n">control_flow</span><span class="o">.</span><span class="n">rst</span>  <span class="n">first_steps</span><span class="o">.</span><span class="n">rst</span>  <span class="n">python_language</span><span class="o">.</span><span class="n">rst</span>
+<span class="n">demo2</span><span class="o">.</span><span class="n">py</span>          <span class="n">functions</span><span class="o">.</span><span class="n">rst</span>    <span class="n">python</span><span class="o">-</span><span class="n">logo</span><span class="o">.</span><span class="n">png</span>
+<span class="n">demo</span><span class="o">.</span><span class="n">py</span>           <span class="n">io</span><span class="o">.</span><span class="n">rst</span>           <span class="n">reusing_code</span><span class="o">.</span><span class="n">rst</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="n">com</span><span class="o">.</span><span class="n">exit_code</span><span class="p">)</span>
+<span class="mi">0</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="nb">type</span><span class="p">(</span><span class="n">com</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">sh</span><span class="o">.</span><span class="n">RunningCommand</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="walking-a-directory">
+<h4><span class="section-number">5.2.1.4. </span>Walking a directory<a class="headerlink" href="#walking-a-directory" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">os.path.walk</span></code> generates a list of filenames in a directory tree.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="k">for</span> <span class="n">dirpath</span><span class="p">,</span> <span class="n">dirnames</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">):</span>
+<span class="o">....</span><span class="p">:</span>     <span class="k">for</span> <span class="n">fp</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+<span class="o">....</span><span class="p">:</span>         <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">fp</span><span class="p">))</span>
+<span class="o">....</span><span class="p">:</span>
+<span class="o">....</span><span class="p">:</span>
+<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">cburns</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">scipy2009</span><span class="o">/</span><span class="n">scipy_2009_tutorial</span><span class="o">/</span><span class="n">source</span><span class="o">/.</span><span class="n">index</span><span class="o">.</span><span class="n">rst</span><span class="o">.</span><span class="n">swo</span>
+<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">cburns</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">scipy2009</span><span class="o">/</span><span class="n">scipy_2009_tutorial</span><span class="o">/</span><span class="n">source</span><span class="o">/.</span><span class="n">view_array</span><span class="o">.</span><span class="n">py</span><span class="o">.</span><span class="n">swp</span>
+<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">cburns</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">scipy2009</span><span class="o">/</span><span class="n">scipy_2009_tutorial</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">basic_types</span><span class="o">.</span><span class="n">rst</span>
+<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">cburns</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">scipy2009</span><span class="o">/</span><span class="n">scipy_2009_tutorial</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">py</span>
+<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">cburns</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">scipy2009</span><span class="o">/</span><span class="n">scipy_2009_tutorial</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">control_flow</span><span class="o">.</span><span class="n">rst</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="environment-variables">
+<h4><span class="section-number">5.2.1.5. </span>Environment variables:<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">11</span><span class="p">]:</span>
+<span class="p">[</span><span class="s1">&#39;_&#39;</span><span class="p">,</span>
+<span class="s1">&#39;FSLDIR&#39;</span><span class="p">,</span>
+<span class="s1">&#39;TERM_PROGRAM_VERSION&#39;</span><span class="p">,</span>
+<span class="s1">&#39;FSLREMOTECALL&#39;</span><span class="p">,</span>
+<span class="s1">&#39;USER&#39;</span><span class="p">,</span>
+<span class="s1">&#39;HOME&#39;</span><span class="p">,</span>
+<span class="s1">&#39;PATH&#39;</span><span class="p">,</span>
+<span class="s1">&#39;PS1&#39;</span><span class="p">,</span>
+<span class="s1">&#39;SHELL&#39;</span><span class="p">,</span>
+<span class="s1">&#39;EDITOR&#39;</span><span class="p">,</span>
+<span class="s1">&#39;WORKON_HOME&#39;</span><span class="p">,</span>
+<span class="s1">&#39;PYTHONPATH&#39;</span><span class="p">,</span>
+<span class="o">...</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PYTHONPATH&#39;</span><span class="p">]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="s1">&#39;.:/Users/cburns/src/utils:/Users/cburns/src/nitools:</span>
+<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">cburns</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python2</span><span class="mf">.5</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="p">:</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python2</span><span class="mf">.5</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="p">:</span>
+<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Frameworks</span><span class="o">/</span><span class="n">Python</span><span class="o">.</span><span class="n">framework</span><span class="o">/</span><span class="n">Versions</span><span class="o">/</span><span class="mf">2.5</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python2</span><span class="mf">.5</span><span class="s1">&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;PYTHONPATH&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="s1">&#39;.:/Users/cburns/src/utils:/Users/cburns/src/nitools:</span>
+<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">cburns</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python2</span><span class="mf">.5</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="p">:</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python2</span><span class="mf">.5</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="p">:</span>
+<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Frameworks</span><span class="o">/</span><span class="n">Python</span><span class="o">.</span><span class="n">framework</span><span class="o">/</span><span class="n">Versions</span><span class="o">/</span><span class="mf">2.5</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python2</span><span class="mf">.5</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="shutil-high-level-file-operations">
+<h3><span class="section-number">5.2.2. </span><code class="docutils literal notranslate"><span class="pre">shutil</span></code>: high-level file operations<a class="headerlink" href="#shutil-high-level-file-operations" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">shutil</span></code> provides useful file operations:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">shutil.rmtree</span></code>: Recursively delete a directory tree.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shutil.move</span></code>: Recursively move a file or directory to another location.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shutil.copy</span></code>: Copy files or directories.</p></li>
+</ul>
+</div>
+<div class="section" id="glob-pattern-matching-on-files">
+<h3><span class="section-number">5.2.3. </span><code class="docutils literal notranslate"><span class="pre">glob</span></code>: Pattern matching on files<a class="headerlink" href="#glob-pattern-matching-on-files" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">glob</span></code> module provides convenient file pattern matching.</p>
+<p>Find all files ending in <code class="docutils literal notranslate"><span class="pre">.txt</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">glob</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.txt&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="p">[</span><span class="s1">&#39;holy_grail.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;junk.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;newfile.txt&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sys-module-system-specific-information">
+<h3><span class="section-number">5.2.4. </span><code class="docutils literal notranslate"><span class="pre">sys</span></code> module: system-specific information<a class="headerlink" href="#sys-module-system-specific-information" title="Permalink to this headline">¶</a></h3>
+<p>System-specific information related to the Python interpreter.</p>
+<ul>
+<li><p>Which version of python are you running and where is it installed:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">117</span><span class="p">]:</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">117</span><span class="p">]:</span> <span class="s1">&#39;darwin&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">118</span><span class="p">]:</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">118</span><span class="p">]:</span> <span class="s1">&#39;2.5.2 (r252:60911, Feb 22 2008, 07:57:53) </span><span class="se">\n</span>
+      <span class="p">[</span><span class="n">GCC</span> <span class="mf">4.0.1</span> <span class="p">(</span><span class="n">Apple</span> <span class="n">Computer</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span> <span class="n">build</span> <span class="mi">5363</span><span class="p">)]</span><span class="s1">&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">119</span><span class="p">]:</span> <span class="n">sys</span><span class="o">.</span><span class="n">prefix</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">119</span><span class="p">]:</span> <span class="s1">&#39;/Library/Frameworks/Python.framework/Versions/2.5&#39;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<ul class="simple">
+<li><p>List of command line arguments passed to a Python script:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">100</span><span class="p">]:</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">100</span><span class="p">]:</span> <span class="p">[</span><span class="s1">&#39;/Users/cburns/local/bin/ipython&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">sys.path</span></code> is a list of strings that specifies the search path for
+modules.  Initialized from PYTHONPATH:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">121</span><span class="p">]:</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">121</span><span class="p">]:</span>
+<span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="s1">&#39;/Users/cburns/local/bin&#39;</span><span class="p">,</span>
+<span class="s1">&#39;/Users/cburns/local/lib/python2.5/site-packages/grin-1.1-py2.5.egg&#39;</span><span class="p">,</span>
+<span class="s1">&#39;/Users/cburns/local/lib/python2.5/site-packages/argparse-0.8.0-py2.5.egg&#39;</span><span class="p">,</span>
+<span class="s1">&#39;/Users/cburns/local/lib/python2.5/site-packages/urwid-0.9.7.1-py2.5.egg&#39;</span><span class="p">,</span>
+<span class="s1">&#39;/Users/cburns/local/lib/python2.5/site-packages/yolk-0.4.1-py2.5.egg&#39;</span><span class="p">,</span>
+<span class="s1">&#39;/Users/cburns/local/lib/python2.5/site-packages/virtualenv-1.2-py2.5.egg&#39;</span><span class="p">,</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pickle-easy-persistence">
+<h3><span class="section-number">5.2.5. </span><code class="docutils literal notranslate"><span class="pre">pickle</span></code>: easy persistence<a class="headerlink" href="#pickle-easy-persistence" title="Permalink to this headline">¶</a></h3>
+<p>Useful to store arbitrary objects to a file. Not safe or fast!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Stan&#39;</span><span class="p">]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">file</span><span class="p">(</span><span class="s1">&#39;test.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">))</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">(</span><span class="s1">&#39;test.pkl&#39;</span><span class="p">))</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Stan&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise">
+<h2><span class="section-number">5.3. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<p>Write a program to search your <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> for the module <code class="docutils literal notranslate"><span class="pre">site.py</span></code>.</p>
 </div>
 </div>
 
@@ -309,13 +833,13 @@
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">4. </span>변수, 값, 표현식, 명령문</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>모듈과 패키지</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="ch06.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>함수</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>예외 처리</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
