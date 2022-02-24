@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>파이썬 기초 &#8212; 파이썬 프로그래밍 특강</title>
+    <title>모듈과 패키지 &#8212; 파이썬 프로그래밍 특강</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -38,11 +38,16 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -93,17 +98,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="ch01.html">
-   1. 일장
+   1. 기본 자료형
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch02.html">
-   2. 추가 중…
+   2. 기본 명령문
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch03.html">
-   3. 또 추가
+   3. 함수
   </a>
  </li>
 </ul>
@@ -212,130 +217,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   파이썬 기초
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#first-steps">
-     First steps
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-types">
-   Basic types
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numerical-types">
-     Numerical types
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#containers">
-     Containers
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#assignment-operator">
-     Assignment operator
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#control-flow">
-   Control Flow
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#if-elif-else">
-     if/elif/else
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#for-range">
-     for/range
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#while-break-continue">
-     while/break/continue
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conditional-expressions">
-     Conditional Expressions
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#advanced-iteration">
-     Advanced iteration
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#defining-functions">
-   Defining functions
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#function-definition">
-     Function definition
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#return-statement">
-     Return statement
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#parameters">
-     Parameters
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#passing-by-value">
-     Passing by value
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#global-variables">
-     Global variables
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#variable-number-of-parameters">
-     Variable number of parameters
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#docstrings">
-     Docstrings
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#functions-are-objects">
-     Functions are objects
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#methods">
-     Methods
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     Exercises
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reusing-code-scripts-and-modules">
-   Reusing code: scripts and modules
+   모듈과 패키지
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
@@ -351,6 +233,18 @@
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#creating-modules">
      Creating modules
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-6-whos-variable-type-data-info">
+     In [6]: whos
+Variable   Type      Data/Info
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-10-whos-variable-type-data-info">
+     In [10]: whos
+Variable   Type        Data/Info
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -433,7 +327,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>파이썬 기초</h1>
+                <h1>모듈과 패키지</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -445,130 +339,7 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   파이썬 기초
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#first-steps">
-     First steps
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-types">
-   Basic types
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numerical-types">
-     Numerical types
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#containers">
-     Containers
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#assignment-operator">
-     Assignment operator
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#control-flow">
-   Control Flow
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#if-elif-else">
-     if/elif/else
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#for-range">
-     for/range
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#while-break-continue">
-     while/break/continue
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conditional-expressions">
-     Conditional Expressions
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#advanced-iteration">
-     Advanced iteration
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#defining-functions">
-   Defining functions
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#function-definition">
-     Function definition
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#return-statement">
-     Return statement
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#parameters">
-     Parameters
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#passing-by-value">
-     Passing by value
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#global-variables">
-     Global variables
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#variable-number-of-parameters">
-     Variable number of parameters
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#docstrings">
-     Docstrings
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#functions-are-objects">
-     Functions are objects
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#methods">
-     Methods
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     Exercises
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reusing-code-scripts-and-modules">
-   Reusing code: scripts and modules
+   모듈과 패키지
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
@@ -584,6 +355,18 @@
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#creating-modules">
      Creating modules
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-6-whos-variable-type-data-info">
+     In [6]: whos
+Variable   Type      Data/Info
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-10-whos-variable-type-data-info">
+     In [10]: whos
+Variable   Type        Data/Info
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -666,1234 +449,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1>파이썬 기초<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>.. topic:: Python for scientific computing</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>We introduce here the Python language. Only the bare minimum
-necessary for getting started with Numpy and Scipy is addressed here.
-To learn more about the language, consider going through the
-excellent tutorial https://docs.python.org/tutorial. Dedicated books
-are also available, such as `Dive into Python 3 &lt;https://diveintopython3.net/&gt;`__.
-</pre></div>
-</div>
-<p>.. tip::</p>
-<p>Python is a <strong>programming language</strong>, as are C, Fortran, BASIC, PHP,
-etc. Some specific features of Python are as follows:</p>
-<ul class="simple">
-<li><p>an <em>interpreted</em> (as opposed to <em>compiled</em>) language. Contrary to e.g.
-C or Fortran, one does not compile Python code before executing it. In
-addition, Python can be used <strong>interactively</strong>: many Python
-interpreters are available, from which commands and scripts canㄴ be
-executed.</p></li>
-<li><p>a free software released under an <strong>open-source</strong> license: Python can
-be used and distributed free of charge, even for building commercial
-software.</p></li>
-<li><p><strong>multi-platform</strong>: Python is available for all major operating
-systems, Windows, Linux/Unix, MacOS X, most likely your mobile phone
-OS, etc.</p></li>
-<li><p>a very readable language with clear non-verbose syntax</p></li>
-<li><p>a language for which a large variety of high-quality packages are
-available for various applications, from web frameworks to scientific
-computing.</p></li>
-<li><p>a language very easy to interface with other languages, in particular C
-and C++.</p></li>
-<li><p>Some other features of the language are illustrated just below. For
-example, Python is an object-oriented language, with dynamic typing
-(the same variable can contain objects of different types during the
-course of a program).</p></li>
-</ul>
-<p>See <a class="reference external" href="https://www.python.org/about/">https://www.python.org/about/</a> for more information about
-distinguishing features of Python.</p>
-<hr class="docutils" />
-<p>.. toctree::
-:maxdepth: 2</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>first_steps.rst
-basic_types.rst
-control_flow.rst
-functions.rst
-reusing_code.rst
-io.rst
-standard_library.rst
-exceptions.rst
-oop.rst
-</pre></div>
-</div>
-<div class="section" id="first-steps">
-<h2>First steps<a class="headerlink" href="#first-steps" title="Permalink to this headline">¶</a></h2>
-<p>Start the <strong>Ipython</strong> shell (an enhanced interactive Python shell):</p>
-<ul class="simple">
-<li><p>by typing “ipython” from a Linux/Mac terminal, or from the Windows cmd shell,</p></li>
-<li><p><strong>or</strong> by starting the program from a menu, e.g. in the <code class="docutils literal notranslate"><span class="pre">Python(x,y)</span></code>_ or
-<code class="docutils literal notranslate"><span class="pre">EPD</span></code>_ menu if you have installed one of these scientific-Python suites.</p></li>
-<li><p><strong>or</strong> by starting the program from a menu, e.g. the <code class="docutils literal notranslate"><span class="pre">Anaconda</span> <span class="pre">Navigator</span></code><em>,
-the <code class="docutils literal notranslate"><span class="pre">Python(x,y)</span></code></em> menu or the <code class="docutils literal notranslate"><span class="pre">EPD</span></code>_ menu if you have installed one of these
-scientific-Python suites.</p></li>
-</ul>
-<p>.. _<code class="docutils literal notranslate"><span class="pre">Python(x,y)</span></code>: <a class="reference external" href="https://python-xy.github.io/">https://python-xy.github.io/</a>
-.. _<code class="docutils literal notranslate"><span class="pre">Anaconda</span> <span class="pre">Navigator</span></code>: <a class="reference external" href="https://anaconda.org/anaconda/anaconda-navigator">https://anaconda.org/anaconda/anaconda-navigator</a>
-.. _<code class="docutils literal notranslate"><span class="pre">EPD</span></code>: <a class="reference external" href="http://store.enthought.com/">http://store.enthought.com/</a></p>
-<p>.. tip::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>If you don&#39;t have Ipython installed on your computer, other Python
-shells are available, such as the plain Python shell started by
-typing &quot;python&quot; in a terminal, or the Idle interpreter. However, we
-advise to use the Ipython shell because of its enhanced features,
-especially for interactive scientific computing.
-</pre></div>
-</div>
-<p>Once you have started the interpreter, type ::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; print(&quot;Hello, world!&quot;)
-Hello, world!
-</pre></div>
-</div>
-<p>.. tip::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The message &quot;Hello, world!&quot; is then displayed. You just executed your
-first Python instruction, congratulations!
-</pre></div>
-</div>
-<p>To get yourself started, type the following stack of instructions ::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; a = 3
-&gt;&gt;&gt; b = 2*a
-&gt;&gt;&gt; type(b)     # doctest: +SKIP
-&lt;type &#39;int&#39;&gt;
-&gt;&gt;&gt; print(b)
-6
-&gt;&gt;&gt; a*b 
-18
-&gt;&gt;&gt; b = &#39;hello&#39; 
-&gt;&gt;&gt; type(b)    # doctest: +SKIP
-&lt;type &#39;str&#39;&gt;
-&gt;&gt;&gt; b + b
-&#39;hellohello&#39;
-&gt;&gt;&gt; 2*b
-&#39;hellohello&#39;
-</pre></div>
-</div>
-<p>.. We need to skip the call to ‘type’ because in Python3 is prints as
-‘type’, but in Python2 as ‘class’</p>
-<p>.. tip::</p>
-<p>Two variables <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> have been defined above. Note that one does
-not declare the type of a variable before assigning its value. In C,
-conversely, one should write:</p>
-<p>.. sourcecode:: c</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  int a = 3;
-</pre></div>
-</div>
-<p>In addition, the type of a variable may change, in the sense that at
-one point in time it can be equal to a value of a certain type, and a
-second point in time, it can be equal to a value of a different
-type. <code class="docutils literal notranslate"><span class="pre">b</span></code> was first equal to an integer, but it became equal to a
-string when it was assigned the value <code class="docutils literal notranslate"><span class="pre">'hello'</span></code>. Operations on
-integers (<code class="docutils literal notranslate"><span class="pre">b=2*a</span></code>) are coded natively in Python, and so are some
-operations on strings such as additions and multiplications, which
-amount respectively to concatenation and repetition.</p>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="basic-types">
-<h1>Basic types<a class="headerlink" href="#basic-types" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="numerical-types">
-<h2>Numerical types<a class="headerlink" href="#numerical-types" title="Permalink to this headline">¶</a></h2>
-<p>.. tip::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Python supports the following numerical, scalar types:
-</pre></div>
-</div>
-<p>:Integer:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 1 + 1
-2
-&gt;&gt;&gt; a = 4
-&gt;&gt;&gt; type(a)   # doctest: +SKIP
-&lt;type &#39;int&#39;&gt;
-</pre></div>
-</div>
-<p>:Floats:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; c = 2.1
-&gt;&gt;&gt; type(c)   # doctest: +SKIP
-&lt;type &#39;float&#39;&gt;
-</pre></div>
-</div>
-<p>:Complex:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; a = 1.5 + 0.5j
-&gt;&gt;&gt; a.real
-1.5
-&gt;&gt;&gt; a.imag
-0.5
-&gt;&gt;&gt; type(1. + 0j)   # doctest: +SKIP
-&lt;type &#39;complex&#39;&gt;
-</pre></div>
-</div>
-<p>:Booleans:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 3 &gt; 4
-False
-&gt;&gt;&gt; test = (3 &gt; 4)
-&gt;&gt;&gt; test
-False
-&gt;&gt;&gt; type(test)      # doctest: +SKIP
-&lt;type &#39;bool&#39;&gt;
-</pre></div>
-</div>
-<p>.. tip::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>A Python shell can therefore replace your pocket calculator, with the
-basic arithmetic operations ``+``, ``-``, ``*``, ``/``, ``%`` (modulo)
-natively implemented
-</pre></div>
-</div>
-<p>::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 7 * 3.
-21.0
-&gt;&gt;&gt; 2**10
-1024
-&gt;&gt;&gt; 8 % 3
-2
-</pre></div>
-</div>
-<p>Type conversion (casting)::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; float(1)
-1.0
-</pre></div>
-</div>
-<p>.. warning:: Integer division</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In Python 2::
-
-    &gt;&gt;&gt; 3 / 2   # doctest: +SKIP
-    1
-
-In Python 3::
-
-    &gt;&gt;&gt; 3 / 2   # doctest: +SKIP
-    1.5
-
-**To be safe**: use floats::
-
-    &gt;&gt;&gt; 3 / 2.
-    1.5
-
-    &gt;&gt;&gt; a = 3
-    &gt;&gt;&gt; b = 2
-    &gt;&gt;&gt; a / b # In Python 2  # doctest: +SKIP
-    1
-    &gt;&gt;&gt; a / float(b)
-    1.5
-
-**Future behavior**: to always get the behavior of Python3
-
-    &gt;&gt;&gt; from __future__ import division  # doctest: +SKIP
-    &gt;&gt;&gt; 3 / 2  # doctest: +SKIP
-    1.5
-
-.. tip::
-
-  If you explicitly want integer division use ``//``::
-
-    &gt;&gt;&gt; 3.0 // 2
-    1.0
-
-  .. note::
-
-    The behaviour of the division operator has changed in `Python 3
-    &lt;http://python3porting.com/preparing.html#use-instead-of-when-dividing-integers&gt;`_.
-</pre></div>
-</div>
-</div>
-<div class="section" id="containers">
-<h2>Containers<a class="headerlink" href="#containers" title="Permalink to this headline">¶</a></h2>
-<p>.. tip::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Python provides many efficient types of containers, in which
-collections of objects can be stored.
-</pre></div>
-</div>
-<p>Lists</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-.. tip::
-
-    A list is an ordered collection of objects, that may have different
-    types. For example:
-
-::
-
-    &gt;&gt;&gt; colors = [&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]
-    &gt;&gt;&gt; type(colors)     # doctest: +SKIP
-    &lt;type &#39;list&#39;&gt;
-
-Indexing: accessing individual objects contained in the list::
-
-    &gt;&gt;&gt; colors[2]
-    &#39;green&#39;
-
-Counting from the end with negative indices::
-
-    &gt;&gt;&gt; colors[-1]
-    &#39;white&#39;
-    &gt;&gt;&gt; colors[-2]
-    &#39;black&#39;
-
-.. warning::
-
-    **Indexing starts at 0** (as in C), not at 1 (as in Fortran or Matlab)!
-
-Slicing: obtaining sublists of regularly-spaced elements::
-
-    &gt;&gt;&gt; colors
-    [&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]
-    &gt;&gt;&gt; colors[2:4]
-    [&#39;green&#39;, &#39;black&#39;]
-
-.. Warning::
-
-    Note that ``colors[start:stop]`` contains the elements with indices ``i``
-    such as  ``start&lt;= i &lt; stop`` (``i`` ranging from ``start`` to
-    ``stop-1``). Therefore, ``colors[start:stop]`` has ``(stop - start)`` elements.
-
-**Slicing syntax**: ``colors[start:stop:stride]``
-
-.. tip::
-
-  All slicing parameters are optional::
-
-    &gt;&gt;&gt; colors
-    [&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]
-    &gt;&gt;&gt; colors[3:]
-    [&#39;black&#39;, &#39;white&#39;]
-    &gt;&gt;&gt; colors[:3]
-    [&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;]
-    &gt;&gt;&gt; colors[::2]
-    [&#39;red&#39;, &#39;green&#39;, &#39;white&#39;]
-
-Lists are *mutable* objects and can be modified::
-
-    &gt;&gt;&gt; colors[0] = &#39;yellow&#39;
-    &gt;&gt;&gt; colors
-    [&#39;yellow&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]
-    &gt;&gt;&gt; colors[2:4] = [&#39;gray&#39;, &#39;purple&#39;]
-    &gt;&gt;&gt; colors
-    [&#39;yellow&#39;, &#39;blue&#39;, &#39;gray&#39;, &#39;purple&#39;, &#39;white&#39;]
-
-.. Note::
-
-   The elements of a list may have different types::
-
-        &gt;&gt;&gt; colors = [3, -200, &#39;hello&#39;]
-        &gt;&gt;&gt; colors
-        [3, -200, &#39;hello&#39;]
-        &gt;&gt;&gt; colors[1], colors[2]
-        (-200, &#39;hello&#39;)
-
-   .. tip::
-
-    For collections of numerical data that all have the same type, it
-    is often **more efficient** to use the ``array`` type provided by
-    the ``numpy`` module. A NumPy array is a chunk of memory
-    containing fixed-sized items.  With NumPy arrays, operations on
-    elements can be faster because elements are regularly spaced in
-    memory and more operations are performed through specialized C
-    functions instead of Python loops.
-
-
-.. tip::
-
-    Python offers a large panel of functions to modify lists, or query
-    them. Here are a few examples; for more details, see
-    https://docs.python.org/tutorial/datastructures.html#more-on-lists
-
-Add and remove elements::
-
-    &gt;&gt;&gt; colors = [&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]
-    &gt;&gt;&gt; colors.append(&#39;pink&#39;)
-    &gt;&gt;&gt; colors
-    [&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;, &#39;pink&#39;]
-    &gt;&gt;&gt; colors.pop() # removes and returns the last item
-    &#39;pink&#39;
-    &gt;&gt;&gt; colors
-    [&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]
-    &gt;&gt;&gt; colors.extend([&#39;pink&#39;, &#39;purple&#39;]) # extend colors, in-place
-    &gt;&gt;&gt; colors
-    [&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;, &#39;pink&#39;, &#39;purple&#39;]
-    &gt;&gt;&gt; colors = colors[:-2]
-    &gt;&gt;&gt; colors
-    [&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]
-
-Reverse::
-
-    &gt;&gt;&gt; rcolors = colors[::-1]
-    &gt;&gt;&gt; rcolors
-    [&#39;white&#39;, &#39;black&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;]
-    &gt;&gt;&gt; rcolors2 = list(colors) # new object that is a copy of colors in a different memory area
-    &gt;&gt;&gt; rcolors2
-    [&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]
-    &gt;&gt;&gt; rcolors2.reverse() # in-place; reversing rcolors2 does not affect colors
-    &gt;&gt;&gt; rcolors2
-    [&#39;white&#39;, &#39;black&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;]
-
-Concatenate and repeat lists::
-
-    &gt;&gt;&gt; rcolors + colors
-    [&#39;white&#39;, &#39;black&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;, &#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]
-    &gt;&gt;&gt; rcolors * 2
-    [&#39;white&#39;, &#39;black&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;, &#39;white&#39;, &#39;black&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;]
-
-
-.. tip::
-
-  Sort::
-
-    &gt;&gt;&gt; sorted(rcolors) # new object
-    [&#39;black&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;red&#39;, &#39;white&#39;]
-    &gt;&gt;&gt; rcolors
-    [&#39;white&#39;, &#39;black&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;]
-    &gt;&gt;&gt; rcolors.sort()  # in-place
-    &gt;&gt;&gt; rcolors
-    [&#39;black&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;red&#39;, &#39;white&#39;]
-
-.. topic:: **Methods and Object-Oriented Programming**
-
-    The notation ``rcolors.method()`` (e.g. ``rcolors.append(3)`` and ``colors.pop()``) is our
-    first example of object-oriented programming (OOP). Being a ``list``, the
-    object `rcolors` owns the *method* `function` that is called using the notation
-    **.**. No further knowledge of OOP than understanding the notation **.** is
-    necessary for going through this tutorial.
-
-
-.. topic:: **Discovering methods:**
-
-    Reminder: in Ipython: tab-completion (press tab)
-
-    .. sourcecode:: ipython
-
-        In [28]: rcolors.&lt;TAB&gt;
-        rcolors.append   rcolors.index    rcolors.remove   
-        rcolors.count    rcolors.insert   rcolors.reverse  
-        rcolors.extend   rcolors.pop      rcolors.sort    
-
-Strings
-</pre></div>
-</div>
-<p>Different string syntaxes (simple, double or triple quotes)::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>s = &#39;Hello, how are you?&#39;
-s = &quot;Hi, what&#39;s up&quot;
-s = &#39;&#39;&#39;Hello,
-       how are you&#39;&#39;&#39;         # tripling the quotes allows the
-                              # string to span more than one line
-s = &quot;&quot;&quot;Hi,
-what&#39;s up?&quot;&quot;&quot;
-</pre></div>
-</div>
-<p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [1]: &#39;Hi, what&#39;s up?&#39;
-------------------------------------------------------------
-   File &quot;&lt;ipython console&gt;&quot;, line 1
-    &#39;Hi, what&#39;s up?&#39;
-           ^
-SyntaxError: invalid syntax
-</pre></div>
-</div>
-<p>This syntax error can be avoided by enclosing the string in double quotes
-instead of single quotes. Alternatively, one can prepend a backslash to the
-second single quote. Other uses of the backslash are, e.g., the newline character
-<code class="docutils literal notranslate"><span class="pre">\n</span></code> and the tab character <code class="docutils literal notranslate"><span class="pre">\t</span></code>.</p>
-<p>.. tip::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Strings are collections like lists. Hence they can be indexed and
-sliced, using the same syntax and rules.
-</pre></div>
-</div>
-<p>Indexing::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; a = &quot;hello&quot;
-&gt;&gt;&gt; a[0]
-&#39;h&#39;
-&gt;&gt;&gt; a[1]
-&#39;e&#39;
-&gt;&gt;&gt; a[-1]
-&#39;o&#39;
-</pre></div>
-</div>
-<p>.. tip::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(Remember that negative indices correspond to counting from the right
-end.)
-</pre></div>
-</div>
-<p>Slicing::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; a = &quot;hello, world!&quot;
-&gt;&gt;&gt; a[3:6] # 3rd to 6th (excluded) elements: elements 3, 4, 5
-&#39;lo,&#39;
-&gt;&gt;&gt; a[2:10:2] # Syntax: a[start:stop:step]
-&#39;lo o&#39;
-&gt;&gt;&gt; a[::3] # every three characters, from beginning to end
-&#39;hl r!&#39;
-</pre></div>
-</div>
-<p>.. tip::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Accents and special characters can also be handled as in Python 3
-strings consist of Unicode characters.
-</pre></div>
-</div>
-<p>A string is an <strong>immutable object</strong> and it is not possible to modify its
-contents. One may however create new strings from the original one.</p>
-<p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [53]: a = &quot;hello, world!&quot;
-In [54]: a[2] = &#39;z&#39;
----------------------------------------------------------------------------
-Traceback (most recent call last):
-   File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
-TypeError: &#39;str&#39; object does not support item assignment
-
-In [55]: a.replace(&#39;l&#39;, &#39;z&#39;, 1)
-Out[55]: &#39;hezlo, world!&#39;
-In [56]: a.replace(&#39;l&#39;, &#39;z&#39;)
-Out[56]: &#39;hezzo, worzd!&#39;
-</pre></div>
-</div>
-<p>.. tip::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Strings have many useful methods, such as ``a.replace`` as seen
-above. Remember the ``a.`` object-oriented notation and use tab
-completion or ``help(str)`` to search for new methods.
-</pre></div>
-</div>
-<p>.. seealso::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Python offers advanced possibilities for manipulating strings,
-looking for patterns or formatting. The interested reader is referred to
-https://docs.python.org/library/stdtypes.html#string-methods and
-https://docs.python.org/3/library/string.html#format-string-syntax
-</pre></div>
-</div>
-<p>String formatting::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; &#39;An integer: %i; a float: %f; another string: %s&#39; % (1, 0.1, &#39;string&#39;) # with more values use tuple after %
-&#39;An integer: 1; a float: 0.100000; another string: string&#39;
-
-&gt;&gt;&gt; i = 102
-&gt;&gt;&gt; filename = &#39;processing_of_dataset_%d.txt&#39; % i   # no need for tuples with just one value after %
-&gt;&gt;&gt; filename
-&#39;processing_of_dataset_102.txt&#39;
-</pre></div>
-</div>
-<p>Dictionaries</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-<span class="o">..</span> <span class="n">tip</span><span class="p">::</span>
-
-    <span class="n">A</span> <span class="n">dictionary</span> <span class="ow">is</span> <span class="n">basically</span> <span class="n">an</span> <span class="n">efficient</span> <span class="n">table</span> <span class="n">that</span> <span class="o">**</span><span class="n">maps</span> <span class="n">keys</span> <span class="n">to</span>
-    <span class="n">values</span><span class="o">**.</span> <span class="n">It</span> <span class="ow">is</span> <span class="n">an</span> <span class="o">**</span><span class="n">unordered</span><span class="o">**</span> <span class="n">container</span>
-
-<span class="p">::</span>
-
-    <span class="o">&gt;&gt;&gt;</span> <span class="n">tel</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;emmanuelle&#39;</span><span class="p">:</span> <span class="mi">5752</span><span class="p">,</span> <span class="s1">&#39;sebastian&#39;</span><span class="p">:</span> <span class="mi">5578</span><span class="p">}</span>
-    <span class="o">&gt;&gt;&gt;</span> <span class="n">tel</span><span class="p">[</span><span class="s1">&#39;francis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5915</span>
-    <span class="o">&gt;&gt;&gt;</span> <span class="n">tel</span>     <span class="c1"># doctest: +SKIP</span>
-    <span class="p">{</span><span class="s1">&#39;sebastian&#39;</span><span class="p">:</span> <span class="mi">5578</span><span class="p">,</span> <span class="s1">&#39;francis&#39;</span><span class="p">:</span> <span class="mi">5915</span><span class="p">,</span> <span class="s1">&#39;emmanuelle&#39;</span><span class="p">:</span> <span class="mi">5752</span><span class="p">}</span>
-    <span class="o">&gt;&gt;&gt;</span> <span class="n">tel</span><span class="p">[</span><span class="s1">&#39;sebastian&#39;</span><span class="p">]</span>
-    <span class="mi">5578</span>
-    <span class="o">&gt;&gt;&gt;</span> <span class="n">tel</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>   <span class="c1"># doctest: +SKIP</span>
-    <span class="p">[</span><span class="s1">&#39;sebastian&#39;</span><span class="p">,</span> <span class="s1">&#39;francis&#39;</span><span class="p">,</span> <span class="s1">&#39;emmanuelle&#39;</span><span class="p">]</span>
-    <span class="o">&gt;&gt;&gt;</span> <span class="n">tel</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>   <span class="c1"># doctest: +SKIP</span>
-    <span class="p">[</span><span class="mi">5578</span><span class="p">,</span> <span class="mi">5915</span><span class="p">,</span> <span class="mi">5752</span><span class="p">]</span>
-    <span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;francis&#39;</span> <span class="ow">in</span> <span class="n">tel</span>
-    <span class="kc">True</span>
-
-<span class="o">..</span> <span class="n">tip</span><span class="p">::</span>
-
-  <span class="n">It</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">conveniently</span> <span class="n">store</span> <span class="ow">and</span> <span class="n">retrieve</span> <span class="n">values</span>
-  <span class="n">associated</span> <span class="k">with</span> <span class="n">a</span> <span class="n">name</span> <span class="p">(</span><span class="n">a</span> <span class="n">string</span> <span class="k">for</span> <span class="n">a</span> <span class="n">date</span><span class="p">,</span> <span class="n">a</span> <span class="n">name</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span><span class="p">)</span><span class="o">.</span> <span class="n">See</span>
-  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">docs</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">tutorial</span><span class="o">/</span><span class="n">datastructures</span><span class="o">.</span><span class="n">html</span><span class="c1">#dictionaries</span>
-  <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
-
-  <span class="n">A</span> <span class="n">dictionary</span> <span class="n">can</span> <span class="n">have</span> <span class="n">keys</span> <span class="p">(</span><span class="n">resp</span><span class="o">.</span> <span class="n">values</span><span class="p">)</span> <span class="k">with</span> <span class="n">different</span> <span class="n">types</span><span class="p">::</span>
-
-    <span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="s1">&#39;hello&#39;</span><span class="p">}</span>
-    <span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>       <span class="c1"># doctest: +SKIP</span>
-    <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
-
-<span class="n">More</span> <span class="n">container</span> <span class="n">types</span>
-</pre></div>
-</div>
-<p><strong>Tuples</strong></p>
-<p>Tuples are basically immutable lists. The elements of a tuple are written
-between parentheses, or just separated by commas::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; t = 12345, 54321, &#39;hello!&#39;
-&gt;&gt;&gt; t[0]
-12345
-&gt;&gt;&gt; t
-(12345, 54321, &#39;hello!&#39;)
-&gt;&gt;&gt; u = (0, 2)
-</pre></div>
-</div>
-<p><strong>Sets:</strong> unordered, unique items::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; s = set((&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;a&#39;))
-&gt;&gt;&gt; s    # doctest: +SKIP
-set([&#39;a&#39;, &#39;c&#39;, &#39;b&#39;])
-&gt;&gt;&gt; s.difference((&#39;a&#39;, &#39;b&#39;))    # doctest: +SKIP
-set([&#39;c&#39;])
-</pre></div>
-</div>
-</div>
-<div class="section" id="assignment-operator">
-<h2>Assignment operator<a class="headerlink" href="#assignment-operator" title="Permalink to this headline">¶</a></h2>
-<p>.. tip::</p>
-<p><code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">library</span> <span class="pre">reference</span>&#160; <span class="pre">&lt;https://docs.python.org/reference/simple_stmts.html#assignment-statements&gt;</span></code>_
-says:</p>
-<p>Assignment statements are used to (re)bind names to values and to
-modify attributes or items of mutable objects.</p>
-<p>In short, it works as follows (simple assignment):</p>
-<p>#. an expression on the right hand side is evaluated, the corresponding
-object is created/obtained
-#. a <strong>name</strong> on the left hand side is assigned, or bound, to the
-r.h.s. object</p>
-<p>Things to note:</p>
-<ul>
-<li><p>a single object can have several names bound to it:</p>
-<p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  In [1]: a = [1, 2, 3]
-  In [2]: b = a
-  In [3]: a
-  Out[3]: [1, 2, 3]
-  In [4]: b
-  Out[4]: [1, 2, 3]
-  In [5]: a is b
-  Out[5]: True
-  In [6]: b[1] = &#39;hi!&#39;
-  In [7]: a
-  Out[7]: [1, &#39;hi!&#39;, 3]
-</pre></div>
-</div>
-</li>
-<li><p>to change a list <em>in place</em>, use indexing/slices:</p>
-<p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  In [1]: a = [1, 2, 3]
-  In [3]: a
-  Out[3]: [1, 2, 3]
-  In [4]: a = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;] # Creates another object.
-  In [5]: a
-  Out[5]: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
-  In [6]: id(a)
-  Out[6]: 138641676
-  In [7]: a[:] = [1, 2, 3] # Modifies object in place.
-  In [8]: a
-  Out[8]: [1, 2, 3]
-  In [9]: id(a)
-  Out[9]: 138641676 # Same as in Out[6], yours will differ...
-</pre></div>
-</div>
-</li>
-<li><p>the key concept here is <strong>mutable vs. immutable</strong></p>
-<ul class="simple">
-<li><p>mutable objects can be changed in place</p></li>
-<li><p>immutable objects cannot be modified once created</p></li>
-</ul>
-</li>
-</ul>
-<p>.. seealso:: A very good and detailed explanation of the above issues can
-be found in David M. Beazley’s article <code class="docutils literal notranslate"><span class="pre">Types</span> <span class="pre">and</span> <span class="pre">Objects</span> <span class="pre">in</span> <span class="pre">Python</span>&#160;&#160;&#160; <span class="pre">&lt;http://www.informit.com/articles/article.aspx?p=453682&gt;</span></code>_.</p>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="control-flow">
-<h1>Control Flow<a class="headerlink" href="#control-flow" title="Permalink to this headline">¶</a></h1>
-<p>Controls the order in which the code is executed.</p>
-<div class="section" id="if-elif-else">
-<h2>if/elif/else<a class="headerlink" href="#if-elif-else" title="Permalink to this headline">¶</a></h2>
-<p>.. sourcecode:: python</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; if 2**2 == 4:
-...     print(&#39;Obvious!&#39;)
-...
-Obvious!
-</pre></div>
-</div>
-<p><strong>Blocks are delimited by indentation</strong></p>
-<p>.. tip::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Type the following lines in your Python interpreter, and be careful
-to **respect the indentation depth**. The Ipython shell automatically
-increases the indentation depth after a colon ``:`` sign; to
-decrease the indentation depth, go four spaces to the left with the
-Backspace key. Press the Enter key twice to leave the logical block.
-</pre></div>
-</div>
-<p>.. sourcecode:: python</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; a = 10
-
-&gt;&gt;&gt; if a == 1:
-...     print(1)
-... elif a == 2:
-...     print(2)
-... else:
-...     print(&#39;A lot&#39;)
-A lot
-</pre></div>
-</div>
-<p>Indentation is compulsory in scripts as well. As an exercise, re-type the
-previous lines with the same indentation in a script <code class="docutils literal notranslate"><span class="pre">condition.py</span></code>, and
-execute the script with <code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">condition.py</span></code> in Ipython.</p>
-</div>
-<div class="section" id="for-range">
-<h2>for/range<a class="headerlink" href="#for-range" title="Permalink to this headline">¶</a></h2>
-<p>Iterating with an index::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; for i in range(4):
-...     print(i)
-0
-1
-2
-3
-</pre></div>
-</div>
-<p>But most often, it is more readable to iterate over values::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; for word in (&#39;cool&#39;, &#39;powerful&#39;, &#39;readable&#39;):
-...     print(&#39;Python is %s&#39; % word)
-Python is cool
-Python is powerful
-Python is readable
-</pre></div>
-</div>
-</div>
-<div class="section" id="while-break-continue">
-<h2>while/break/continue<a class="headerlink" href="#while-break-continue" title="Permalink to this headline">¶</a></h2>
-<p>Typical C-style while loop (Mandelbrot problem)::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; z = 1 + 1j
-&gt;&gt;&gt; while abs(z) &lt; 100:
-...     z = z**2 + 1
-&gt;&gt;&gt; z
-(-134+352j)
-</pre></div>
-</div>
-<p><strong>More advanced features</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">break</span></code> out of enclosing for/while loop::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; z = 1 + 1j
-
-&gt;&gt;&gt; while abs(z) &lt; 100:
-...     if z.imag == 0:
-...         break
-...     z = z**2 + 1
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">continue</span></code> the next iteration of a loop.::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; a = [1, 0, 2, 4]
-&gt;&gt;&gt; for element in a:
-...     if element == 0:
-...         continue
-...     print(1. / element)
-1.0
-0.5
-0.25
-</pre></div>
-</div>
-</div>
-<div class="section" id="conditional-expressions">
-<h2>Conditional Expressions<a class="headerlink" href="#conditional-expressions" title="Permalink to this headline">¶</a></h2>
-<p>:<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">&lt;OBJECT&gt;</span></code>:</p>
-<p>Evaluates to False:
-* any number equal to zero (0, 0.0, 0+0j)
-* an empty container (list, tuple, set, dictionary, …)
-* <code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
-<p>Evaluates to True:
-* everything else</p>
-<p>:<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">b</span></code>:</p>
-<p>Tests equality, with logics::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 1 == 1.
-True
-</pre></div>
-</div>
-<p>:<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">is</span> <span class="pre">b</span></code>:</p>
-<p>Tests identity: both sides are the same object::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 1 is 1.
-False
-
-&gt;&gt;&gt; a = 1
-&gt;&gt;&gt; b = 1
-&gt;&gt;&gt; a is b
-True
-</pre></div>
-</div>
-<p>:<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">in</span> <span class="pre">b</span></code>:</p>
-<p>For any collection <code class="docutils literal notranslate"><span class="pre">b</span></code>: <code class="docutils literal notranslate"><span class="pre">b</span></code> contains <code class="docutils literal notranslate"><span class="pre">a</span></code> ::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; b = [1, 2, 3]
-&gt;&gt;&gt; 2 in b
-True
-&gt;&gt;&gt; 5 in b
-False
-</pre></div>
-</div>
-<p>If <code class="docutils literal notranslate"><span class="pre">b</span></code> is a dictionary, this tests that <code class="docutils literal notranslate"><span class="pre">a</span></code> is a key of <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
-</div>
-<div class="section" id="advanced-iteration">
-<h2>Advanced iteration<a class="headerlink" href="#advanced-iteration" title="Permalink to this headline">¶</a></h2>
-<p>Iterate over any <em>sequence</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-You can iterate over any sequence (string, list, keys in a dictionary, lines in
-a file, ...)::
-
-    &gt;&gt;&gt; vowels = &#39;aeiouy&#39;
-
-    &gt;&gt;&gt; for i in &#39;powerful&#39;:
-    ...     if i in vowels:
-    ...         print(i)
-    o
-    e
-    u
-
-::
-
-    &gt;&gt;&gt; message = &quot;Hello how are you?&quot;
-    &gt;&gt;&gt; message.split() # returns a list
-    [&#39;Hello&#39;, &#39;how&#39;, &#39;are&#39;, &#39;you?&#39;]
-    &gt;&gt;&gt; for word in message.split():
-    ...     print(word)
-    ...
-    Hello
-    how
-    are
-    you?
-
-.. tip::
-
-    Few languages (in particular, languages for scientific computing) allow to
-    loop over anything but integers/indices. With Python it is possible to
-    loop exactly over the objects of interest without bothering with indices
-    you often don&#39;t care about. This feature can often be used to make
-    code more readable.
-
-
-.. warning:: Not safe to modify the sequence you are iterating over.
-
-Keeping track of enumeration number
-</pre></div>
-</div>
-<p>Common task is to iterate over a sequence while keeping track of the
-item number.</p>
-<ul>
-<li><p>Could use while loop with a counter as above. Or a for loop::</p>
-<blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><p>words = (‘cool’, ‘powerful’, ‘readable’)
-for i in range(0, len(words)):
-…     print((i, words[i]))
-(0, ‘cool’)
-(1, ‘powerful’)
-(2, ‘readable’)</p>
-</div></blockquote>
-</div></blockquote>
-</div></blockquote>
-</li>
-<li><p>But, Python provides a built-in function - <code class="docutils literal notranslate"><span class="pre">enumerate</span></code> - for this::</p>
-<blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><p>for index, item in enumerate(words):
-…     print((index, item))
-(0, ‘cool’)
-(1, ‘powerful’)
-(2, ‘readable’)</p>
-</div></blockquote>
-</div></blockquote>
-</div></blockquote>
-</li>
-</ul>
-<p>Looping over a dictionary</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-Use **items**::
-
-    &gt;&gt;&gt; d = {&#39;a&#39;: 1, &#39;b&#39;:1.2, &#39;c&#39;:1j}
-
-    &gt;&gt;&gt; for key, val in sorted(d.items()):
-    ...     print(&#39;Key: %s has value: %s&#39; % (key, val))
-    Key: a has value: 1
-    Key: b has value: 1.2
-    Key: c has value: 1j
-
-.. note::
-
-   The ordering of a dictionary is random, thus we use :func:`sorted`
-   which will sort on the keys.
-
-List Comprehensions
--------------------
-
-Instead of creating a list by means of a loop, one can make use
-of a list comprehension with a rather self-explaining syntax.
-
-::
-
-    &gt;&gt;&gt; [i**2 for i in range(4)]
-    [0, 1, 4, 9]
-
-_____
-
-
-.. topic:: Exercise
-    :class: green
-
-    Compute the decimals of Pi using the Wallis formula:
-
-    .. math::
-        \pi = 2 \prod_{i=1}^{\infty} \frac{4i^2}{4i^2 - 1}
-
-.. :ref:`pi_wallis`
-</pre></div>
-</div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="defining-functions">
-<h1>Defining functions<a class="headerlink" href="#defining-functions" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="function-definition">
-<h2>Function definition<a class="headerlink" href="#function-definition" title="Permalink to this headline">¶</a></h2>
-<p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [56]: def test():
-   ....:     print(&#39;in test function&#39;)
-   ....:
-   ....:
-
-In [57]: test()
-in test function
-</pre></div>
-</div>
-<p>.. Warning::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Function blocks must be indented as other control-flow blocks.
-</pre></div>
-</div>
-</div>
-<div class="section" id="return-statement">
-<h2>Return statement<a class="headerlink" href="#return-statement" title="Permalink to this headline">¶</a></h2>
-<p>Functions can <em>optionally</em> return values.</p>
-<p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [6]: def disk_area(radius):
-   ...:     return 3.14 * radius * radius
-   ...:
-
-In [8]: disk_area(1.5)
-Out[8]: 7.0649999999999995
-</pre></div>
-</div>
-<p>.. Note:: By default, functions return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
-<p>.. Note:: Note the syntax to define a function:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* the ``def`` keyword;
-
-* is followed by the function&#39;s **name**, then
-
-* the arguments of the function are given between parentheses followed
-  by a colon.
-
-* the function body;
-
-* and ``return object`` for optionally returning values.
-</pre></div>
-</div>
-</div>
-<div class="section" id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<p>Mandatory parameters (positional arguments)</p>
-<p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [81]: def double_it(x):
-   ....:     return x * 2
-   ....:
-
-In [82]: double_it(3)
-Out[82]: 6
-
-In [83]: double_it()
----------------------------------------------------------------------------
-Traceback (most recent call last):
-  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
-TypeError: double_it() takes exactly 1 argument (0 given)
-</pre></div>
-</div>
-<p>Optional parameters (keyword or named arguments)</p>
-<p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [84]: def double_it(x=2):
-   ....:     return x * 2
-   ....:
-
-In [85]: double_it()
-Out[85]: 4
-
-In [86]: double_it(3)
-Out[86]: 6
-</pre></div>
-</div>
-<p>Keyword arguments allow you to specify <em>default values</em>.</p>
-<p>.. warning::</p>
-<p>Default values are evaluated when the function is defined, not when
-it is called. This can be problematic when using mutable types (e.g.
-dictionary or list) and modifying them in the function body, since the
-modifications will be persistent across invocations of the function.</p>
-<p>Using an immutable type in a keyword argument:</p>
-<p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   In [124]: bigx = 10
-
-   In [125]: def double_it(x=bigx):
-      .....:     return x * 2
-      .....:
-
-   In [126]: bigx = 1e9  # Now really big
-
-   In [128]: double_it()
-   Out[128]: 20
-</pre></div>
-</div>
-<p>Using an mutable type in a keyword argument (and modifying it inside the
-function body):</p>
-<p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   In [2]: def add_to_dict(args={&#39;a&#39;: 1, &#39;b&#39;: 2}):
-      ...:     for i in args.keys():
-      ...:         args[i] += 1
-      ...:     print(args)
-      ...:
-
-   In [3]: add_to_dict
-   Out[3]: &lt;function __main__.add_to_dict&gt;
-
-   In [4]: add_to_dict()
-   {&#39;a&#39;: 2, &#39;b&#39;: 3}
-
-   In [5]: add_to_dict()
-   {&#39;a&#39;: 3, &#39;b&#39;: 4}
-
-   In [6]: add_to_dict()
-   {&#39;a&#39;: 4, &#39;b&#39;: 5}
-</pre></div>
-</div>
-<p>.. tip::</p>
-<p>More involved example implementing python’s slicing:</p>
-<p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [98]: def slicer(seq, start=None, stop=None, step=None):
-   ....:     &quot;&quot;&quot;Implement basic python slicing.&quot;&quot;&quot;
-   ....:     return seq[start:stop:step]
-   ....:
-
-In [101]: rhyme = &#39;one fish, two fish, red fish, blue fish&#39;.split()
-
-In [102]: rhyme
-Out[102]: [&#39;one&#39;, &#39;fish,&#39;, &#39;two&#39;, &#39;fish,&#39;, &#39;red&#39;, &#39;fish,&#39;, &#39;blue&#39;, &#39;fish&#39;]
-
-In [103]: slicer(rhyme)
-Out[103]: [&#39;one&#39;, &#39;fish,&#39;, &#39;two&#39;, &#39;fish,&#39;, &#39;red&#39;, &#39;fish,&#39;, &#39;blue&#39;, &#39;fish&#39;]
-
-In [104]: slicer(rhyme, step=2)
-Out[104]: [&#39;one&#39;, &#39;two&#39;, &#39;red&#39;, &#39;blue&#39;]
-
-In [105]: slicer(rhyme, 1, step=2)
-Out[105]: [&#39;fish,&#39;, &#39;fish,&#39;, &#39;fish,&#39;, &#39;fish&#39;]
-
-In [106]: slicer(rhyme, start=1, stop=4, step=2)
-Out[106]: [&#39;fish,&#39;, &#39;fish,&#39;]
-</pre></div>
-</div>
-<p>The order of the keyword arguments does not matter:</p>
-<p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [107]: slicer(rhyme, step=2, start=1, stop=4)
-Out[107]: [&#39;fish,&#39;, &#39;fish,&#39;]
-</pre></div>
-</div>
-<p>but it is good practice to use the same ordering as the function’s
-definition.</p>
-<p><em>Keyword arguments</em> are a very convenient feature for defining functions
-with a variable number of arguments, especially when default values are
-to be used in most calls to the function.</p>
-</div>
-<div class="section" id="passing-by-value">
-<h2>Passing by value<a class="headerlink" href="#passing-by-value" title="Permalink to this headline">¶</a></h2>
-<p>.. tip::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Can you modify the value of a variable inside a function? Most languages
-(C, Java, ...) distinguish &quot;passing by value&quot; and &quot;passing by reference&quot;.
-In Python, such a distinction is somewhat artificial, and it is a bit
-subtle whether your variables are going to be modified or not.
-Fortunately, there exist clear rules.
-
-Parameters to functions are references to objects, which are passed by
-value. When you pass a variable to a function, python passes the
-reference to the object to which the variable refers (the **value**).
-Not the variable itself.
-</pre></div>
-</div>
-<p>If the <strong>value</strong> passed in a function is immutable, the function does not
-modify the caller’s variable.  If the <strong>value</strong> is mutable, the function
-may modify the caller’s variable in-place::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; def try_to_modify(x, y, z):
-...     x = 23
-...     y.append(42)
-...     z = [99] # new reference
-...     print(x)
-...     print(y)
-...     print(z)
-...
-&gt;&gt;&gt; a = 77    # immutable variable
-&gt;&gt;&gt; b = [99]  # mutable variable
-&gt;&gt;&gt; c = [28]
-&gt;&gt;&gt; try_to_modify(a, b, c)
-23
-[99, 42]
-[99]
-&gt;&gt;&gt; print(a)
-77
-&gt;&gt;&gt; print(b)
-[99, 42]
-&gt;&gt;&gt; print(c)
-[28]
-</pre></div>
-</div>
-<p>Functions have a local variable table called a <em>local namespace</em>.</p>
-<p>The variable <code class="docutils literal notranslate"><span class="pre">x</span></code> only exists within the function <code class="docutils literal notranslate"><span class="pre">try_to_modify</span></code>.</p>
-</div>
-<div class="section" id="global-variables">
-<h2>Global variables<a class="headerlink" href="#global-variables" title="Permalink to this headline">¶</a></h2>
-<p>Variables declared outside the function can be referenced within the
-function:</p>
-<p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [114]: x = 5
-
-In [115]: def addx(y):
-   .....:     return x + y
-   .....:
-
-In [116]: addx(10)
-Out[116]: 15
-</pre></div>
-</div>
-<p>But these “global” variables cannot be modified within the function,
-unless declared <strong>global</strong> in the function.</p>
-<p>This doesn’t work:</p>
-<p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [117]: def setx(y):
-   .....:     x = y
-   .....:     print(&#39;x is %d&#39; % x)
-   .....:
-   .....:
-
-In [118]: setx(10)
-x is 10
-
-In [120]: x
-Out[120]: 5
-</pre></div>
-</div>
-<p>This works:</p>
-<p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [121]: def setx(y):
-   .....:     global x
-   .....:     x = y
-   .....:     print(&#39;x is %d&#39; % x)
-   .....:
-   .....:
-
-In [122]: setx(10)
-x is 10
-
-In [123]: x
-Out[123]: 10
-</pre></div>
-</div>
-</div>
-<div class="section" id="variable-number-of-parameters">
-<h2>Variable number of parameters<a class="headerlink" href="#variable-number-of-parameters" title="Permalink to this headline">¶</a></h2>
-<p>Special forms of parameters:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">*args</span></code>: any number of positional arguments packed into a tuple</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">**kwargs</span></code>: any number of keyword arguments packed into a dictionary</p></li>
-</ul>
-<p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [35]: def variable_args(*args, **kwargs):
-   ....:     print(&#39;args is&#39;, args)
-   ....:     print(&#39;kwargs is&#39;, kwargs)
-   ....:
-
-In [36]: variable_args(&#39;one&#39;, &#39;two&#39;, x=1, y=2, z=3)
-args is (&#39;one&#39;, &#39;two&#39;)
-kwargs is {&#39;x&#39;: 1, &#39;y&#39;: 2, &#39;z&#39;: 3}
-</pre></div>
-</div>
-</div>
-<div class="section" id="docstrings">
-<h2>Docstrings<a class="headerlink" href="#docstrings" title="Permalink to this headline">¶</a></h2>
-<p>Documentation about what the function does and its parameters.  General
-convention:</p>
-<p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [67]: def funcname(params):
-   ....:     &quot;&quot;&quot;Concise one-line sentence describing the function.
-   ....:
-   ....:     Extended summary which can contain multiple paragraphs.
-   ....:     &quot;&quot;&quot;
-   ....:     # function body
-   ....:     pass
-   ....:
-
-In [68]: funcname?
-Type:           function
-Base Class:     type &#39;function&#39;&gt;
-String Form:    &lt;function funcname at 0xeaa0f0&gt;
-Namespace:      Interactive
-File:           &lt;ipython console&gt;
-Definition:     funcname(params)
-Docstring:
-    Concise one-line sentence describing the function.
-
-    Extended summary which can contain multiple paragraphs.
-</pre></div>
-</div>
-<p>.. Note:: <strong>Docstring guidelines</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>For the sake of standardization, the `Docstring
-Conventions &lt;https://www.python.org/dev/peps/pep-0257&gt;`_ webpage
-documents the semantics and conventions associated with Python
-docstrings.
-
-Also, the Numpy and Scipy modules have defined a precise standard
-for documenting scientific functions, that you may want to follow for
-your own functions, with a ``Parameters`` section, an ``Examples``
-section, etc. See
-https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard
-</pre></div>
-</div>
-</div>
-<div class="section" id="functions-are-objects">
-<h2>Functions are objects<a class="headerlink" href="#functions-are-objects" title="Permalink to this headline">¶</a></h2>
-<p>Functions are first-class objects, which means they can be:</p>
-<ul class="simple">
-<li><p>assigned to a variable</p></li>
-<li><p>an item in a list (or any collection)</p></li>
-<li><p>passed as an argument to another function.</p></li>
-</ul>
-<p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [38]: va = variable_args
-
-In [39]: va(&#39;three&#39;, x=1, y=2)
-args is (&#39;three&#39;,)
-kwargs is {&#39;x&#39;: 1, &#39;y&#39;: 2}
-</pre></div>
-</div>
-</div>
-<div class="section" id="methods">
-<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
-<p>Methods are functions attached to objects.  You’ve seen these in our
-examples on <em>lists</em>, <em>dictionaries</em>, <em>strings</em>, etc…</p>
-</div>
-<div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p>.. topic:: Exercise: Fibonacci sequence
-:class: green</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Write a function that displays the ``n`` first terms of the Fibonacci
-sequence, defined by:
-
-.. math::
-    \left\{
-        \begin{array}{ll}
-            U_{0} = 0 \\
-            U_{1} = 1 \\
-            U_{n+2} = U_{n+1} + U_{n}
-        \end{array}
-    \right.
-</pre></div>
-</div>
-<p>.. :ref:<code class="docutils literal notranslate"><span class="pre">fibonacci</span></code></p>
-<p>.. topic:: Exercise: Quicksort
-:class: green</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Implement the quicksort algorithm, as defined by wikipedia
-</pre></div>
-</div>
-<p>.. parsed-literal::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>function quicksort(array)
-    var list less, greater
-    if length(array) &lt; 2
-        return array
-    select and remove a pivot value pivot from array
-    for each x in array
-        if x &lt; pivot + 1 then append x to less
-        else append x to greater
-    return concatenate(quicksort(less), pivot, quicksort(greater))
-</pre></div>
-</div>
-<p>.. :ref:<code class="docutils literal notranslate"><span class="pre">quick_sort</span></code></p>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="reusing-code-scripts-and-modules">
-<h1>Reusing code: scripts and modules<a class="headerlink" href="#reusing-code-scripts-and-modules" title="Permalink to this headline">¶</a></h1>
+<h1>모듈과 패키지<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>For now, we have typed all instructions in the interpreter. For longer
 sets of instructions we need to change track and write the code in text
 files (using a text editor), that we will call either <em>scripts</em> or
@@ -1902,292 +458,233 @@ highlighting for Python), or the editor that comes with the Scientific
 Python Suite you may be using.</p>
 <div class="section" id="scripts">
 <h2>Scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h2>
-<p>.. tip::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Let us first write a *script*, that is a file with a sequence of
+<p>Let us first write a <em>script</em>, that is a file with a sequence of
 instructions that are executed each time the script is called.
 Instructions may be e.g. copied-and-pasted from the interpreter (but
-take care to respect indentation rules!).
-</pre></div>
-</div>
+take care to respect indentation rules!).</p>
 <p>The extension for Python files is <code class="docutils literal notranslate"><span class="pre">.py</span></code>. Write or copy-and-paste the
 following lines in a file called <code class="docutils literal notranslate"><span class="pre">test.py</span></code> ::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>message = &quot;Hello how are you?&quot;
+<p>message = “Hello how are you?”
 for word in message.split():
-    print(word)
-</pre></div>
-</div>
+print(word)</p>
 <p>.. tip::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Let us now execute the script interactively, that is inside the
+<p>Let us now execute the script interactively, that is inside the
 Ipython interpreter. This is maybe the most common use of scripts in
-scientific computing.
-</pre></div>
-</div>
+scientific computing.</p>
 <p>.. note::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>in Ipython, the syntax to execute a script is ``%run script.py``. For
-example,
-</pre></div>
-</div>
+<p>in Ipython, the syntax to execute a script is <code class="docutils literal notranslate"><span class="pre">%run</span> <span class="pre">script.py</span></code>. For
+example,</p>
 <p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [1]: %run test.py
+<p>In [1]: %run <a class="reference external" href="http://test.py">test.py</a>
 Hello
 how
 are
-you?
-
-In [2]: message
-Out[2]: &#39;Hello how are you?&#39;
-</pre></div>
-</div>
+you?</p>
+<p>In [2]: message
+Out[2]: ‘Hello how are you?’</p>
 <p>The script has been executed. Moreover the variables defined in the
 script (such as <code class="docutils literal notranslate"><span class="pre">message</span></code>) are now available inside the interpreter’s
 namespace.</p>
 <p>.. tip::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Other interpreters also offer the possibility to execute scripts
-(e.g., ``execfile`` in the plain Python interpreter, etc.).
-</pre></div>
-</div>
+<p>Other interpreters also offer the possibility to execute scripts
+(e.g., <code class="docutils literal notranslate"><span class="pre">execfile</span></code> in the plain Python interpreter, etc.).</p>
 <p>It is also possible In order to execute this script as a <em>standalone
 program</em>, by executing the script inside a shell terminal (Linux/Mac
 console or cmd Windows console). For example, if we are in the same
 directory as the <a class="reference external" href="http://test.py">test.py</a> file, we can execute this in a console:</p>
 <p>.. sourcecode:: bash</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ python test.py
+<p>$ python <a class="reference external" href="http://test.py">test.py</a>
 Hello
 how
 are
-you?
+you?</p>
+<p>.. tip::</p>
+<p>Standalone scripts may also take command-line arguments</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">file.py</span></code>::</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import sys
+print(sys.argv)
 </pre></div>
 </div>
-<p>.. tip::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Standalone scripts may also take command-line arguments
-
-In ``file.py``::
-
-    import sys
-    print(sys.argv)
-
-.. sourcecode:: bash
-
-    $ python file.py test arguments
-    [&#39;file.py&#39;, &#39;test&#39;, &#39;arguments&#39;]
-
-.. warning::
-
-    Don&#39;t implement option parsing yourself. Use a dedicated module such as
-    :mod:`argparse`.
+<p>.. sourcecode:: bash</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ python file.py test arguments
+[&#39;file.py&#39;, &#39;test&#39;, &#39;arguments&#39;]
+</pre></div>
+</div>
+<p>.. warning::</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Don&#39;t implement option parsing yourself. Use a dedicated module such as
+:mod:`argparse`.
 </pre></div>
 </div>
 </div>
 <div class="section" id="importing-objects-from-modules">
 <h2>Importing objects from modules<a class="headerlink" href="#importing-objects-from-modules" title="Permalink to this headline">¶</a></h2>
 <p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [1]: import os
-
-In [2]: os
-Out[2]: &lt;module &#39;os&#39; from &#39;/usr/lib/python2.6/os.pyc&#39;&gt;
-
-In [3]: os.listdir(&#39;.&#39;)
+<p>In [1]: import os</p>
+<p>In [2]: os
+Out[2]: &lt;module ‘os’ from ‘/usr/lib/python2.6/os.pyc’&gt;</p>
+<p>In [3]: os.listdir(‘.’)
 Out[3]:
-[&#39;conf.py&#39;,
- &#39;basic_types.rst&#39;,
- &#39;control_flow.rst&#39;,
- &#39;functions.rst&#39;,
- &#39;python_language.rst&#39;,
- &#39;reusing.rst&#39;,
- &#39;file_io.rst&#39;,
- &#39;exceptions.rst&#39;,
- &#39;workflow.rst&#39;,
- &#39;index.rst&#39;]
-</pre></div>
-</div>
+[‘<a class="reference external" href="http://conf.py">conf.py</a>’,
+‘basic_types.rst’,
+‘control_flow.rst’,
+‘functions.rst’,
+‘python_language.rst’,
+‘reusing.rst’,
+‘file_io.rst’,
+‘exceptions.rst’,
+‘workflow.rst’,
+‘index.rst’]</p>
 <p>And also:</p>
 <p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [4]: from os import listdir
-</pre></div>
-</div>
+<p>In [4]: from os import listdir</p>
 <p>Importing shorthands:</p>
 <p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [5]: import numpy as np
-</pre></div>
-</div>
+<p>In [5]: import numpy as np</p>
 <p>.. warning::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>::
-
-    from os import *
-
-This is called the *star import* and please, **Do not use it**
-
-* Makes the code harder to read and understand: where do symbols come
-  from?
-
-* Makes it impossible to guess the functionality by the context and
-  the name (hint: `os.name` is the name of the OS), and to profit
-  usefully from tab completion.
-
-* Restricts the variable names you can use: `os.name` might override
-  `name`, or vise-versa.
-
-* Creates possible name clashes between modules.
-
-* Makes the code impossible to statically check for undefined
-  symbols.
+<p>::</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from os import *
 </pre></div>
 </div>
+<p>This is called the <em>star import</em> and please, <strong>Do not use it</strong></p>
+<ul class="simple">
+<li><p>Makes the code harder to read and understand: where do symbols come
+from?</p></li>
+<li><p>Makes it impossible to guess the functionality by the context and
+the name (hint: <code class="docutils literal notranslate"><span class="pre">os.name</span></code> is the name of the OS), and to profit
+usefully from tab completion.</p></li>
+<li><p>Restricts the variable names you can use: <code class="docutils literal notranslate"><span class="pre">os.name</span></code> might override
+<code class="docutils literal notranslate"><span class="pre">name</span></code>, or vise-versa.</p></li>
+<li><p>Creates possible name clashes between modules.</p></li>
+<li><p>Makes the code impossible to statically check for undefined
+symbols.</p></li>
+</ul>
 <p>.. tip::</p>
 <p>Modules are thus a good way to organize code in a hierarchical way. Actually,
 all the scientific computing tools we are going to use are modules::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; import numpy as np # data arrays
-&gt;&gt;&gt; np.linspace(0, 10, 6)
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>import numpy as np # data arrays
+np.linspace(0, 10, 6)
 array([  0.,   2.,   4.,   6.,   8.,  10.])
-&gt;&gt;&gt; import scipy # scientific computing
-</pre></div>
-</div>
+import scipy # scientific computing</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 </div>
 <div class="section" id="creating-modules">
 <h2>Creating modules<a class="headerlink" href="#creating-modules" title="Permalink to this headline">¶</a></h2>
 <p>.. tip::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>If we want to write larger and better organized programs (compared to
+<p>If we want to write larger and better organized programs (compared to
 simple scripts), where some objects are defined, (variables,
 functions, classes) and that we want to reuse several times, we have
-to create our own *modules*.
-</pre></div>
-</div>
+to create our own <em>modules</em>.</p>
 <p>Let us create a module <code class="docutils literal notranslate"><span class="pre">demo</span></code> contained in the file <code class="docutils literal notranslate"><span class="pre">demo.py</span></code>:</p>
 <p>.. literalinclude:: <a class="reference external" href="http://demo.py">demo.py</a></p>
 <p>.. tip::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In this file, we defined two functions ``print_a`` and ``print_b``. Suppose
-we want to call the ``print_a`` function from the interpreter. We could
+<p>In this file, we defined two functions <code class="docutils literal notranslate"><span class="pre">print_a</span></code> and <code class="docutils literal notranslate"><span class="pre">print_b</span></code>. Suppose
+we want to call the <code class="docutils literal notranslate"><span class="pre">print_a</span></code> function from the interpreter. We could
 execute the file as a script, but since we just want to have access to
-the function ``print_a``, we are rather going to **import it as a module**.
-The syntax is as follows.
-</pre></div>
-</div>
+the function <code class="docutils literal notranslate"><span class="pre">print_a</span></code>, we are rather going to <strong>import it as a module</strong>.
+The syntax is as follows.</p>
 <p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [1]: import demo
-
-
-In [2]: demo.print_a()
-a
-
-In [3]: demo.print_b()
-b
-</pre></div>
-</div>
+<p>In [1]: import demo</p>
+<p>In [2]: demo.print_a()
+a</p>
+<p>In [3]: demo.print_b()
+b</p>
 <p>Importing the module gives access to its objects, using the
 <code class="docutils literal notranslate"><span class="pre">module.object</span></code> syntax. Don’t forget to put the module’s name before the
 object’s name, otherwise Python won’t recognize the instruction.</p>
 <p>Introspection</p>
 <p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [4]: demo?
+<p>In [4]: demo?
 Type:               module
-Base Class: &lt;type &#39;module&#39;&gt;
-String Form:        &lt;module &#39;demo&#39; from &#39;demo.py&#39;&gt;
+Base Class: &lt;type ‘module’&gt;
+String Form:        &lt;module ‘demo’ from ‘<a class="reference external" href="http://demo.py">demo.py</a>’&gt;
 Namespace:  Interactive
 File:               /home/varoquau/Projects/Python_talks/scipy_2009_tutorial/source/demo.py
 Docstring:
-    A demo module.
-
-
-In [5]: who
-demo
-
-In [6]: whos
-Variable   Type      Data/Info
-------------------------------
-demo       module    &lt;module &#39;demo&#39; from &#39;demo.py&#39;&gt;
-
-In [7]: dir(demo)
-Out[7]:
-[&#39;__builtins__&#39;,
-&#39;__doc__&#39;,
-&#39;__file__&#39;,
-&#39;__name__&#39;,
-&#39;__package__&#39;,
-&#39;c&#39;,
-&#39;d&#39;,
-&#39;print_a&#39;,
-&#39;print_b&#39;]
-
-
-In [8]: demo.&lt;TAB&gt;
-demo.c        demo.print_a  demo.py       
-demo.d        demo.print_b  demo.pyc      
-</pre></div>
+A demo module.</p>
+<p>In [5]: who
+demo</p>
 </div>
+<div class="section" id="in-6-whos-variable-type-data-info">
+<h2>In [6]: whos
+Variable   Type      Data/Info<a class="headerlink" href="#in-6-whos-variable-type-data-info" title="Permalink to this headline">¶</a></h2>
+<p>demo       module    &lt;module ‘demo’ from ‘<a class="reference external" href="http://demo.py">demo.py</a>’&gt;</p>
+<p>In [7]: dir(demo)
+Out[7]:
+[‘<strong>builtins</strong>’,
+‘<strong>doc</strong>’,
+‘<strong>file</strong>’,
+‘<strong>name</strong>’,
+‘<strong>package</strong>’,
+‘c’,
+‘d’,
+‘print_a’,
+‘print_b’]</p>
+<p>In [8]: demo.<TAB>
+demo.c        demo.print_a  <a class="reference external" href="http://demo.py">demo.py</a><br />
+demo.d        demo.print_b  demo.pyc</p>
 <p>Importing objects from modules into the main namespace</p>
 <p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [9]: from demo import print_a, print_b
-
-In [10]: whos
-Variable   Type        Data/Info
---------------------------------
-demo       module      &lt;module &#39;demo&#39; from &#39;demo.py&#39;&gt;
+<p>In [9]: from demo import print_a, print_b</p>
+</div>
+<div class="section" id="in-10-whos-variable-type-data-info">
+<h2>In [10]: whos
+Variable   Type        Data/Info<a class="headerlink" href="#in-10-whos-variable-type-data-info" title="Permalink to this headline">¶</a></h2>
+<p>demo       module      &lt;module ‘demo’ from ‘<a class="reference external" href="http://demo.py">demo.py</a>’&gt;
 print_a    function    &lt;function print_a at 0xb7421534&gt;
-print_b    function    &lt;function print_b at 0xb74214c4&gt;
-
-In [11]: print_a()
-a
+print_b    function    &lt;function print_b at 0xb74214c4&gt;</p>
+<p>In [11]: print_a()
+a</p>
+<p>.. warning::</p>
+<p><strong>Module caching</strong></p>
+<p>Modules are cached: if you modify <code class="docutils literal notranslate"><span class="pre">demo.py</span></code> and re-import it in the
+old session, you will get the old one.</p>
+<p>Solution:</p>
+<p>.. sourcecode :: ipython</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [10]: reload(demo)
 </pre></div>
 </div>
-<p>.. warning::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>**Module caching**
-
- Modules are cached: if you modify ``demo.py`` and re-import it in the
- old session, you will get the old one.
-
-Solution:
-
- .. sourcecode :: ipython
-
-    In [10]: reload(demo)
-
-In Python3 instead ``reload`` is not builtin, so you have to import the ``importlib`` module first and then do:
-
- .. sourcecode :: ipython
-
-    In [10]: importlib.reload(demo)
+<p>In Python3 instead <code class="docutils literal notranslate"><span class="pre">reload</span></code> is not builtin, so you have to import the <code class="docutils literal notranslate"><span class="pre">importlib</span></code> module first and then do:</p>
+<p>.. sourcecode :: ipython</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [10]: importlib.reload(demo)
 </pre></div>
 </div>
 </div>
 <div class="section" id="main-and-module-loading">
 <h2>‘<strong>main</strong>’ and module loading<a class="headerlink" href="#main-and-module-loading" title="Permalink to this headline">¶</a></h2>
 <p>.. tip::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Sometimes we want code to be executed when a module is
+<p>Sometimes we want code to be executed when a module is
 run directly, but not when it is imported by another module.
-``if __name__ == &#39;__main__&#39;`` allows us to check whether the
-module is being run directly.
-</pre></div>
-</div>
+<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__'</span></code> allows us to check whether the
+module is being run directly.</p>
 <p>File <code class="docutils literal notranslate"><span class="pre">demo2.py</span></code>:</p>
 <p>.. literalinclude:: <a class="reference external" href="http://demo2.py">demo2.py</a></p>
 <p>Importing it:</p>
 <p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [11]: import demo2
-b
-
-In [12]: import demo2
-</pre></div>
-</div>
+<p>In [11]: import demo2
+b</p>
+<p>In [12]: import demo2</p>
 <p>Running it:</p>
 <p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [13]: %run demo2
+<p>In [13]: %run demo2
 b
-a
-</pre></div>
-</div>
+a</p>
 </div>
 <div class="section" id="scripts-or-modules-how-to-organize-your-code">
 <h2>Scripts or modules? How to organize your code<a class="headerlink" href="#scripts-or-modules-how-to-organize-your-code" title="Permalink to this headline">¶</a></h2>
 <p>.. Note:: Rule of thumb</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Sets of instructions that are called several times should be
-  written inside **functions** for better code reusability.
-
-* Functions (or other bits of code) that are called from several
-  scripts should be written inside a **module**, so that only the
-  module is imported in the different scripts (do not copy-and-paste
-  your functions in the different scripts!).
-</pre></div>
-</div>
+<ul class="simple">
+<li><p>Sets of instructions that are called several times should be
+written inside <strong>functions</strong> for better code reusability.</p></li>
+<li><p>Functions (or other bits of code) that are called from several
+scripts should be written inside a <strong>module</strong>, so that only the
+module is imported in the different scripts (do not copy-and-paste
+your functions in the different scripts!).</p></li>
+</ul>
 <p>How modules are found and imported
 …………………………….</p>
 <p>When the <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">mymodule</span></code> statement is executed, the module <code class="docutils literal notranslate"><span class="pre">mymodule</span></code>
@@ -2198,56 +695,49 @@ well as the list of directories specified by the environment variable
 <p>The list of directories searched by Python is given by the <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>
 variable</p>
 <p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [1]: import sys
-
-In [2]: sys.path
-Out[2]: 
-[&#39;&#39;,
- &#39;/home/varoquau/.local/bin&#39;,
- &#39;/usr/lib/python2.7&#39;,
- &#39;/home/varoquau/.local/lib/python2.7/site-packages&#39;,
- &#39;/usr/lib/python2.7/dist-packages&#39;,
- &#39;/usr/local/lib/python2.7/dist-packages&#39;,
- ...]
-</pre></div>
-</div>
+<p>In [1]: import sys</p>
+<p>In [2]: sys.path
+Out[2]:
+[‘’,
+‘/home/varoquau/.local/bin’,
+‘/usr/lib/python2.7’,
+‘/home/varoquau/.local/lib/python2.7/site-packages’,
+‘/usr/lib/python2.7/dist-packages’,
+‘/usr/local/lib/python2.7/dist-packages’,
+…]</p>
 <p>Modules must be located in the search path, therefore you can:</p>
-<ul>
+<ul class="simple">
 <li><p>write your own modules within directories already defined in the
 search path (e.g. <code class="docutils literal notranslate"><span class="pre">$HOME/.local/lib/python2.7/dist-packages</span></code>). You
 may use symbolic links (on Linux) to keep the code somewhere else.</p></li>
 <li><p>modify the environment variable <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> to include the
-directories containing the user-defined modules.</p>
+directories containing the user-defined modules.</p></li>
+</ul>
 <p>.. tip::</p>
 <p>On Linux/Unix, add the following line to a file read by the shell at
 startup (e.g. /etc/profile, .profile)</p>
 <p>::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>export PYTHONPATH=$PYTHONPATH:/home/emma/user_defined_modules
-</pre></div>
-</div>
+<p>export PYTHONPATH=$PYTHONPATH:/home/emma/user_defined_modules</p>
 <p>On Windows, <a class="reference external" href="http://support.microsoft.com/kb/310519">http://support.microsoft.com/kb/310519</a> explains how to
 handle environment variables.</p>
-</li>
-<li><p>or modify the <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> variable itself within a Python script.</p>
+<ul class="simple">
+<li><p>or modify the <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> variable itself within a Python script.</p></li>
+</ul>
 <p>.. tip::</p>
 <p>::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  import sys
-  new_path = &#39;/home/emma/user_defined_modules&#39;
-  if new_path not in sys.path:
-      sys.path.append(new_path)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import sys
+new_path = &#39;/home/emma/user_defined_modules&#39;
+if new_path not in sys.path:
+    sys.path.append(new_path)
 </pre></div>
 </div>
 <p>This method is not very robust, however, because it makes the code
 less portable (user-dependent path) and because you have to add the
 directory to your sys.path each time you want to import from a module
 in this directory.</p>
-</li>
-</ul>
 <p>.. seealso::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>See https://docs.python.org/tutorial/modules.html for more information
-about modules.
-</pre></div>
-</div>
+<p>See <a class="reference external" href="https://docs.python.org/tutorial/modules.html">https://docs.python.org/tutorial/modules.html</a> for more information
+about modules.</p>
 </div>
 <div class="section" id="packages">
 <h2>Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h2>
@@ -2257,47 +747,39 @@ A special file called <code class="docutils literal notranslate"><span class="pr
 that the directory is a Python package, from which modules can be
 imported.</p>
 <p>.. sourcecode:: bash</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ ls
-cluster/        io/          README.txt@     stsci/
-__config__.py@  LATEST.txt@  setup.py@       __svn_version__.py@
+<p><span class="math notranslate nohighlight">\( ls
+cluster/        io/          README.txt&#64;     stsci/
+__config__.py&#64;  LATEST.txt&#64;  setup.py&#64;       __svn_version__.py&#64;
 __config__.pyc  lib/         setup.pyc       __svn_version__.pyc
-constants/      linalg/      setupscons.py@  THANKS.txt@
-fftpack/        linsolve/    setupscons.pyc  TOCHANGE.txt@
-__init__.py@    maxentropy/  signal/         version.py@
+constants/      linalg/      setupscons.py&#64;  THANKS.txt&#64;
+fftpack/        linsolve/    setupscons.pyc  TOCHANGE.txt&#64;
+__init__.py&#64;    maxentropy/  signal/         version.py&#64;
 __init__.pyc    misc/        sparse/         version.pyc
-INSTALL.txt@    ndimage/     spatial/        weave/
+INSTALL.txt&#64;    ndimage/     spatial/        weave/
 integrate/      odr/         special/
 interpolate/    optimize/    stats/
-$ cd ndimage
+\)</span> cd ndimage
 $ ls
-doccer.py@   fourier.pyc   interpolation.py@  morphology.pyc   setup.pyc
-doccer.pyc   info.py@      interpolation.pyc  _nd_image.so
-setupscons.py@
-filters.py@  info.pyc      measurements.py@   _ni_support.py@
+<a class="reference external" href="http://doccer.py">doccer.py</a>&#64;   fourier.pyc   <a class="reference external" href="http://interpolation.py">interpolation.py</a>&#64;  morphology.pyc   setup.pyc
+doccer.pyc   <a class="reference external" href="http://info.py">info.py</a>&#64;      interpolation.pyc  _nd_image.so
+<a class="reference external" href="http://setupscons.py">setupscons.py</a>&#64;
+<a class="reference external" href="http://filters.py">filters.py</a>&#64;  info.pyc      <a class="reference external" href="http://measurements.py">measurements.py</a>&#64;   _ni_support.py&#64;
 setupscons.pyc
-filters.pyc  __init__.py@  measurements.pyc   _ni_support.pyc  tests/
-fourier.py@  __init__.pyc  morphology.py@     setup.py@
-</pre></div>
-</div>
+filters.pyc  <strong>init</strong>.py&#64;  measurements.pyc   _ni_support.pyc  tests/
+<a class="reference external" href="http://fourier.py">fourier.py</a>&#64;  <strong>init</strong>.pyc  <a class="reference external" href="http://morphology.py">morphology.py</a>&#64;     <a class="reference external" href="http://setup.py">setup.py</a>&#64;</p>
 <p>From Ipython:</p>
 <p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In [1]: import scipy
-
-In [2]: scipy.__file__
-Out[2]: &#39;/usr/lib/python2.6/dist-packages/scipy/__init__.pyc&#39;
-
-In [3]: import scipy.version
-
-In [4]: scipy.version.version
-Out[4]: &#39;0.7.0&#39;
-
-In [5]: import scipy.ndimage.morphology
-
-In [6]: from scipy.ndimage import morphology
-
-In [17]: morphology.binary_dilation?
+<p>In [1]: import scipy</p>
+<p>In [2]: scipy.<strong>file</strong>
+Out[2]: ‘/usr/lib/python2.6/dist-packages/scipy/<strong>init</strong>.pyc’</p>
+<p>In [3]: import scipy.version</p>
+<p>In [4]: scipy.version.version
+Out[4]: ‘0.7.0’</p>
+<p>In [5]: import scipy.ndimage.morphology</p>
+<p>In [6]: from scipy.ndimage import morphology</p>
+<p>In [17]: morphology.binary_dilation?
 Type:           function
-Base Class:     &lt;type &#39;function&#39;&gt;
+Base Class:     &lt;type ‘function’&gt;
 String Form:    &lt;function binary_dilation at 0x9bedd84&gt;
 Namespace:      Interactive
 File:           /usr/lib/python2.6/dist-packages/scipy/ndimage/morphology.py
@@ -2305,24 +787,24 @@ Definition:     morphology.binary_dilation(input, structure=None,
 iterations=1, mask=None, output=None, border_value=0, origin=0,
 brute_force=False)
 Docstring:
-    Multi-dimensional binary dilation with the given structure.
-
-    An output array can optionally be provided. The origin parameter
-    controls the placement of the filter. If no structuring element is
-    provided an element is generated with a squared connectivity equal
-    to one. The dilation operation is repeated iterations times.  If
-    iterations is less than 1, the dilation is repeated until the
-    result does not change anymore.  If a mask is given, only those
-    elements with a true value at the corresponding mask element are
-    modified at each iteration.
+Multi-dimensional binary dilation with the given structure.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>An output array can optionally be provided. The origin parameter
+controls the placement of the filter. If no structuring element is
+provided an element is generated with a squared connectivity equal
+to one. The dilation operation is repeated iterations times.  If
+iterations is less than 1, the dilation is repeated until the
+result does not change anymore.  If a mask is given, only those
+elements with a true value at the corresponding mask element are
+modified at each iteration.
 </pre></div>
 </div>
 </div>
 <div class="section" id="good-practices">
 <h2>Good practices<a class="headerlink" href="#good-practices" title="Permalink to this headline">¶</a></h2>
-<ul>
+<ul class="simple">
 <li><p>Use <strong>meaningful</strong> object <strong>names</strong></p></li>
-<li><p><strong>Indentation: no choice!</strong></p>
+<li><p><strong>Indentation: no choice!</strong></p></li>
+</ul>
 <p>.. tip::</p>
 <p>Indenting is compulsory in Python! Every command block following a
 colon bears an additional indentation level with respect to the
@@ -2334,40 +816,47 @@ is entered, etc.)</p>
 <code class="docutils literal notranslate"><span class="pre">{</span></code> or <code class="docutils literal notranslate"><span class="pre">;</span></code> characters that delineate logical blocks in other
 languages. Improper indentation leads to errors such as</p>
 <p>.. sourcecode:: ipython</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  ------------------------------------------------------------
-  IndentationError: unexpected indent (test.py, line 2)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------
+IndentationError: unexpected indent (test.py, line 2)
 </pre></div>
 </div>
 <p>All this indentation business can be a bit confusing in the
 beginning. However, with the clear indentation, and in the absence of
 extra characters, the resulting code is very nice to read compared to
 other languages.</p>
-</li>
+<ul class="simple">
 <li><p><strong>Indentation depth</strong>: Inside your text editor, you may choose to
 indent with any positive number of spaces (1, 2, 3, 4, …). However,
 it is considered good practice to <strong>indent with 4 spaces</strong>. You may
 configure your editor to map the <code class="docutils literal notranslate"><span class="pre">Tab</span></code> key to a 4-space
 indentation.</p></li>
-<li><p><strong>Style guidelines</strong></p>
+<li><p><strong>Style guidelines</strong></p></li>
+</ul>
 <p><strong>Long lines</strong>: you should not write very long lines that span over more
 than (e.g.) 80 characters. Long lines can be broken with the <code class="docutils literal notranslate"><span class="pre">\</span></code>
 character ::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; long_line = &quot;Here is a very very long line \
-... that we break in two parts.&quot;
-</pre></div>
-</div>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>long_line = “Here is a very very long line <br />
+… that we break in two parts.”</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 <p><strong>Spaces</strong></p>
 <p>Write well-spaced code: put whitespaces after commas, around arithmetic
 operators, etc.::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; a = 1 # yes
-&gt;&gt;&gt; a=1 # too cramped
-</pre></div>
-</div>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>a = 1 # yes
+a=1 # too cramped</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 <p>A certain number of rules
 for writing “beautiful” code (and more importantly using the same
 conventions as anybody else!) are given in the <code class="docutils literal notranslate"><span class="pre">Style</span> <span class="pre">Guide</span> <span class="pre">for</span> <span class="pre">Python</span> <span class="pre">Code</span> <span class="pre">&lt;https://www.python.org/dev/peps/pep-0008&gt;</span></code>_.</p>
-</li>
-</ul>
 <hr class="docutils" />
 <p>.. topic:: <strong>Quick read</strong></p>
 <p>If you want to do a first quick pass through the Scipy lectures to
