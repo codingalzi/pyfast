@@ -238,8 +238,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-types">
-   1.2. Basic types
+  <a class="reference internal nav-link" href="#id3">
+   1.2. 기본 자료형
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -307,8 +307,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-types">
-   1.2. Basic types
+  <a class="reference internal nav-link" href="#id3">
+   1.2. 기본 자료형
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -401,8 +401,8 @@
 <p>주피터 노트북의 코드 셀<font size="2">code cell</font>은
 IPython 콘솔처럼 명령문을 실행할 수 있으며
 이어지는 코드 셀은 이전에 실행된 코드 셀의
-내용을 이어 받는다.</p>
-<p>하지만 코드 셀은 콘솔과는 달리 여러 줄의 파이썬 명령문을
+내용을 이어 받는다.
+하지만 코드 셀은 콘솔과는 달리 여러 줄의 파이썬 명령문을
 마치 편집기로 작성된 하나의 코드 파일을 실행하는 것처럼
 전체 명령문을 차례대로 실행할 수 있다.</p>
 </div>
@@ -432,7 +432,7 @@ IPython 콘솔처럼 명령문을 실행할 수 있으며
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -483,13 +483,18 @@ IPython 콘솔처럼 명령문을 실행할 수 있으며
 지정하지 않는다.
 변수의 자료형을 지정하지 않기 때문에
 변수가 가리키는 값을 다른 자료형의 값으로 변경할 수 있다.
-앞서 보았듯이 변수 <code class="docutils literal notranslate"><span class="pre">b</span></code> 가 처음에는 정수 <code class="docutils literal notranslate"><span class="pre">6</span></code> 을
+예를 들어 변수 <code class="docutils literal notranslate"><span class="pre">b</span></code> 가 처음에는 정수 <code class="docutils literal notranslate"><span class="pre">6</span></code> 을
 가리켰다가 이후엔 문자열 <code class="docutils literal notranslate"><span class="pre">'hello'</span></code> 를 가리킨다.</p>
 <div class="tip admonition">
 <p class="admonition-title">변수의 자료형</p>
 <p>C, C++, C#, 자바 등 다른 프로그래밍 언어와의 차이점 중에 하나다.
-예를 들어, C 언어에서 변수 선언은 아래 방식으로 이루어진다.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+예를 들어, C 언어에서 변수 선언은 아래와 같이 변수의 자료형을 지정한다.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>따라서 파이썬과는 달리 아래와 같이 문자열 등 다른 자료형의 값을 가리키도
+하는 것을 허용하지 않는다.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -499,8 +504,8 @@ IPython 콘솔처럼 명령문을 실행할 수 있으며
 이어붙인다.
 덧셈 기호 <code class="docutils literal notranslate"><span class="pre">+</span></code> 도 사용되는 인자에 따라 다르게 작동한다.</p>
 </div>
-<div class="section" id="basic-types">
-<h2><span class="section-number">1.2. </span>Basic types<a class="headerlink" href="#basic-types" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2><span class="section-number">1.2. </span>기본 자료형<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="numerical-types">
 <h3><span class="section-number">1.2.1. </span>Numerical types<a class="headerlink" href="#numerical-types" title="Permalink to this headline">¶</a></h3>
 <p>Python supports the following numerical, scalar types:</p>
