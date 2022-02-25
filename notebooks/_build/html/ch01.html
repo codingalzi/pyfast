@@ -38,12 +38,9 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -55,7 +52,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. 기본 명령문" href="ch02.html" />
+    <link rel="next" title="2. 모음 자료형 1편" href="ch02.html" />
     <link rel="prev" title="데이터 과학과 파이썬" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -103,32 +100,42 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch02.html">
-   2. 기본 명령문
+   2. 모음 자료형 1편
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch03.html">
-   3. 함수
+   3. 모음 자료형 2편
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch04.html">
-   4. 모듈과 패키지
+   4. 명령문
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch05.html">
-   5. 입력과 출력
+   5. 함수
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch06.html">
-   6. 예외 처리
+   6. 모듈과 패키지
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch07.html">
-   7. 객체 지향 프로그래밍(OOP)
+   7. 입력과 출력
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ch08.html">
+   8. 예외 처리
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ch09.html">
+   9. 객체 지향 프로그래밍(OOP)
   </a>
  </li>
 </ul>
@@ -242,7 +249,7 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   1.2. 스칼라 자료형
+   1.2. 파이썬의 기본 자료형
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -260,61 +267,12 @@
      1.2.3. 부울값
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     1.2.4. 연산자
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
-   1.3. 모음 자료형
+  <a class="reference internal nav-link" href="#id7">
+   1.3. 연산자
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     1.3.1. 문자열
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
-     1.3.2. 리스트
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id11">
-     1.3.3. 인덱싱
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id12">
-     1.3.4. 슬라이싱
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id13">
-     1.3.5. 수정 가능성
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dictionaries">
-       1.3.5.1. Dictionaries
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#more-container-types">
-       1.3.5.2. More container types
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#list-comprehensions">
-     1.3.6. List Comprehensions
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -343,7 +301,7 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   1.2. 스칼라 자료형
+   1.2. 파이썬의 기본 자료형
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -361,61 +319,12 @@
      1.2.3. 부울값
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     1.2.4. 연산자
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
-   1.3. 모음 자료형
+  <a class="reference internal nav-link" href="#id7">
+   1.3. 연산자
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     1.3.1. 문자열
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
-     1.3.2. 리스트
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id11">
-     1.3.3. 인덱싱
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id12">
-     1.3.4. 슬라이싱
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id13">
-     1.3.5. 수정 가능성
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dictionaries">
-       1.3.5.1. Dictionaries
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#more-container-types">
-       1.3.5.2. More container types
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#list-comprehensions">
-     1.3.6. List Comprehensions
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -572,9 +481,9 @@ IPython 콘솔처럼 명령문을 실행할 수 있으며
 덧셈 기호 <code class="docutils literal notranslate"><span class="pre">+</span></code> 도 사용되는 인자에 따라 다르게 작동한다.</p>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">1.2. </span>스칼라 자료형<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>스칼라<font size="2">scalar</font>는 정수, 부동소수점, 부울값 등
-단일 차원의 값을 가리키며, 파이썬의 기본 스칼라 자료형으로 지원된다.</p>
+<h2><span class="section-number">1.2. </span>파이썬의 기본 자료형<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>정수, 부동소수점, 부울값 등 세 종류의 <strong>스칼라</strong><font size="2">scalar</font>
+자료형을 기본으로 제공한다.</p>
 <div class="section" id="id4">
 <h3><span class="section-number">1.2.1. </span>정수<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>-2, -1, 0, 1, 2 등의 정수는 <code class="docutils literal notranslate"><span class="pre">int</span></code> 유형<font size="2">type</font>의 값이다.
@@ -738,8 +647,9 @@ IPython 콘솔처럼 명령문을 실행할 수 있으며
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="id7">
-<h3><span class="section-number">1.2.4. </span>연산자<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h2><span class="section-number">1.3. </span>연산자<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>덧셈(<code class="docutils literal notranslate"><span class="pre">+</span></code>), 뺄셈(<code class="docutils literal notranslate"><span class="pre">-</span></code>), 곱셈(<code class="docutils literal notranslate"><span class="pre">*</span></code>), 나눗셈(<code class="docutils literal notranslate"><span class="pre">/</span></code>) 등 사칙연산을 계산기처럼 사용할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -818,7 +728,7 @@ IPython 콘솔처럼 명령문을 실행할 수 있으며
 </div>
 </div>
 </div>
-<p>나눗셈의 몫이 우연히 정수인 경우엔 차이를 두지 않는다.</p>
+<p>나눗셈의 몫이 정수인 경우엔 차이를 두지 않는다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">4</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">4</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
@@ -834,11 +744,10 @@ IPython 콘솔처럼 명령문을 실행할 수 있으며
 <div class="info admonition">
 <p class="admonition-title">형변환 함수</p>
 <p><code class="docutils literal notranslate"><span class="pre">2.3</span> <span class="pre">+</span> <span class="pre">3</span></code>을 실행하면 파이썬 해석기<font size="2">interpreter</font>는
-내부적으로 정수 <code class="docutils literal notranslate"><span class="pre">3</span></code>을
-정수를 부동소수점으로 형변환하는 함수 <code class="docutils literal notranslate"><span class="pre">float()</span></code>를 이용하여
-부동소수점 <code class="docutils literal notranslate"><span class="pre">3.0</span></code>으로 유형을 변환한 후에
+내부적으로 정수를 부동소수점으로 형변환하는 함수 <code class="docutils literal notranslate"><span class="pre">float()</span></code>를 이용하여
+정수 <code class="docutils literal notranslate"><span class="pre">3</span></code>을 부동소수점 <code class="docutils literal notranslate"><span class="pre">3.0</span></code>으로 유형을 변환한 후에
 덧셈을 처리한다.
-이렇게 값의 유형을 적절하게 변환하는 기능을
+이렇게 값의 유형을 적절하게 자동 변환하는 기능을
 <strong>형변환</strong><font size="2">type casting</font>이라 부른다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="go">3.0</span>
@@ -851,628 +760,9 @@ IPython 콘솔처럼 명령문을 실행할 수 있으며
 <p class="admonition-title">함수 이름 표기법</p>
 <p><code class="docutils literal notranslate"><span class="pre">float</span></code>는 부동소수점 자료형을 가리키기도 하고
 형변환 함수를 가리키기도 한다.
-이를 구분하기 위해 여기서는
-<code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code> 등과 <code class="docutils literal notranslate"><span class="pre">int()</span></code>, <code class="docutils literal notranslate"><span class="pre">float()</span></code>, <code class="docutils literal notranslate"><span class="pre">str()</span></code>, <code class="docutils literal notranslate"><span class="pre">list()</span></code> 등을
-구분하기 위해 함수 이름을 표기할 때 괄호를
-함께 사용하는 표기법 관행을 따른다.</p>
-</div>
-</div>
-</div>
-<div class="section" id="id8">
-<h2><span class="section-number">1.3. </span>모음 자료형<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<p><strong>모음</strong><font size="2">collection</font> 자료형은
-여러 개의 값을 하나로 묶어 놓은 값의 유형이다.
-파이썬은 문자열, 리스트, 튜플, 집합, 사전 등의 모음 자료형을
-기본으로 제공하며,
-여러 값을 묶어 둔다는 의미로 모음 자료형의 값을
-<strong>컨테이너</strong><font size="2">container</font>라고도 부른다.</p>
-<p>모음 자료형은 크게 두 종류로 나뉜다.</p>
-<ul class="simple">
-<li><p>순차형<font size="2">sequence type</font>: 포함된 항목들의 순서를 가리는 모음 자료형</p>
-<ul>
-<li><p>문자열</p></li>
-<li><p>리스트</p></li>
-<li><p>튜플</p></li>
-</ul>
-</li>
-<li><p>집합형<font size="2">set type</font>: 포함된 항목들의 순서를 무시하는 모음 자료형</p>
-<ul>
-<li><p>집합</p></li>
-<li><p>사전</p></li>
-</ul>
-</li>
-</ul>
-<div class="section" id="id9">
-<h3><span class="section-number">1.3.1. </span>문자열<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<p><strong>문자열</strong><font size="2">string</font>은 문자 기호로 이루어진 단어, 문장 등을 가리킨다.
-키보드에 포함된 영문 알파벳, 한글 자음과 모음 등을 기본적으로 사용한다.
-문자열은 세 가지 방식으로 작성될 수 있다.</p>
-<ul class="simple">
-<li><p>작은 따옴표 활용</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;잘 지내세요?&#39;</span>
-<span class="n">s</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;잘 지내세요?&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>큰 따옴표 활용</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;무슨 일 있나요?&quot;</span>
-<span class="n">s</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;무슨 일 있나요?&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>연속된 세 개의 작은 또는 큰 따옴표 활용: 여러 줄로 이루어진 문자열 작성</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;안녕.</span>
-<span class="s1">무슨 일 있어?&#39;&#39;&#39;</span>
-
-<span class="n">s</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;안녕.\n무슨 일 있어?&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;안녕.</span>
-<span class="s2">무슨 일 있어?&quot;&quot;&quot;</span>
-
-<span class="n">s</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;안녕.\n무슨 일 있어?&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>스페이스와 탭을 활용해서 생성된 여백<font size="2">white space</font>도 문자열로 처리된다.
-또한 줄바꿈을 나타내는 문자는 <code class="docutils literal notranslate"><span class="pre">\n</span></code>이다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;안녕.</span>
-<span class="s1">    무슨 일 있어?&#39;&#39;&#39;</span>
-
-<span class="n">s</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;안녕.\n    무슨 일 있어?&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;안녕.</span>
-<span class="s2">    무슨 일 있어?&quot;&quot;&quot;</span>
-
-<span class="n">s</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;안녕.\n    무슨 일 있어?&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>문자열에 따옴표를 사용하려면 문자열을 감싸는 방식에 주의해야 한다.
-예를 들어, 작은 따옴표를 사용하는 문자열을 다음과 같이 지정하면 오류가 발생한다.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; &#39;Hi, what&#39;s up?&#39;
-------------------------------------------------------------
-File &quot;&lt;ipython console&gt;&quot;, line 1
-&#39;Hi, what&#39;s up?&#39;
-       ^
-SyntaxError invalid syntax
-</pre></div>
-</div>
-<p>이유는 작은 따옴표로 문자열의 시작을 지정했기 때문에
-<code class="docutils literal notranslate"><span class="pre">what's</span></code> 문장에 사용된 작은 따옴표가
-문자열의 끝을 의미하게된다.
-그런데 이후에도 문자열이 이어지게 되어 결국 문자열의 끝이 불분명해져서
-구문 오류를 뜻하는 <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>가 발생하였다.</p>
-<p>이런 오류를 방지하는 다양한 방식이 존재한다.
-예를 들어 작은 따옴표 바로 앞에 슬래시 기호 (<code class="docutils literal notranslate"><span class="pre">\</span></code>)를 추가하면 된다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Hi, what</span><span class="se">\&#39;</span><span class="s1">s up?&#39;</span>
-<span class="n">s</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;Hi, what&#39;s up?&quot;
-</pre></div>
-</div>
-</div>
-</div>
-<p>아니면 문자열을 큰 따옴표로 감싸면 혼란이 사라진다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Hi, what</span><span class="se">\&#39;</span><span class="s2">s up?&quot;</span>
-<span class="n">s</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;Hi, what&#39;s up?&quot;
-</pre></div>
-</div>
-</div>
-</div>
-<p>하지만 이 방식은 문자열이 작은 따옴표와 큰 따옴표 모두 포함하는 경우에 대해서는
-작동하지 않는다.
-따라서 앞서 언급한 슬래시 기호를 사용할 것을 추천한다.</p>
-<p>슬래시 기호(\)와 원화 기호(₩)</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;</span><span class="se">\U0001f604</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>😄
-</pre></div>
-</div>
-</div>
-</div>
-<p>This syntax error can be avoided by enclosing the string in double quotes
-instead of single quotes. Alternatively, one can prepend a backslash to the
-second single quote. Other uses of the backslash are, e.g., the newline character
-<code class="docutils literal notranslate"><span class="pre">\n</span></code> and the tab character <code class="docutils literal notranslate"><span class="pre">\t</span></code>.</p>
-<p>Strings are collections like lists. Hence they can be indexed and
-sliced, using the same syntax and rules.</p>
-<p>Indexing</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="go">&#39;h&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="go">&#39;e&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="go">&#39;o&#39;</span>
-</pre></div>
-</div>
-<p>(Remember that negative indices correspond to counting from the right
-end.)</p>
-<p>Slicing</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;hello, world!&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">36</span><span class="p">]</span> <span class="c1"># 3rd to 6th (excluded) elements elements 3, 4, 5</span>
-<span class="go">&#39;lo,&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">2102</span><span class="p">]</span> <span class="c1"># Syntax a[startstopstep]</span>
-<span class="go">&#39;lo o&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># every three characters, from beginning to end</span>
-<span class="go">&#39;hl r!&#39;</span>
-</pre></div>
-</div>
-<p>Accents and special characters can also be handled as in Python 3
-strings consist of Unicode characters.</p>
-<p>A string is an <strong>immutable object</strong> and it is not possible to modify its
-contents. One may however create new strings from the original one.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">53</span><span class="p">]</span> <span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;hello, world!&quot;</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">54</span><span class="p">]</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span>
-<span class="o">---------------------------------------------------------------------------</span>
-<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
-<span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">TypeError</span> <span class="s1">&#39;str&#39;</span> <span class="nb">object</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">item</span> <span class="n">assignment</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">55</span><span class="p">]</span> <span class="n">a</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">55</span><span class="p">]</span> <span class="s1">&#39;hezlo, world!&#39;</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">56</span><span class="p">]</span> <span class="n">a</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">56</span><span class="p">]</span> <span class="s1">&#39;hezzo, worzd!&#39;</span>
-</pre></div>
-</div>
-<p>Strings have many useful methods, such as <code class="docutils literal notranslate"><span class="pre">a.replace</span></code> as seen
-above. Remember the <code class="docutils literal notranslate"><span class="pre">a.</span></code> object-oriented notation and use tab
-completion or <code class="docutils literal notranslate"><span class="pre">help(str)</span></code> to search for new methods.</p>
-<p><strong>seealso</strong></p>
-<p>Python offers advanced possibilities for manipulating strings,
-looking for patterns or formatting. The interested reader is referred to
-https//docs.python.org/library/stdtypes.html#string-methods and
-https//docs.python.org/3/library/string.html#format-string-syntax</p>
-<p>String formatting</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;An integer </span><span class="si">%i</span><span class="s1">; a float </span><span class="si">%f</span><span class="s1">; another string </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">)</span> <span class="c1"># with more values use tuple after %</span>
-<span class="go">&#39;An integer 1; a float 0.100000; another string string&#39;</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="mi">102</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;processing_of_dataset_</span><span class="si">%d</span><span class="s1">.txt&#39;</span> <span class="o">%</span> <span class="n">i</span>   <span class="c1"># no need for tuples with just one value after %</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">filename</span>
-<span class="go">&#39;processing_of_dataset_102.txt&#39;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id10">
-<h3><span class="section-number">1.3.2. </span>리스트<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<p>리스트<font size="2">list</font>는 여러 종류의 값을 순서지어 포함한다.
-포함되는 항목의 개수에 제한이 없다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">]</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id11">
-<h3><span class="section-number">1.3.3. </span>인덱싱<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<p>순차형 컨테이너는 모두 정수를 이용하여 항목을 확인하고,
-경우에 따라 항목을 다른 값으로 변경하는
-<strong>인덱싱</strong><font size="2">indexing</font> 기능을 갖는다.</p>
-<p>왼편에 위치한 항목으로부터 차례대로 0, 1, 2, … 등의
-<strong>인덱스</strong><font size="2">index</font>를 다음과 같이 사용한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;red&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;blue&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;green&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="warning admonition">
-<p class="admonition-title">인덱스는 0부터 시작!</p>
-<p>가장 왼편에 위치한 항목의 인덱스가 1이 아닌 0임에 주의해야 한다.
-순차 자료형의 가장 왼편에 위치한 값으로부터 첫째, 둘째, 셋째 등으로
-언급하는 반면에 인덱스는 0, 1, 2 등으로 사용해야 해서
-익숙해질 때까지 시간이 조금 걸린다.</p>
-<p>C 언어 계열의 언어를 비롯하여 자바, 자바스크립트 등 대부분의
-프로그래밍 언어가 0부터 인덱스를 시작한다.
-반면에 포트란<font size="2">Fortran</font>, 매트랩 등
-수치 계산 전용 프로그래밍 언어는 인덱스를 1부터 시작한다.</p>
-<p>참고로 인덱스를 0부터 시작해야 하는 논리적 이유는 없다.
-누군가 어떤 이유로 그렇게 정했고 나름 이유가 있었겠지만
-사용 면에서 보면 어떤 논리적인 장점도 없다.</p>
-</div>
-<p>-1, -2, -3, … 등 음의 정수를 인덱스로 사용하면 오른편에 위치한 항목부터
-차례대로 왼쪽으로 이동하면서 인덱싱을 실행할 수 있다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;white&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">colors</span></code> 변수가 가리키는 리스트에 5개의 문자열이 포함되어 있기 때문에
-왼편에서 넷째, 오른편에 둘째 항목은 동일한 문자열이 된다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">왼쪽에서셋째</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-<span class="n">오른쪽에서둘째</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
-
-<span class="n">왼쪽에서셋째</span> <span class="o">==</span> <span class="n">오른쪽에서둘째</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="warning admonition">
-<p class="admonition-title">한글 변수 이름</p>
-<p>한글을 변수와 함수의 이름으로 사용할 수도 있다.
-하지만 다른 버전 또는 타 언어와의 호환성 등의 문제가 발생할 수 있기에
-아직은 일반적이지 않으며 추천되지 않는다.</p>
-</div>
-<p>포함된 항목의 개수를 벗어나는 인덱스는 오류를 유발한다.
-<code class="docutils literal notranslate"><span class="pre">colors</span></code> 리스트가 5개의 항목을 포함하기에 사용할 수 있는 인덱스는
-왼편에서 시작하는 경우엔 0부터 4까지이고
-오른편에서 시작하면 -1부터 -5까지이다.</p>
-<p>예를 들어 5를 인덱스로 사용하면 왼편에서 여섯째 항목을 확인하기 때문에
-인덱스의 범위를 벗어난다.
-따라서 <code class="docutils literal notranslate"><span class="pre">index</span> <span class="pre">out</span> <span class="pre">of</span> <span class="pre">range</span></code> 라는 설명과 함께 <code class="docutils literal notranslate"><span class="pre">IndexError</span></code>가
-다음과 같이 발생한다.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">IndexError                                Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-3-5976064932c2&gt; in &lt;module&gt;</span>
-<span class="go">----&gt; 1 colors[5]</span>
-
-<span class="go">IndexError: list index out of range</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id12">
-<h3><span class="section-number">1.3.4. </span>슬라이싱<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
-<p>인덱스의 구간을 지정하여 순차 자료형의 일부를 추출하는 것을
-<strong>슬라이싱</strong><font size="2">slicing</font>이라 한다.</p>
-<p>예를 들어 <code class="docutils literal notranslate"><span class="pre">colors</span></code> 리스트의 둘째부터 넷째 까지의 항목으로
-구성된 리스트를 생성하려면 다음과 같이 한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;blue&#39;, &#39;green&#39;, &#39;black&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">[1:4]</span></code> 는 1번 인덱스, 즉 둘째부터 4번 인덱스 이전까지, 즉 3번 인덱스인 넷째 항목까지
-추출 대상으로 삼는다는 의미이다.</p>
-<p>슬라이싱의 일반 형식은 다음과 같다.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[</span><span class="n">시작</span><span class="p">:</span><span class="n">끝</span><span class="p">:</span><span class="n">보폭</span><span class="p">]</span>
-</pre></div>
-</div>
-<p><strong>시작</strong>과 <strong>끝</strong>의 의 의미는 <code class="docutils literal notranslate"><span class="pre">colors[1:4]</span></code>의 경우에서 설명한 것과 동일하다.
-반면에 <strong>보폭</strong>은 항목 추출법을 설명한다.
-예를 들어 2를 보폭으로 사용하면
-시작 인덱스로 부터 2씩 건너 뛰며 항목을 추출한다.
-<code class="docutils literal notranslate"><span class="pre">colors[1:4:2]</span></code>는 따라서 1번, 3번 두 개의 인덱스에 위치한 항목을 추출해서
-리스트를 생성한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;blue&#39;, &#39;black&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>시작, 끝, 보폭 모두 생략될 수 있으며 각각에 대해 기본값이 사용된다.</p>
-<ul class="simple">
-<li><p>시작의 기본값: 0</p></li>
-<li><p>끝의 기본값: 항목의 개수 + 1. 즉, 시작부터 끝까지.</p></li>
-<li><p>보폭의 기본값: 1</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;black&#39;, &#39;white&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;red&#39;, &#39;green&#39;, &#39;white&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id13">
-<h3><span class="section-number">1.3.5. </span>수정 가능성<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
-<p>Lists are <em>mutable</em> objects and can be modified</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;yellow&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span>
-<span class="go">[&#39;yellow&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="p">[</span><span class="mi">24</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span>
-<span class="go">[&#39;yellow&#39;, &#39;blue&#39;, &#39;gray&#39;, &#39;purple&#39;, &#39;white&#39;]</span>
-</pre></div>
-</div>
-<p><strong>Note</strong></p>
-<p>The elements of a list may have different types</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span>
-<span class="go">[3, -200, &#39;hello&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">colors</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="go">(-200, &#39;hello&#39;)</span>
-</pre></div>
-</div>
-<p>For collections of numerical data that all have the same type, it
-is often <strong>more efficient</strong> to use the <code class="docutils literal notranslate"><span class="pre">array</span></code> type provided by
-the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> module. A NumPy array is a chunk of memory
-containing fixed-sized items.  With NumPy arrays, operations on
-elements can be faster because elements are regularly spaced in
-memory and more operations are performed through specialized C
-functions instead of Python loops.</p>
-<p>Python offers a large panel of functions to modify lists, or query
-them. Here are a few examples; for more details, see
-https//docs.python.org/tutorial/datastructures.html#more-on-lists</p>
-<p>Add and remove elements</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;pink&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span>
-<span class="go">[&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;, &#39;pink&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c1"># removes and returns the last item</span>
-<span class="go">&#39;pink&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span>
-<span class="go">[&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">])</span> <span class="c1"># extend colors, in-place</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span>
-<span class="go">[&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;, &#39;pink&#39;, &#39;purple&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span>
-<span class="go">[&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]</span>
-</pre></div>
-</div>
-<p>Reverse</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors</span>
-<span class="go">[&#39;white&#39;, &#39;black&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span> <span class="c1"># new object that is a copy of colors in a different memory area</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors2</span>
-<span class="go">[&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors2</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span> <span class="c1"># in-place; reversing rcolors2 does not affect colors</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors2</span>
-<span class="go">[&#39;white&#39;, &#39;black&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;]</span>
-</pre></div>
-</div>
-<p>Concatenate and repeat lists</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors</span> <span class="o">+</span> <span class="n">colors</span>
-<span class="go">[&#39;white&#39;, &#39;black&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;, &#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors</span> <span class="o">*</span> <span class="mi">2</span>
-<span class="go">[&#39;white&#39;, &#39;black&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;, &#39;white&#39;, &#39;black&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;]</span>
-</pre></div>
-</div>
-<p>Sort</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">rcolors</span><span class="p">)</span> <span class="c1"># new object</span>
-<span class="go">[&#39;black&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;red&#39;, &#39;white&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors</span>
-<span class="go">[&#39;white&#39;, &#39;black&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>  <span class="c1"># in-place</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors</span>
-<span class="go">[&#39;black&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;red&#39;, &#39;white&#39;]</span>
-</pre></div>
-</div>
-<p><strong>Methods and Object-Oriented Programming</strong></p>
-<p>The notation <code class="docutils literal notranslate"><span class="pre">rcolors.method()</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">rcolors.append(3)</span></code> and <code class="docutils literal notranslate"><span class="pre">colors.pop()</span></code>) is our
-first example of object-oriented programming (OOP). Being a <code class="docutils literal notranslate"><span class="pre">list</span></code>, the
-object <code class="docutils literal notranslate"><span class="pre">rcolors</span></code> owns the <em>method</em> <code class="docutils literal notranslate"><span class="pre">function</span></code> that is called using the notation
-<strong>.</strong>. No further knowledge of OOP than understanding the notation <strong>.</strong> is
-necessary for going through this tutorial.</p>
-<p><strong>Discovering methods</strong></p>
-<p>Reminder in Ipython tab-completion (press tab)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">28</span><span class="p">]</span> <span class="n">rcolors</span><span class="o">.&lt;</span><span class="n">TAB</span><span class="o">&gt;</span>
-<span class="n">rcolors</span><span class="o">.</span><span class="n">append</span>   <span class="n">rcolors</span><span class="o">.</span><span class="n">index</span>    <span class="n">rcolors</span><span class="o">.</span><span class="n">remove</span>   
-<span class="n">rcolors</span><span class="o">.</span><span class="n">count</span>    <span class="n">rcolors</span><span class="o">.</span><span class="n">insert</span>   <span class="n">rcolors</span><span class="o">.</span><span class="n">reverse</span>  
-<span class="n">rcolors</span><span class="o">.</span><span class="n">extend</span>   <span class="n">rcolors</span><span class="o">.</span><span class="n">pop</span>      <span class="n">rcolors</span><span class="o">.</span><span class="n">sort</span>    
-</pre></div>
-</div>
-<div class="section" id="dictionaries">
-<h4><span class="section-number">1.3.5.1. </span>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h4>
-<p>A dictionary is basically an efficient table that <strong>maps keys to
-values</strong>. It is an <strong>unordered</strong> container</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;emmanuelle&#39;</span> <span class="mi">5752</span><span class="p">,</span> <span class="s1">&#39;sebastian&#39;</span> <span class="mi">5578</span><span class="p">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span><span class="p">[</span><span class="s1">&#39;francis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5915</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span>     <span class="c1"># doctest +SKIP</span>
-<span class="go">{&#39;sebastian&#39; 5578, &#39;francis&#39; 5915, &#39;emmanuelle&#39; 5752}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span><span class="p">[</span><span class="s1">&#39;sebastian&#39;</span><span class="p">]</span>
-<span class="go">5578</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>   <span class="c1"># doctest +SKIP</span>
-<span class="go">[&#39;sebastian&#39;, &#39;francis&#39;, &#39;emmanuelle&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>   <span class="c1"># doctest +SKIP</span>
-<span class="go">[5578, 5915, 5752]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;francis&#39;</span> <span class="ow">in</span> <span class="n">tel</span>
-<span class="go">True</span>
-</pre></div>
-</div>
-<p>It can be used to conveniently store and retrieve values
-associated with a name (a string for a date, a name, etc.). See
-https//docs.python.org/tutorial/datastructures.html#dictionaries
-for more information.</p>
-<p>A dictionary can have keys (resp. values) with different types</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="s1">&#39;hello&#39;</span><span class="p">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>       <span class="c1"># doctest +SKIP</span>
-<span class="go">{&#39;a&#39; 1, 3 &#39;hello&#39;, &#39;b&#39; 2}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="more-container-types">
-<h4><span class="section-number">1.3.5.2. </span>More container types<a class="headerlink" href="#more-container-types" title="Permalink to this headline">¶</a></h4>
-<p><strong>Tuples</strong></p>
-<p>Tuples are basically immutable lists. The elements of a tuple are written
-between parentheses, or just separated by commas</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="mi">12345</span><span class="p">,</span> <span class="mi">54321</span><span class="p">,</span> <span class="s1">&#39;hello!&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="go">12345</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
-<span class="go">(12345, 54321, &#39;hello!&#39;)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Sets</strong> unordered, unique items</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">((</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>    <span class="c1"># doctest +SKIP</span>
-<span class="go">set([&#39;a&#39;, &#39;c&#39;, &#39;b&#39;])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">difference</span><span class="p">((</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">))</span>    <span class="c1"># doctest +SKIP</span>
-<span class="go">set([&#39;c&#39;])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="list-comprehensions">
-<h3><span class="section-number">1.3.6. </span>List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permalink to this headline">¶</a></h3>
-<p>Instead of creating a list by means of a loop, one can make use
-of a list comprehension with a rather self-explaining syntax.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
-<span class="go">[0, 1, 4, 9]</span>
-</pre></div>
-</div>
+여기서는 자료형과 함수 이름을 구분하기 위해
+함수는 <code class="docutils literal notranslate"><span class="pre">int()</span></code>, <code class="docutils literal notranslate"><span class="pre">float()</span></code>, <code class="docutils literal notranslate"><span class="pre">str()</span></code>, <code class="docutils literal notranslate"><span class="pre">list()</span></code> 등처럼
+함수 이름과 괄호를 함께 사용하는 표기법 관행을 따른다.</p>
 </div>
 </div>
 </div>
@@ -1512,7 +802,7 @@ of a list comprehension with a rather self-explaining syntax.</p>
     <a class='right-next' id="next-link" href="ch02.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>기본 명령문</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>모음 자료형 1편</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

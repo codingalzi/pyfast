@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6. 예외 처리 &#8212; 파이썬 프로그래밍 특강</title>
+    <title>6. 모듈과 패키지 &#8212; 파이썬 프로그래밍 특강</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -38,12 +38,9 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -55,8 +52,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="7. 객체 지향 프로그래밍(OOP)" href="ch07.html" />
-    <link rel="prev" title="5. 입력과 출력" href="ch05.html" />
+    <link rel="next" title="7. 입력과 출력" href="ch07.html" />
+    <link rel="prev" title="5. 함수" href="ch05.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -103,32 +100,42 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch02.html">
-   2. 기본 명령문
+   2. 모음 자료형 1편
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch03.html">
-   3. 함수
+   3. 모음 자료형 2편
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch04.html">
-   4. 모듈과 패키지
+   4. 명령문
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch05.html">
-   5. 입력과 출력
+   5. 함수
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   6. 예외 처리
+   6. 모듈과 패키지
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch07.html">
-   7. 객체 지향 프로그래밍(OOP)
+   7. 입력과 출력
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ch08.html">
+   8. 예외 처리
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ch09.html">
+   9. 객체 지향 프로그래밍(OOP)
   </a>
  </li>
 </ul>
@@ -236,35 +243,42 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exceptions">
-   6.1. Exceptions
+  <a class="reference internal nav-link" href="#scripts">
+   6.1. Scripts
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#catching-exceptions">
-   6.2. Catching exceptions
+  <a class="reference internal nav-link" href="#importing-objects-from-modules">
+   6.2. Importing objects from modules
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#try-except">
-     6.2.1. try/except
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#try-finally">
-     6.2.2. try/finally
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#easier-to-ask-for-forgiveness-than-for-permission">
-     6.2.3. Easier to ask for forgiveness than for permission
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#raising-exceptions">
-   6.3. Raising exceptions
+  <a class="reference internal nav-link" href="#creating-modules">
+   6.3. Creating modules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#main-and-module-loading">
+   6.4. ‘
+   <strong>
+    main
+   </strong>
+   ’ and module loading
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scripts-or-modules-how-to-organize-your-code">
+   6.5. Scripts or modules? How to organize your code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#packages">
+   6.6. Packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#good-practices">
+   6.7. Good practices
   </a>
  </li>
 </ul>
@@ -277,7 +291,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>예외 처리</h1>
+                <h1>모듈과 패키지</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -288,35 +302,42 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exceptions">
-   6.1. Exceptions
+  <a class="reference internal nav-link" href="#scripts">
+   6.1. Scripts
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#catching-exceptions">
-   6.2. Catching exceptions
+  <a class="reference internal nav-link" href="#importing-objects-from-modules">
+   6.2. Importing objects from modules
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#try-except">
-     6.2.1. try/except
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#try-finally">
-     6.2.2. try/finally
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#easier-to-ask-for-forgiveness-than-for-permission">
-     6.2.3. Easier to ask for forgiveness than for permission
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#raising-exceptions">
-   6.3. Raising exceptions
+  <a class="reference internal nav-link" href="#creating-modules">
+   6.3. Creating modules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#main-and-module-loading">
+   6.4. ‘
+   <strong>
+    main
+   </strong>
+   ’ and module loading
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scripts-or-modules-how-to-organize-your-code">
+   6.5. Scripts or modules? How to organize your code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#packages">
+   6.6. Packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#good-practices">
+   6.7. Good practices
   </a>
  </li>
 </ul>
@@ -329,158 +350,448 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">6. </span>예외 처리<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>It is likely that you have raised Exceptions if you have
-typed all the previous commands of the tutorial. For example, you may
-have raised an exception if you entered a command with a typo.</p>
-<p>Exceptions are raised by different kinds of errors arising when executing
-Python code. In your own code, you may also catch errors, or define custom
-error types. You may want to look at the descriptions of the
-<a class="reference external" href="https://docs.python.org/2/library/exceptions.html">the built-in Exceptions</a>
-when looking for the right exception type.</p>
-<div class="section" id="exceptions">
-<h2><span class="section-number">6.1. </span>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
-<p>Exceptions are raised by errors in Python:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
-<span class="o">---------------------------------------------------------------------------</span>
-<span class="ne">ZeroDivisionError</span><span class="p">:</span> <span class="n">integer</span> <span class="n">division</span> <span class="ow">or</span> <span class="n">modulo</span> <span class="n">by</span> <span class="n">zero</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="mi">1</span> <span class="o">+</span> <span class="s1">&#39;e&#39;</span>
-<span class="o">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="p">:</span> <span class="n">unsupported</span> <span class="n">operand</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="o">+</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span> <span class="ow">and</span> <span class="s1">&#39;str&#39;</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">d</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-<span class="o">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="p">:</span> <span class="mi">3</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">l</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
-<span class="o">---------------------------------------------------------------------------</span>
-<span class="ne">IndexError</span><span class="p">:</span> <span class="nb">list</span> <span class="n">index</span> <span class="n">out</span> <span class="n">of</span> <span class="nb">range</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">l</span><span class="o">.</span><span class="n">foobar</span>
-<span class="o">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="p">:</span> <span class="s1">&#39;list&#39;</span> <span class="nb">object</span> <span class="n">has</span> <span class="n">no</span> <span class="n">attribute</span> <span class="s1">&#39;foobar&#39;</span>
+<h1><span class="section-number">6. </span>모듈과 패키지<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>For now, we have typed all instructions in the interpreter. For longer
+sets of instructions we need to change track and write the code in text
+files (using a text editor), that we will call either <em>scripts</em> or
+<em>modules</em>. Use your favorite text editor (provided it offers syntax
+highlighting for Python), or the editor that comes with the Scientific
+Python Suite you may be using.</p>
+<div class="section" id="scripts">
+<h2><span class="section-number">6.1. </span>Scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h2>
+<p>Let us first write a <em>script</em>, that is a file with a sequence of
+instructions that are executed each time the script is called.
+Instructions may be e.g. copied-and-pasted from the interpreter (but
+take care to respect indentation rules!).</p>
+<p>The extension for Python files is <code class="docutils literal notranslate"><span class="pre">.py</span></code>. Write or copy-and-paste the
+following lines in a file called <code class="docutils literal notranslate"><span class="pre">test.py</span></code> ::</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Hello how are you?&quot;</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>As you can see, there are <strong>different types</strong> of exceptions for different errors.</p>
-</div>
-<div class="section" id="catching-exceptions">
-<h2><span class="section-number">6.2. </span>Catching exceptions<a class="headerlink" href="#catching-exceptions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="try-except">
-<h3><span class="section-number">6.2.1. </span>try/except<a class="headerlink" href="#try-except" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>In [10]: while True:
-   ....:     try:
-   ....:         x = int(raw_input(&#39;Please enter a number: &#39;))
-   ....:         break
-   ....:     except ValueError:
-   ....:         print(&#39;That was no valid number.  Try again...&#39;)
-   ....: 
-Please enter a number: a
-That was no valid number.  Try again...
-Please enter a number: 1
+<p>Let us now execute the script interactively, that is inside the
+Ipython interpreter. This is maybe the most common use of scripts in
+scientific computing.</p>
+<p><strong>Note</strong></p>
+<p>in Ipython, the syntax to execute a script is <code class="docutils literal notranslate"><span class="pre">%run</span> <span class="pre">script.py</span></code>. For
+example,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>In [1]: %run test.py
+Hello
+how
+are
+you?
 
-In [9]: x
-Out[9]: 1
-```python
+In [2]: message
+Out[2]: &#39;Hello how are you?&#39;
+</pre></div>
+</div>
+<p>The script has been executed. Moreover the variables defined in the
+script (such as <code class="docutils literal notranslate"><span class="pre">message</span></code>) are now available inside the interpreter’s
+namespace.</p>
+<p>Other interpreters also offer the possibility to execute scripts
+(e.g., <code class="docutils literal notranslate"><span class="pre">execfile</span></code> in the plain Python interpreter, etc.).</p>
+<p>It is also possible In order to execute this script as a <em>standalone
+program</em>, by executing the script inside a shell terminal (Linux/Mac
+console or cmd Windows console). For example, if we are in the same
+directory as the <a class="reference external" href="http://test.py">test.py</a> file, we can execute this in a console:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python test.py
+Hello
+how
+are
+you?
+</pre></div>
+</div>
+<p>Standalone scripts may also take command-line arguments</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">file.py</span></code>::</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python file.py <span class="nb">test</span> arguments
+<span class="o">[</span><span class="s1">&#39;file.py&#39;</span>, <span class="s1">&#39;test&#39;</span>, <span class="s1">&#39;arguments&#39;</span><span class="o">]</span>
+</pre></div>
+</div>
+<p><strong>Warning</strong></p>
+<p>Don’t implement option parsing yourself. Use a dedicated module such as
+<code class="docutils literal notranslate"><span class="pre">argparse</span></code>.</p>
+</div>
+<div class="section" id="importing-objects-from-modules">
+<h2><span class="section-number">6.2. </span>Importing objects from modules<a class="headerlink" href="#importing-objects-from-modules" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">os</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;os&#39;</span> <span class="kn">from</span> <span class="s1">&#39;/usr/lib/python2.6/os.pyc&#39;</span><span class="o">&gt;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span>
+<span class="p">[</span><span class="s1">&#39;conf.py&#39;</span><span class="p">,</span>
+<span class="s1">&#39;basic_types.rst&#39;</span><span class="p">,</span>
+<span class="s1">&#39;control_flow.rst&#39;</span><span class="p">,</span>
+<span class="s1">&#39;functions.rst&#39;</span><span class="p">,</span>
+<span class="s1">&#39;python_language.rst&#39;</span><span class="p">,</span>
+<span class="s1">&#39;reusing.rst&#39;</span><span class="p">,</span>
+<span class="s1">&#39;file_io.rst&#39;</span><span class="p">,</span>
+<span class="s1">&#39;exceptions.rst&#39;</span><span class="p">,</span>
+<span class="s1">&#39;workflow.rst&#39;</span><span class="p">,</span>
+<span class="s1">&#39;index.rst&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>And also:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">listdir</span>
+</pre></div>
+</div>
+<p>Importing shorthands:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<p><strong>Warning</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>This is called the <em>star import</em> and please, <strong>Do not use it</strong></p>
+<ul class="simple">
+<li><p>Makes the code harder to read and understand: where do symbols come
+from?</p></li>
+<li><p>Makes it impossible to guess the functionality by the context and
+the name (hint: <code class="docutils literal notranslate"><span class="pre">os.name</span></code> is the name of the OS), and to profit
+usefully from tab completion.</p></li>
+<li><p>Restricts the variable names you can use: <code class="docutils literal notranslate"><span class="pre">os.name</span></code> might override
+<code class="docutils literal notranslate"><span class="pre">name</span></code>, or vise-versa.</p></li>
+<li><p>Creates possible name clashes between modules.</p></li>
+<li><p>Makes the code impossible to statically check for undefined
+symbols.</p></li>
+</ul>
+<p>Modules are thus a good way to organize code in a hierarchical way. Actually,
+all the scientific computing tools we are going to use are modules::</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1"># data arrays</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">array([  0.,   2.,   4.,   6.,   8.,  10.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scipy</span> <span class="c1"># scientific computing</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="try-finally">
-<h3><span class="section-number">6.2.2. </span>try/finally<a class="headerlink" href="#try-finally" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="k">try</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>     <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">raw_input</span><span class="p">(</span><span class="s1">&#39;Please enter a number: &#39;</span><span class="p">))</span>
-   <span class="o">....</span><span class="p">:</span> <span class="k">finally</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Thank you for your input&#39;</span><span class="p">)</span>
-   <span class="o">....</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>
-<span class="n">Please</span> <span class="n">enter</span> <span class="n">a</span> <span class="n">number</span><span class="p">:</span> <span class="n">a</span>
-<span class="n">Thank</span> <span class="n">you</span> <span class="k">for</span> <span class="n">your</span> <span class="nb">input</span>
-<span class="o">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">literal</span> <span class="k">for</span> <span class="nb">int</span><span class="p">()</span> <span class="k">with</span> <span class="n">base</span> <span class="mi">10</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span>
+<div class="section" id="creating-modules">
+<h2><span class="section-number">6.3. </span>Creating modules<a class="headerlink" href="#creating-modules" title="Permalink to this headline">¶</a></h2>
+<p>If we want to write larger and better organized programs (compared to
+simple scripts), where some objects are defined, (variables,
+functions, classes) and that we want to reuse several times, we have
+to create our own <em>modules</em>.</p>
+<p>Let us create a module <code class="docutils literal notranslate"><span class="pre">demo</span></code> contained in the file <code class="docutils literal notranslate"><span class="pre">demo.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;A demo module.&quot;</span>
+
+<span class="k">def</span> <span class="nf">print_b</span><span class="p">():</span>
+    <span class="s2">&quot;Prints b.&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">print_a</span><span class="p">():</span>
+    <span class="s2">&quot;Prints a.&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+    
+<span class="n">c</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<p>Important for resource management (e.g. closing a file)</p>
+<p>In this file, we defined two functions <code class="docutils literal notranslate"><span class="pre">print_a</span></code> and <code class="docutils literal notranslate"><span class="pre">print_b</span></code>. Suppose
+we want to call the <code class="docutils literal notranslate"><span class="pre">print_a</span></code> function from the interpreter. We could
+execute the file as a script, but since we just want to have access to
+the function <code class="docutils literal notranslate"><span class="pre">print_a</span></code>, we are rather going to <strong>import it as a module</strong>.
+The syntax is as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">demo</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">demo</span><span class="o">.</span><span class="n">print_a</span><span class="p">()</span>
+<span class="n">a</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">demo</span><span class="o">.</span><span class="n">print_b</span><span class="p">()</span>
+<span class="n">b</span>
+</pre></div>
 </div>
-<div class="section" id="easier-to-ask-for-forgiveness-than-for-permission">
-<h3><span class="section-number">6.2.3. </span>Easier to ask for forgiveness than for permission<a class="headerlink" href="#easier-to-ask-for-forgiveness-than-for-permission" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="k">def</span> <span class="nf">print_sorted</span><span class="p">(</span><span class="n">collection</span><span class="p">):</span>
-   <span class="o">....</span><span class="p">:</span>     <span class="k">try</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>         <span class="n">collection</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-   <span class="o">....</span><span class="p">:</span>     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>         <span class="k">pass</span> <span class="c1"># The pass statement does nothing</span>
-   <span class="o">....</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="n">collection</span><span class="p">)</span>
-   <span class="o">....</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>
+<p>Importing the module gives access to its objects, using the
+<code class="docutils literal notranslate"><span class="pre">module.object</span></code> syntax. Don’t forget to put the module’s name before the
+object’s name, otherwise Python won’t recognize the instruction.</p>
+<p>Introspection</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>In [4]: demo?
+Type:               module
+Base Class: &lt;type &#39;module&#39;&gt;
+String Form:        &lt;module &#39;demo&#39; from &#39;demo.py&#39;&gt;
+Namespace:  Interactive
+File:               /home/varoquau/Projects/Python_talks/scipy_2009_tutorial/source/demo.py
+Docstring:
+A demo module.
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="n">print_sorted</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="n">print_sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
-<span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+In [5]: who
+demo
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="n">print_sorted</span><span class="p">(</span><span class="s1">&#39;132&#39;</span><span class="p">)</span>
-<span class="mi">132</span>
+In [6]: whos
+Variable   Type      Data/Info
+------------------------------
+demo       module    &lt;module &#39;demo&#39; from &#39;demo.py&#39;&gt;
+
+In [7]: dir(demo)
+Out[7]:
+[&#39;__builtins__&#39;,
+&#39;__doc__&#39;,
+&#39;__file__&#39;,
+&#39;__name__&#39;,
+&#39;__package__&#39;,
+&#39;c&#39;,
+&#39;d&#39;,
+&#39;print_a&#39;,
+&#39;print_b&#39;]
+
+
+In [8]: demo.&lt;TAB&gt;
+demo.c        demo.print_a  demo.py       
+demo.d        demo.print_b  demo.pyc      
+</pre></div>
+</div>
+<p>Importing objects from modules into the main namespace</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">demo</span> <span class="kn">import</span> <span class="n">print_a</span><span class="p">,</span> <span class="n">print_b</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">whos</span>
+<span class="n">Variable</span>   <span class="n">Type</span>        <span class="n">Data</span><span class="o">/</span><span class="n">Info</span>
+<span class="o">--------------------------------</span>
+<span class="n">demo</span>       <span class="n">module</span>      <span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;demo&#39;</span> <span class="kn">from</span> <span class="s1">&#39;demo.py&#39;</span><span class="o">&gt;</span>
+<span class="n">print_a</span>    <span class="n">function</span>    <span class="o">&lt;</span><span class="n">function</span> <span class="n">print_a</span> <span class="n">at</span> <span class="mh">0xb7421534</span><span class="o">&gt;</span>
+<span class="n">print_b</span>    <span class="n">function</span>    <span class="o">&lt;</span><span class="n">function</span> <span class="n">print_b</span> <span class="n">at</span> <span class="mh">0xb74214c4</span><span class="o">&gt;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">print_a</span><span class="p">()</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+<p><strong>Warning</strong>: <strong>Module caching</strong></p>
+<p>Modules are cached: if you modify <code class="docutils literal notranslate"><span class="pre">demo.py</span></code> and re-import it in the
+old session, you will get the old one.</p>
+<p>Solution:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">reload</span><span class="p">(</span><span class="n">demo</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In Python3 instead <code class="docutils literal notranslate"><span class="pre">reload</span></code> is not builtin, so you have to import the <code class="docutils literal notranslate"><span class="pre">importlib</span></code> module first and then do:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">demo</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="section" id="main-and-module-loading">
+<h2><span class="section-number">6.4. </span>‘<strong>main</strong>’ and module loading<a class="headerlink" href="#main-and-module-loading" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes we want code to be executed when a module is
+run directly, but not when it is imported by another module.
+<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__'</span></code> allows us to check whether the
+module is being run directly.</p>
+<p>File <code class="docutils literal notranslate"><span class="pre">demo2.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_b</span><span class="p">():</span>
+    <span class="s2">&quot;Prints b.&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">print_a</span><span class="p">():</span>
+    <span class="s2">&quot;Prints a.&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+    
+<span class="c1"># print_b() runs on import</span>
+<span class="n">print_b</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># print_a() is only executed when the module is run directly.</span>
+    <span class="n">print_a</span><span class="p">()</span>
+</pre></div>
 </div>
-<div class="section" id="raising-exceptions">
-<h2><span class="section-number">6.3. </span>Raising exceptions<a class="headerlink" href="#raising-exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Importing it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">demo2</span>
+<span class="n">b</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">demo2</span>
+</pre></div>
+</div>
+<p>Running it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="o">%</span><span class="n">run</span> <span class="n">demo2</span>
+<span class="n">b</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="scripts-or-modules-how-to-organize-your-code">
+<h2><span class="section-number">6.5. </span>Scripts or modules? How to organize your code<a class="headerlink" href="#scripts-or-modules-how-to-organize-your-code" title="Permalink to this headline">¶</a></h2>
+<p><strong>Note</strong> Rule of thumb</p>
+<ul class="simple">
+<li><p>Sets of instructions that are called several times should be
+written inside <strong>functions</strong> for better code reusability.</p></li>
+<li><p>Functions (or other bits of code) that are called from several
+scripts should be written inside a <strong>module</strong>, so that only the
+module is imported in the different scripts (do not copy-and-paste
+your functions in the different scripts!).</p></li>
+</ul>
+<p><strong>How modules are found and imported</strong></p>
+<p>When the <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">mymodule</span></code> statement is executed, the module <code class="docutils literal notranslate"><span class="pre">mymodule</span></code>
+is searched in a given list of directories. This list includes a list
+of installation-dependent default path (e.g., <code class="docutils literal notranslate"><span class="pre">/usr/lib/python</span></code>) as
+well as the list of directories specified by the environment variable
+<code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>.</p>
+<p>The list of directories searched by Python is given by the <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>
+variable</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> 
+<span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="s1">&#39;/home/varoquau/.local/bin&#39;</span><span class="p">,</span>
+<span class="s1">&#39;/usr/lib/python2.7&#39;</span><span class="p">,</span>
+<span class="s1">&#39;/home/varoquau/.local/lib/python2.7/site-packages&#39;</span><span class="p">,</span>
+<span class="s1">&#39;/usr/lib/python2.7/dist-packages&#39;</span><span class="p">,</span>
+<span class="s1">&#39;/usr/local/lib/python2.7/dist-packages&#39;</span><span class="p">,</span>
+<span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Modules must be located in the search path, therefore you can:</p>
 <ul>
-<li><p>Capturing and reraising an exception:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="k">def</span> <span class="nf">filter_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-   <span class="o">....</span><span class="p">:</span>	<span class="k">try</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>	    <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
-   <span class="o">....</span><span class="p">:</span>	<span class="k">except</span> <span class="ne">UnicodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>	    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Gaël&#39;</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>		<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;OK, Gaël&#39;</span><span class="p">)</span>
-   <span class="o">....</span><span class="p">:</span>	    <span class="k">else</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>		<span class="k">raise</span> <span class="n">e</span>
-   <span class="o">....</span><span class="p">:</span>	<span class="k">return</span> <span class="n">name</span>
-   <span class="o">....</span><span class="p">:</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="n">filter_name</span><span class="p">(</span><span class="s1">&#39;Gaël&#39;</span><span class="p">)</span>
-<span class="n">OK</span><span class="p">,</span> <span class="n">Gaël</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="s1">&#39;Ga</span><span class="se">\xc3\xab</span><span class="s1">l&#39;</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="n">filter_name</span><span class="p">(</span><span class="s1">&#39;Stéfan&#39;</span><span class="p">)</span>
-<span class="o">---------------------------------------------------------------------------</span>
-<span class="ne">UnicodeDecodeError</span><span class="p">:</span> <span class="s1">&#39;ascii&#39;</span> <span class="n">codec</span> <span class="n">can</span><span class="s1">&#39;t decode byte 0xc3 in position 2: ordinal not in range(128)</span>
+<li><p>write your own modules within directories already defined in the
+search path (e.g. <code class="docutils literal notranslate"><span class="pre">$HOME/.local/lib/python2.7/dist-packages</span></code>). You
+may use symbolic links (on Linux) to keep the code somewhere else.</p></li>
+<li><p>modify the environment variable <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> to include the
+directories containing the user-defined modules.</p>
+<p>On Linux/Unix, add the following line to a file read by the shell at
+startup (e.g. /etc/profile, .profile)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:/home/emma/user_defined_modules
 </pre></div>
 </div>
+<p>On Windows, <a class="reference external" href="http://support.microsoft.com/kb/310519">http://support.microsoft.com/kb/310519</a> explains how to
+handle environment variables.</p>
+</li>
+<li><p>or modify the <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> variable itself within a Python script.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">new_path</span> <span class="o">=</span> <span class="s1">&#39;/home/emma/user_defined_modules&#39;</span>
+<span class="k">if</span> <span class="n">new_path</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This method is not very robust, however, because it makes the code
+less portable (user-dependent path) and because you have to add the
+directory to your sys.path each time you want to import from a module
+in this directory.</p>
 </li>
 </ul>
-<ul>
-<li><p>Exceptions to pass messages between parts of the code:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="k">def</span> <span class="nf">achilles_arrow</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-   <span class="o">....</span><span class="p">:</span>    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-3</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>        <span class="k">raise</span> <span class="ne">StopIteration</span>
-   <span class="o">....</span><span class="p">:</span>    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span>
-   <span class="o">....</span><span class="p">:</span>    <span class="k">return</span> <span class="n">x</span>
-   <span class="o">....</span><span class="p">:</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>     <span class="k">try</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>         <span class="n">x</span> <span class="o">=</span> <span class="n">achilles_arrow</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-   <span class="o">....</span><span class="p">:</span>     <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>         <span class="k">break</span>
-   <span class="o">....</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="n">x</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="mf">0.9990234375</span>
+</div>
+<div class="section" id="packages">
+<h2><span class="section-number">6.6. </span>Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h2>
+<p>A directory that contains many modules is called a <em>package</em>. A package
+is a module with submodules (which can have submodules themselves, etc.).
+A special file called <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> (which may be empty) tells Python
+that the directory is a Python package, from which modules can be
+imported.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls
+cluster/        io/          README.txt@     stsci/
+__config__.py@  LATEST.txt@  setup.py@       __svn_version__.py@
+__config__.pyc  lib/         setup.pyc       __svn_version__.pyc
+constants/      linalg/      setupscons.py@  THANKS.txt@
+fftpack/        linsolve/    setupscons.pyc  TOCHANGE.txt@
+__init__.py@    maxentropy/  signal/         version.py@
+__init__.pyc    misc/        sparse/         version.pyc
+INSTALL.txt@    ndimage/     spatial/        weave/
+integrate/      odr/         special/
+interpolate/    optimize/    stats/
+$ <span class="nb">cd</span> ndimage
+$ ls
+doccer.py@   fourier.pyc   interpolation.py@  morphology.pyc   setup.pyc
+doccer.pyc   info.py@      interpolation.pyc  _nd_image.so
+setupscons.py@
+filters.py@  info.pyc      measurements.py@   _ni_support.py@
+setupscons.pyc
+filters.pyc  __init__.py@  measurements.pyc   _ni_support.pyc  tests/
+fourier.py@  __init__.pyc  morphology.py@     setup.py@
 </pre></div>
 </div>
+<p>From Ipython:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>In [1]: import scipy
+
+In [2]: scipy.__file__
+Out[2]: &#39;/usr/lib/python2.6/dist-packages/scipy/__init__.pyc&#39;
+
+In [3]: import scipy.version
+
+In [4]: scipy.version.version
+Out[4]: &#39;0.7.0&#39;
+
+In [5]: import scipy.ndimage.morphology
+
+In [6]: from scipy.ndimage import morphology
+
+In [17]: morphology.binary_dilation?
+Type:           function
+Base Class:     &lt;type &#39;function&#39;&gt;
+String Form:    &lt;function binary_dilation at 0x9bedd84&gt;
+Namespace:      Interactive
+File:           /usr/lib/python2.6/dist-packages/scipy/ndimage/morphology.py
+Definition:     morphology.binary_dilation(input, structure=None,
+iterations=1, mask=None, output=None, border_value=0, origin=0,
+brute_force=False)
+Docstring:
+Multi-dimensional binary dilation with the given structure.
+
+An output array can optionally be provided. The origin parameter
+controls the placement of the filter. If no structuring element is
+provided an element is generated with a squared connectivity equal
+to one. The dilation operation is repeated iterations times.  If
+iterations is less than 1, the dilation is repeated until the
+result does not change anymore.  If a mask is given, only those
+elements with a true value at the corresponding mask element are
+modified at each iteration.
+</pre></div>
+</div>
+</div>
+<div class="section" id="good-practices">
+<h2><span class="section-number">6.7. </span>Good practices<a class="headerlink" href="#good-practices" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Use <strong>meaningful</strong> object <strong>names</strong></p></li>
+</ul>
+<ul>
+<li><p><strong>Indentation: no choice!</strong></p>
+<p>Indenting is compulsory in Python! Every command block following a
+colon bears an additional indentation level with respect to the
+previous line with a colon. One must therefore indent after
+<code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">f():</span></code> or <code class="docutils literal notranslate"><span class="pre">while:</span></code>. At the end of such logical blocks, one
+decreases the indentation depth (and re-increases it if a new block
+is entered, etc.)</p>
+<p>Strict respect of indentation is the price to pay for getting rid of
+<code class="docutils literal notranslate"><span class="pre">{</span></code> or <code class="docutils literal notranslate"><span class="pre">;</span></code> characters that delineate logical blocks in other
+languages. Improper indentation leads to errors such as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">------------------------------------------------------------</span>
+<span class="ne">IndentationError</span><span class="p">:</span> <span class="n">unexpected</span> <span class="n">indent</span> <span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">py</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>All this indentation business can be a bit confusing in the
+beginning. However, with the clear indentation, and in the absence of
+extra characters, the resulting code is very nice to read compared to
+other languages.</p>
 </li>
 </ul>
-<p>Use exceptions to notify certain conditions are met (e.g.
-StopIteration) or not (e.g. custom error raising)</p>
+<ul class="simple">
+<li><p><strong>Indentation depth</strong>: Inside your text editor, you may choose to
+indent with any positive number of spaces (1, 2, 3, 4, …). However,
+it is considered good practice to <strong>indent with 4 spaces</strong>. You may
+configure your editor to map the <code class="docutils literal notranslate"><span class="pre">Tab</span></code> key to a 4-space
+indentation.</p></li>
+</ul>
+<ul>
+<li><p><strong>Style guidelines</strong></p>
+<p><strong>Long lines</strong>: you should not write very long lines that span over more
+than (e.g.) 80 characters. Long lines can be broken with the <code class="docutils literal notranslate"><span class="pre">\</span></code>
+character ::</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">long_line</span> <span class="o">=</span> <span class="s2">&quot;Here is a very very long line </span><span class="se">\</span>
+<span class="gp">... </span><span class="s2">that we break in two parts.&quot;</span>
+</pre></div>
+</div>
+<p><strong>Spaces</strong></p>
+<p>Write well-spaced code: put whitespaces after commas, around arithmetic
+operators, etc.::</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># yes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="mi">1</span> <span class="c1"># too cramped</span>
+</pre></div>
+</div>
+<p>A certain number of rules
+for writing “beautiful” code (and more importantly using the same
+conventions as anybody else!) are given in the
+<a class="reference external" href="https://www.python.org/dev/peps/pep-0008">Style Guide for Python Code</a>.</p>
+</li>
+</ul>
 </div>
 </div>
 
@@ -513,13 +824,13 @@ StopIteration) or not (e.g. custom error raising)</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">5. </span>입력과 출력</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>함수</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="ch07.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>객체 지향 프로그래밍(OOP)</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>입력과 출력</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

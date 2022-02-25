@@ -1,346 +1,374 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 입력과 출력
+# # 함수
 
-# To be exhaustive, here are some information about input and output in
-# Python. Since we will use the Numpy methods to read and write files,
-# **you may skip this chapter at first reading**.
+# ## Function definition
 
-# We write or read **strings** to/from files (other types must be converted to
-# strings). To write in a file::
-# 
 # ```python
-# >>> f = open('workfile', 'w') # opens the workfile file
-# >>> type(f)    # doctest: +SKIP 
-# <type 'file'>
-# >>> f.write('This is a test \nand another test')   # doctest: +SKIP 
-# >>> f.close()
+# In [56]: def test():
+#    ....:     print('in test function')
+#    ....:
+#    ....:
+# 
+# In [57]: test()
+# in test function
 # ```
 
-# To read from a file
+# **Warning**
 # 
-# ```python
-# In [1]: f = open('workfile', 'r')
-# 
-# In [2]: s = f.read()
-# 
-# In [3]: print(s)
-# This is a test 
-# and another test
-# 
-# In [4]: f.close()
-# ```
+# Function blocks must be indented as other control-flow blocks.
 
-# ## Iterating over a file
+# ## Return statement
+
+# Functions can *optionally* return values.
 
 # ```python
-# In [6]: f = open('workfile', 'r')
-# 
-# In [7]: for line in f:
-#    ...:     print(line)
+# In [6]: def disk_area(radius):
+#    ...:     return 3.14 * radius * radius
 #    ...:
-# This is a test 
 # 
-# and another test
-# 
-# In [8]: f.close()
+# In [8]: disk_area(1.5)
+# Out[8]: 7.0649999999999995
 # ```
 
-# **File modes**
+# **Note** By default, functions return ``None``.
+
+# **Note** Note the syntax to define a function:
 # 
-# * Read-only: `r`
-# * Write-only: `w`
-#     * Note: Create a new file or *overwrite* existing file.
-# * Append a file: `a`
-# * Read and Write: `r+`
-# * Binary mode: `b`
-#     * Note: Use for binary files, especially on Windows.
+# * the `def` keyword;
+# * is followed by the function's **name**, then
+# * the arguments of the function are given between parentheses followed
+#   by a colon.
+# * the function body;
+# * and `return object` for optionally returning values.
 
-# ## Standard Library
+# ## Parameters
 
-# **Note**: Reference document for this section:
-# 
-# * The Python Standard Library documentation: https://docs.python.org/library/index.html
-# 
-# * Python Essential Reference, David Beazley, ddison-Wesley Professional
-
-# ### `os` module: operating system functionality
-
-# *"A portable way of using operating system dependent functionality."*
-
-# #### Directory and file manipulation
-
-# Current directory:
+# Mandatory parameters (positional arguments)
 # 
 # ```python
-# In [17]: os.getcwd()
-# Out[17]: '/Users/cburns/src/scipy2009/scipy_2009_tutorial/source'
+# In [81]: def double_it(x):
+#    ....:     return x * 2
+#    ....:
+# 
+# In [82]: double_it(3)
+# Out[82]: 6
+# 
+# In [83]: double_it()
+# ---------------------------------------------------------------------------
+# Traceback (most recent call last):
+#   File "<stdin>", line 1, in <module>
+# TypeError: double_it() takes exactly 1 argument (0 given)
 # ```
 
-# List a directory:
+# Optional parameters (keyword or named arguments)
 # 
 # ```python
-# In [31]: os.listdir(os.curdir)
-# Out[31]:
-# ['.index.rst.swo',
-#  '.python_language.rst.swp',
-#  '.view_array.py.swp',
-#  '_static',
-#  '_templates',
-#  'basic_types.rst',
-#  'conf.py',
-#  'control_flow.rst',
-#  'debugging.rst',
-#  ...
+# In [84]: def double_it(x=2):
+#    ....:     return x * 2
+#    ....:
+# 
+# In [85]: double_it()
+# Out[85]: 4
+# 
+# In [86]: double_it(3)
+# Out[86]: 6
 # ```
 
-# Make a directory:
+# Keyword arguments allow you to specify *default values*.
+
+# **Warning**
+# 
+# Default values are evaluated when the function is defined, not when
+# it is called. This can be problematic when using mutable types (e.g.
+# dictionary or list) and modifying them in the function body, since the
+# modifications will be persistent across invocations of the function.
+# 
+# Using an immutable type in a keyword argument:
 # 
 # ```python
-# In [32]: os.mkdir('junkdir')
+# In [124]: bigx = 10
 # 
-# In [33]: 'junkdir' in os.listdir(os.curdir)
-# Out[33]: True
+# In [125]: def double_it(x=bigx):
+#   .....:     return x * 2
+#   .....:
+# 
+# In [126]: bigx = 1e9  # Now really big
+# 
+# In [128]: double_it()
+# Out[128]: 20
+# ```
+# 
+# Using an mutable type in a keyword argument (and modifying it inside the
+# function body):
+# 
+# ```python
+# In [2]: def add_to_dict(args={'a': 1, 'b': 2}):
+#   ...:     for i in args.keys():
+#   ...:         args[i] += 1
+#   ...:     print(args)
+#   ...:
+# 
+# In [3]: add_to_dict
+# Out[3]: <function __main__.add_to_dict>
+# 
+# In [4]: add_to_dict()
+# {'a': 2, 'b': 3}
+# 
+# In [5]: add_to_dict()
+# {'a': 3, 'b': 4}
+# 
+# In [6]: add_to_dict()
+# {'a': 4, 'b': 5}
 # ```
 
-# Rename the directory:
-# 
+# More involved example implementing python's slicing:
+
 # ```python
-# In [36]: os.rename('junkdir', 'foodir')
+# In [98]: def slicer(seq, start=None, stop=None, step=None):
+#    ....:     """Implement basic python slicing."""
+#    ....:     return seq[start:stop:step]
+#    ....:
 # 
-# In [37]: 'junkdir' in os.listdir(os.curdir)
-# Out[37]: False
+# In [101]: rhyme = 'one fish, two fish, red fish, blue fish'.split()
 # 
-# In [38]: 'foodir' in os.listdir(os.curdir)
-# Out[38]: True
+# In [102]: rhyme
+# Out[102]: ['one', 'fish,', 'two', 'fish,', 'red', 'fish,', 'blue', 'fish']
 # 
-# In [41]: os.rmdir('foodir')
+# In [103]: slicer(rhyme)
+# Out[103]: ['one', 'fish,', 'two', 'fish,', 'red', 'fish,', 'blue', 'fish']
 # 
-# In [42]: 'foodir' in os.listdir(os.curdir)
-# Out[42]: False
+# In [104]: slicer(rhyme, step=2)
+# Out[104]: ['one', 'two', 'red', 'blue']
+# 
+# In [105]: slicer(rhyme, 1, step=2)
+# Out[105]: ['fish,', 'fish,', 'fish,', 'fish']
+# 
+# In [106]: slicer(rhyme, start=1, stop=4, step=2)
+# Out[106]: ['fish,', 'fish,']
 # ```
 
-# Delete a file:
+# The order of the keyword arguments does not matter:
 # 
 # ```python
-# In [44]: fp = open('junk.txt', 'w')
-# 
-# In [45]: fp.close()
-# 
-# In [46]: 'junk.txt' in os.listdir(os.curdir)
-# Out[46]: True
-# 
-# In [47]: os.remove('junk.txt')
-# 
-# In [48]: 'junk.txt' in os.listdir(os.curdir)
-# Out[48]: False
+# In [107]: slicer(rhyme, step=2, start=1, stop=4)
+# Out[107]: ['fish,', 'fish,']
 # ```
+# 
+# but it is good practice to use the same ordering as the function's
+# definition.
 
-# #### `os.path`: path manipulations
+# *Keyword arguments* are a very convenient feature for defining functions
+# with a variable number of arguments, especially when default values are
+# to be used in most calls to the function.
 
-# `os.path` provides common operations on pathnames.
+# ## Passing by value
+
+# Can you modify the value of a variable inside a function? Most languages
+# (C, Java, ...) distinguish "passing by value" and "passing by reference".
+# In Python, such a distinction is somewhat artificial, and it is a bit
+# subtle whether your variables are going to be modified or not.
+# Fortunately, there exist clear rules.
+# 
+# Parameters to functions are references to objects, which are passed by
+# value. When you pass a variable to a function, python passes the
+# reference to the object to which the variable refers (the **value**).
+# Not the variable itself.
+
+# If the **value** passed in a function is immutable, the function does not
+# modify the caller's variable.  If the **value** is mutable, the function
+# may modify the caller's variable in-place::
 # 
 # ```python
-# In [70]: fp = open('junk.txt', 'w')
-# 
-# In [71]: fp.close()
-# 
-# In [72]: a = os.path.abspath('junk.txt')
-# 
-# In [73]: a
-# Out[73]: '/Users/cburns/src/scipy2009/scipy_2009_tutorial/source/junk.txt'
-# 
-# In [74]: os.path.split(a)
-# Out[74]: ('/Users/cburns/src/scipy2009/scipy_2009_tutorial/source',
-#           'junk.txt')
-# 
-# In [78]: os.path.dirname(a)
-# Out[78]: '/Users/cburns/src/scipy2009/scipy_2009_tutorial/source'
-# 
-# In [79]: os.path.basename(a)
-# Out[79]: 'junk.txt'
-# 
-# In [80]: os.path.splitext(os.path.basename(a))
-# Out[80]: ('junk', '.txt')
-# 
-# In [84]: os.path.exists('junk.txt')
-# Out[84]: True
-# 
-# In [86]: os.path.isfile('junk.txt')
-# Out[86]: True
-# 
-# In [87]: os.path.isdir('junk.txt')
-# Out[87]: False
-# 
-# In [88]: os.path.expanduser('~/local')
-# Out[88]: '/Users/cburns/local'
-# 
-# In [92]: os.path.join(os.path.expanduser('~'), 'local', 'bin')
-# Out[92]: '/Users/cburns/local/bin'
-# ```
-
-# #### Running an external command
-
-# ```python
-# In [8]: os.system('ls')
-# basic_types.rst   demo.py          functions.rst  python_language.rst  standard_library.rst
-# control_flow.rst  exceptions.rst   io.rst         python-logo.png
-# demo2.py          first_steps.rst  oop.rst        reusing_code.rst
-# ```
-
-# **Note**: Alternative to `os.system`
-# 
-# A noteworthy alternative to `os.system` is the 
-# [sh module](http://amoffat.github.com/sh/). 
-# Which provides much more convenient ways to
-# obtain the output, error stream and exit code of the external command.
-# 
-# ```python
-# In [20]: import sh
-# In [20]: com = sh.ls()
-# 
-# In [21]: print(com)
-# basic_types.rst   exceptions.rst   oop.rst              standard_library.rst
-# control_flow.rst  first_steps.rst  python_language.rst
-# demo2.py          functions.rst    python-logo.png
-# demo.py           io.rst           reusing_code.rst
-# 
-# In [22]: print(com.exit_code)
-# 0
-# In [23]: type(com)
-# Out[23]: sh.RunningCommand
-# ```
-
-# #### Walking a directory
-
-# `os.path.walk` generates a list of filenames in a directory tree.
-# 
-# ```python
-# In [10]: for dirpath, dirnames, filenames in os.walk(os.curdir):
-# ....:     for fp in filenames:
-# ....:         print(os.path.abspath(fp))
-# ....:
-# ....:
-# /Users/cburns/src/scipy2009/scipy_2009_tutorial/source/.index.rst.swo
-# /Users/cburns/src/scipy2009/scipy_2009_tutorial/source/.view_array.py.swp
-# /Users/cburns/src/scipy2009/scipy_2009_tutorial/source/basic_types.rst
-# /Users/cburns/src/scipy2009/scipy_2009_tutorial/source/conf.py
-# /Users/cburns/src/scipy2009/scipy_2009_tutorial/source/control_flow.rst
+# >>> def try_to_modify(x, y, z):
+# ...     x = 23
+# ...     y.append(42)
+# ...     z = [99] # new reference
+# ...     print(x)
+# ...     print(y)
+# ...     print(z)
 # ...
+# >>> a = 77    # immutable variable
+# >>> b = [99]  # mutable variable
+# >>> c = [28]
+# >>> try_to_modify(a, b, c)
+# 23
+# [99, 42]
+# [99]
+# >>> print(a)
+# 77
+# >>> print(b)
+# [99, 42]
+# >>> print(c)
+# [28]
 # ```
 
-# #### Environment variables:
+# Functions have a local variable table called a *local namespace*.
+# 
+# The variable `x` only exists within the function `try_to_modify`.
+
+# ## Global variables
+
+# Variables declared outside the function can be referenced within the
+# function:
 # 
 # ```python
-# In [9]: import os
+# In [114]: x = 5
 # 
-# In [11]: os.environ.keys()
-# Out[11]:
-# ['_',
-# 'FSLDIR',
-# 'TERM_PROGRAM_VERSION',
-# 'FSLREMOTECALL',
-# 'USER',
-# 'HOME',
-# 'PATH',
-# 'PS1',
-# 'SHELL',
-# 'EDITOR',
-# 'WORKON_HOME',
-# 'PYTHONPATH',
-# ...
+# In [115]: def addx(y):
+#    .....:     return x + y
+#    .....:
 # 
-# In [12]: os.environ['PYTHONPATH']
-# Out[12]: '.:/Users/cburns/src/utils:/Users/cburns/src/nitools:
-# /Users/cburns/local/lib/python2.5/site-packages/:
-# /usr/local/lib/python2.5/site-packages/:
-# /Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5'
-# 
-# In [16]: os.getenv('PYTHONPATH')
-# Out[16]: '.:/Users/cburns/src/utils:/Users/cburns/src/nitools:
-# /Users/cburns/local/lib/python2.5/site-packages/:
-# /usr/local/lib/python2.5/site-packages/:
-# /Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5'
+# In [116]: addx(10)
+# Out[116]: 15
 # ```
 
-# ### `shutil`: high-level file operations
-
-# The `shutil` provides useful file operations:
+# But these "global" variables cannot be modified within the function,
+# unless declared **global** in the function.
 # 
-# * `shutil.rmtree`: Recursively delete a directory tree.
-# * `shutil.move`: Recursively move a file or directory to another location.
-# * `shutil.copy`: Copy files or directories.
-
-# ### `glob`: Pattern matching on files
-# 
-# The `glob` module provides convenient file pattern matching.
-# 
-# Find all files ending in `.txt`:
+# This doesn't work:
 # 
 # ```python
-# In [18]: import glob
+# In [117]: def setx(y):
+#    .....:     x = y
+#    .....:     print('x is %d' % x)
+#    .....:
+#    .....:
 # 
-# In [19]: glob.glob('*.txt')
-# Out[19]: ['holy_grail.txt', 'junk.txt', 'newfile.txt']
+# In [118]: setx(10)
+# x is 10
+# 
+# In [120]: x
+# Out[120]: 5
 # ```
 
-# ### `sys` module: system-specific information
+# This works:
+# 
+# ```python
+# In [121]: def setx(y):
+#    .....:     global x
+#    .....:     x = y
+#    .....:     print('x is %d' % x)
+#    .....:
+#    .....:
+# 
+# In [122]: setx(10)
+# x is 10
+# 
+# In [123]: x
+# Out[123]: 10
+# ```
 
-# System-specific information related to the Python interpreter.
+# ## Variable number of parameters
+
+# Special forms of parameters:
 # 
-# * Which version of python are you running and where is it installed:
+# * `*args`: any number of positional arguments packed into a tuple
+# * `**kwargs`: any number of keyword arguments packed into a dictionary
 # 
-#     ```python
-#     In [117]: sys.platform
-#     Out[117]: 'darwin'
+# ```python
+# In [35]: def variable_args(*args, **kwargs):
+#    ....:     print('args is', args)
+#    ....:     print('kwargs is', kwargs)
+#    ....:
 # 
-#     In [118]: sys.version
-#     Out[118]: '2.5.2 (r252:60911, Feb 22 2008, 07:57:53) \n
-#           [GCC 4.0.1 (Apple Computer, Inc. build 5363)]'
+# In [36]: variable_args('one', 'two', x=1, y=2, z=3)
+# args is ('one', 'two')
+# kwargs is {'x': 1, 'y': 2, 'z': 3}
+# ```
+
+# ## Docstrings
+
+# Documentation about what the function does and its parameters.  General
+# convention:
 # 
-#     In [119]: sys.prefix
-#     Out[119]: '/Library/Frameworks/Python.framework/Versions/2.5'
+# ```python
+# In [67]: def funcname(params):
+#    ....:     """Concise one-line sentence describing the function.
+#    ....:
+#    ....:     Extended summary which can contain multiple paragraphs.
+#    ....:     """
+#    ....:     # function body
+#    ....:     pass
+#    ....:
+# 
+# In [68]: funcname?
+# Type:           function
+# Base Class:     type 'function'>
+# String Form:    <function funcname at 0xeaa0f0>
+# Namespace:      Interactive
+# File:           <ipython console>
+# Definition:     funcname(params)
+# Docstring:
+#     Concise one-line sentence describing the function.
+# 
+#     Extended summary which can contain multiple paragraphs.
+# ```
+
+# **Note** **Docstring guidelines**
+# 
+# For the sake of standardization, the `Docstring
+# Conventions <https://www.python.org/dev/peps/pep-0257>`_ webpage
+# documents the semantics and conventions associated with Python
+# docstrings.
+# 
+# Also, the Numpy and Scipy modules have defined a precise standard
+# for documenting scientific functions, that you may want to follow for
+# your own functions, with a `Parameters` section, an `Examples`
+# section, etc. See
+# https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard
+
+# ## Functions are objects
+
+# Functions are first-class objects, which means they can be:
+# 
+# * assigned to a variable
+# * an item in a list (or any collection)
+# * passed as an argument to another function.
+# 
+# ```python
+# In [38]: va = variable_args
+# 
+# In [39]: va('three', x=1, y=2)
+# args is ('three',)
+# kwargs is {'x': 1, 'y': 2}
+# ```
+
+# ## Methods
+
+# Methods are functions attached to objects.  You've seen these in our
+# examples on *lists*, *dictionaries*, *strings*, etc...
+
+# ## Exercises
+
+# 1. Fibonacci sequence
+# 
+#     Write a function that displays the `n` first terms of the Fibonacci
+#     sequence, defined by:
+# 
+#     $$
+#     \left\{
+#         \begin{array}{ll}
+#             U_{0} = 0 \\
+#             U_{1} = 1 \\
+#             U_{n+2} = U_{n+1} + U_{n}
+#         \end{array}
+#     \right.
+#     $$
+# 
+# 1. Quicksort
+# 
+#     Implement the quicksort algorithm, as defined by wikipedia
+#     
+#     ```javascript
+#     function quicksort(array)
+#         var list less, greater
+#         if length(array) < 2
+#             return array
+#         select and remove a pivot value pivot from array
+#         for each x in array
+#             if x < pivot + 1 then append x to less
+#             else append x to greater
+#         return concatenate(quicksort(less), pivot, quicksort(greater))
 #     ```
-
-# * List of command line arguments passed to a Python script:
-# 
-# ```python
-# In [100]: sys.argv
-# Out[100]: ['/Users/cburns/local/bin/ipython']
-# ```
-
-# `sys.path` is a list of strings that specifies the search path for
-# modules.  Initialized from PYTHONPATH:
-# 
-# ```python
-# In [121]: sys.path
-# Out[121]:
-# ['',
-# '/Users/cburns/local/bin',
-# '/Users/cburns/local/lib/python2.5/site-packages/grin-1.1-py2.5.egg',
-# '/Users/cburns/local/lib/python2.5/site-packages/argparse-0.8.0-py2.5.egg',
-# '/Users/cburns/local/lib/python2.5/site-packages/urwid-0.9.7.1-py2.5.egg',
-# '/Users/cburns/local/lib/python2.5/site-packages/yolk-0.4.1-py2.5.egg',
-# '/Users/cburns/local/lib/python2.5/site-packages/virtualenv-1.2-py2.5.egg',
-# ...
-# ```
-
-# ### `pickle`: easy persistence
-
-# Useful to store arbitrary objects to a file. Not safe or fast!
-# 
-# ```python
-# In [1]: import pickle
-# 
-# In [2]: l = [1, None, 'Stan']
-# 
-# In [3]: pickle.dump(l, file('test.pkl', 'w'))
-# 
-# In [4]: pickle.load(file('test.pkl'))
-# Out[4]: [1, None, 'Stan']
-# ```
-
-# ## Exercise
-
-# Write a program to search your `PYTHONPATH` for the module `site.py`.

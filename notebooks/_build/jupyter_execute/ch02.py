@@ -1,300 +1,411 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 기본 명령문
+# # 모음 자료형 1편
 
-# ## Assignment operator
-
-# [Python library reference](<https//docs.python.org/reference/simple_stmts.html#assignment-statements>)
-# says
+# **모음**<font size="2">collection</font> 자료형은
+# 여러 개의 값을 하나로 묶어 놓은 값의 유형이다.
+# 파이썬은 문자열, 리스트, 튜플, 집합, 사전 등의 모음 자료형을
+# 기본으로 제공하며,
+# 여러 값을 묶어 둔다는 의미로 모음 자료형의 값을
+# **컨테이너**<font size="2">container</font>라고도 부른다.
 # 
-#     Assignment statements are used to (re)bind names to values and to
-#     modify attributes or items of mutable objects.
+# 모음 자료형은 크게 두 종류로 나뉜다.
 # 
-# In short, it works as follows (simple assignment)
+# - 순차형<font size="2">sequence type</font>: 포함된 항목들의 순서를 가리는 모음 자료형
+#     - 문자열
+#     - 리스트
+#     - 튜플
+# - 집합형<font size="2">set type</font>: 포함된 항목들의 순서를 무시하는 모음 자료형
+#     - 집합
+#     - 사전
+#     
+# 먼저 순차형을 소개한다.
+
+# ## 문자열
+
+# **문자열**<font size="2">string</font>은 문자 기호로 이루어진 단어, 문장 등을 가리킨다.
+# 키보드에 포함된 영문 알파벳, 한글 자음과 모음 등을 기본적으로 사용한다.
+# 문자열은 세 가지 방식으로 작성될 수 있다.
+
+# - 작은 따옴표 활용
+
+# In[1]:
+
+
+s = '잘 지내세요?'
+print(s)
+
+
+# - 큰 따옴표 활용
+
+# In[2]:
+
+
+s = "별일 없으세요?"
+print(s)
+
+
+# - 연속된 세 개의 작은 또는 큰 따옴표 활용: 여러 줄로 이루어진 문자열 작성
+
+# In[3]:
+
+
+s = '''안녕.
+별일 없어?'''
+
+print(s)
+
+
+# In[4]:
+
+
+s = """안녕.
+별일 없어?"""
+
+print(s)
+
+
+# 스페이스와 탭을 활용해서 생성된 여백<font size="2">white space</font>도 문자열로 처리된다.
+# 또한 줄바꿈을 나타내는 문자는 `\n`이다.
+
+# In[5]:
+
+
+s = '''안녕.
+    별일 없어?'''
+
+print(s)
+
+
+# In[6]:
+
+
+s = """안녕.
+    별일 없어?"""
+
+print(s)
+
+
+# :::{admonition} 유니코드
+# :class: info
 # 
-# 1. an expression on the right hand side is evaluated, the corresponding
-# object is created/obtained
-# 1. a **name** on the left hand side is assigned, or bound, to the
-# r.h.s. object
-
-# Things to note
-# 
-# * a single object can have several names bound to it
-# 
-# ```python
-# In [1] a = [1, 2, 3]
-# In [2] b = a
-# In [3] a
-# Out[3] [1, 2, 3]
-# In [4] b
-# Out[4] [1, 2, 3]
-# In [5] a is b
-# Out[5] True
-# In [6] b[1] = 'hi!'
-# In [7] a
-# Out[7] [1, 'hi!', 3]
-# ```
-
-# * to change a list *in place*, use indexing/slices
-# 
-# ```python
-# In [1] a = [1, 2, 3]
-# In [3] a
-# Out[3] [1, 2, 3]
-# In [4] a = ['a', 'b', 'c'] # Creates another object.
-# In [5] a
-# Out[5] ['a', 'b', 'c']
-# In [6] id(a)
-# Out[6] 138641676
-# In [7] a[] = [1, 2, 3] # Modifies object in place.
-# In [8] a
-# Out[8] [1, 2, 3]
-# In [9] id(a)
-# Out[9] 138641676 # Same as in Out[6], yours will differ...
-# ```
-
-# * the key concept here is **mutable vs. immutable**
-#     * mutable objects can be changed in place
-#     * immutable objects cannot be modified once created
-
-# ## Control Flow
-
-# Controls the order in which the code is executed.
-
-# ### if/elif/else
-
-# ```python
-# >>> if 2**2 == 4:
-# ...     print('Obvious!')
-# ...
-# Obvious!
-# ```
-
-# **Blocks are delimited by indentation**
-
-# Type the following lines in your Python interpreter, and be careful
-# to **respect the indentation depth**. The Ipython shell automatically
-# increases the indentation depth after a colon ``:`` sign; to
-# decrease the indentation depth, go four spaces to the left with the
-# Backspace key. Press the Enter key twice to leave the logical block.
-
-# ```python
-# >>> a = 10
-# 
-# >>> if a == 1:
-# ...     print(1)
-# ... elif a == 2:
-# ...     print(2)
-# ... else:
-# ...     print('A lot')
-# A lot
-# ```
-
-# Indentation is compulsory in scripts as well. As an exercise, re-type the
-# previous lines with the same indentation in a script ``condition.py``, and
-# execute the script with ``run condition.py`` in Ipython.
-
-# ### for/range
-
-# Iterating with an index:
+# 키보드 상에 존재하지 않는 다른 기호나 문자도 **유니코드**<font size="2">unicode</font> 
+# 형식으로 지원된다.
+# 예를 들어 웃는 얼굴의 이모티콘을 나타내는 문자열은 다음과 같다. 
 # 
 # ```python
-# >>> for i in range(4):
-# ...     print(i)
-# 0
-# 1
-# 2
-# 3
+# >>> s = '\U0001f604'
+# >>> print(s)
+# 😄
+# >>> s * 2
+# '😄😄'
 # ```
+# 
+# 유니코드로 지원되는 모든 이모티콘은 [Emoji Charts](https://unicode.org/emoji/charts/emoji-list.html)에서
+# 확인할 수 있다. 단, `U+` 시작하는 부분을 `U000` 으로 대체해서 사용해야 한다. 
+# :::
 
-# But most often, it is more readable to iterate over values:
+# ### 백슬래시와 이스케이프 문자
 
-# ```python
-# >>> for word in ('cool', 'powerful', 'readable'):
-# ...     print('Python is %s' % word)
-# Python is cool
-# Python is powerful
-# Python is readable
-# ```
-
-# ### while/break/continue
-
-# Typical C-style while loop (Mandelbrot problem):
+# 문자열에 따옴표를 사용하려면 문자열을 감싸는 방식에 주의해야 한다.
+# 예를 들어, 작은 따옴표를 사용하는 문자열을 다음과 같이 지정하면 오류가 발생한다.
 # 
 # ```python
-# >>> z = 1 + 1j
-# >>> while abs(z) < 100:
-# ...     z = z**2 + 1
-# >>> z
-# (-134+352j)
+# >>> 'Python's grammar'
+# ------------------------------------------------------------
+# File "<ipython console>", line 1
+# 'Python's grammar'
+#         ^
+# SyntaxError invalid syntax
 # ```
-
-# **More advanced features**
 # 
-# `break` out of enclosing for/while loop:
+# 이유는 작은 따옴표로 문자열의 시작을 지정했기 때문에
+# `Python's` 문장에 사용된 작은 따옴표가 
+# 문자열의 끝을 의미하게된다.
+# 그런데 이후에도 문자열이 이어지게 되어 결국 문자열의 끝이 불분명해져서
+# 구문 오류를 뜻하는 `SyntaxError`가 발생하였다.
+# 
+# 이런 오류를 방지하는 다양한 방식이 존재한다.
+# 예를 들어 작은 따옴표 바로 앞에 백슬래시<font size="2">backslash</font> 기호 (`\`)를 추가하면 된다.
+
+# In[7]:
+
+
+s = 'Python\'s grammer'
+print(s)
+
+
+# :::{admonition} 슬래시 기호(&#x5C;)와 원화 기호(&#x20a9;)
+# :class: info
+# 
+# 백슬래시 키는 오른쪽 <kbd>Enter</kbd> 키 바로 위에 위치하는데
+# 한글 키보드의 경우 원화 기호 키 <kbd>&#x20a9;</kbd> 가 대신 표시되어 있을 수 있다.
+# 그리고 모니터 화면 상에는 사용하는 운영체제 언어 설정에 따라
+# 원화 기호(&#x20a9;) 대신 백슬래시 기호(&#x5C;)로 보일 수 있다.
+# 하지만 단순한 언어 설정의 차이일 뿐 기능은 동일하다.
+# :::
+
+# 백슬래시는 이처럼 특정 문자와 함께 사용되면 특별한 기능을 갖는
+# 이스케이프 문자<font size="2">escape character</font>를 구성한다.
+# 가장 많이 사용되는 이스케이프 문자의 목록은 다음과 같다.
+# 
+# | 이스케이프 문자 | 의미 |
+# | :---: | :---:    |
+# | `\'` | 작은 따옴표 |
+# | `\\` | 백슬래시 기호 |
+# | `\n` | 줄바꿈 |
+# | `\t` | 탭 |
+
+# Strings are collections like lists. Hence they can be indexed and
+# sliced, using the same syntax and rules.
+
+# Indexing
 # 
 # ```python
-# >>> z = 1 + 1j
-# 
-# >>> while abs(z) < 100:
-# ...     if z.imag == 0:
-# ...         break
-# ...     z = z**2 + 1
+# >>> a = "hello"
+# >>> a[0]
+# 'h'
+# >>> a[1]
+# 'e'
+# >>> a[-1]
+# 'o'
 # ```
 
-# `continue` the next iteration of a loop.:
+# (Remember that negative indices correspond to counting from the right
+# end.)
+
+# Slicing
 # 
 # ```python
-# >>> a = [1, 0, 2, 4]
-# >>> for element in a:
-# ...     if element == 0:
-# ...         continue
-# ...     print(1. / element)
-# 1.0
-# 0.5
-# 0.25
+# >>> a = "hello, world!"
+# >>> a[36] # 3rd to 6th (excluded) elements elements 3, 4, 5
+# 'lo,'
+# >>> a[2102] # Syntax a[startstopstep]
+# 'lo o'
+# >>> a[3] # every three characters, from beginning to end
+# 'hl r!'
 # ```
 
-# ### Conditional Expressions
+# Accents and special characters can also be handled as in Python 3
+# strings consist of Unicode characters.
 
-# `if <OBJECT>`
-# 
-# Evaluates to False:
-# * any number equal to zero (`0`, `0.0`, `0+0`)
-# * an empty container (list, tuple, set, dictionary, ...)
-# * `False`, `None`
-# 
-# Evaluates to True:
-# * everything else
-
-# `a == b`
-# 
-# Tests equality, with logics:
+# A string is an **immutable object** and it is not possible to modify its
+# contents. One may however create new strings from the original one.
 # 
 # ```python
-# >>> 1 == 1.
-# True
+# In [53] a = "hello, world!"
+# In [54] a[2] = 'z'
+# ---------------------------------------------------------------------------
+# Traceback (most recent call last)
+# File "<stdin>", line 1, in <module>
+# TypeError 'str' object does not support item assignment
+# 
+# In [55] a.replace('l', 'z', 1)
+# Out[55] 'hezlo, world!'
+# In [56] a.replace('l', 'z')
+# Out[56] 'hezzo, worzd!'
 # ```
 
-# `a is b`
+# Strings have many useful methods, such as `a.replace` as seen
+# above. Remember the `a.` object-oriented notation and use tab
+# completion or `help(str)` to search for new methods.
+
+# **seealso**
 # 
-# Tests identity: both sides are the same object:
+# Python offers advanced possibilities for manipulating strings,
+# looking for patterns or formatting. The interested reader is referred to
+# https//docs.python.org/library/stdtypes.html#string-methods and
+# https//docs.python.org/3/library/string.html#format-string-syntax
+
+# String formatting
 # 
 # ```python
-# >>> 1 is 1.
-# False
+# >>> 'An integer %i; a float %f; another string %s' % (1, 0.1, 'string') # with more values use tuple after %
+# 'An integer 1; a float 0.100000; another string string'
 # 
-# >>> a = 1
-# >>> b = 1
-# >>> a is b
-# True
+# >>> i = 102
+# >>> filename = 'processing_of_dataset_%d.txt' % i   # no need for tuples with just one value after %
+# >>> filename
+# 'processing_of_dataset_102.txt'
 # ```
 
-# `a in b`
-# 
-# For any collection `b`: `b` contains `a` :
+# ## 리스트
+
+# 리스트<font size="2">list</font>는 여러 종류의 값을 순서지어 포함한다.
+# 포함되는 항목의 개수에 제한이 없다.
+
+# In[8]:
+
+
+colors = ['red', 'blue', 'green', 'black', 'white']
+type(colors)
+
+
+# ## Tuples
+
+# Tuples are basically immutable lists. The elements of a tuple are written
+# between parentheses, or just separated by commas
 # 
 # ```python
-# >>> b = [1, 2, 3]
-# >>> 2 in b
-# True
-# >>> 5 in b
-# False
+# >>> t = 12345, 54321, 'hello!'
+# >>> t[0]
+# 12345
+# >>> t
+# (12345, 54321, 'hello!')
+# >>> u = (0, 2)
 # ```
-# 
-# If `b` is a dictionary, this tests that `a` is a key of `b`.
 
-# ### Advanced iteration
+# ## 인덱싱
 
-# **Iterate over any sequence**
+# 순차형 컨테이너는 모두 정수를 이용하여 항목을 확인하고, 
+# 경우에 따라 항목을 다른 값으로 변경하는
+# **인덱싱**<font size="2">indexing</font> 기능을 갖는다.
 # 
-# You can iterate over any sequence (string, list, keys in a dictionary, lines in
-# a file, ...):
+# 왼편에 위치한 항목으로부터 차례대로 0, 1, 2, ... 등의 
+# **인덱스**<font size="2">index</font>를 다음과 같이 사용한다.
+
+# In[9]:
+
+
+colors[0]
+
+
+# In[10]:
+
+
+colors[1]
+
+
+# In[11]:
+
+
+colors[2]
+
+
+# :::{admonition} 인덱스는 0부터 시작!
+# :class: warning
+# 
+# 가장 왼편에 위치한 항목의 인덱스가 1이 아닌 0임에 주의해야 한다.
+# 순차 자료형의 가장 왼편에 위치한 값으로부터 첫째, 둘째, 셋째 등으로 
+# 언급하는 반면에 인덱스는 0, 1, 2 등으로 사용해야 해서 
+# 익숙해질 때까지 시간이 조금 걸린다.
+# 
+# C 언어 계열의 언어를 비롯하여 자바, 자바스크립트 등 대부분의 
+# 프로그래밍 언어가 0부터 인덱스를 시작한다.
+# 반면에 포트란<font size="2">Fortran</font>, 매트랩 등
+# 수치 계산 전용 프로그래밍 언어는 인덱스를 1부터 시작한다. 
+# 
+# 참고로 인덱스를 0부터 시작해야 하는 논리적 이유는 없다.
+# 누군가 어떤 이유로 그렇게 정했고 나름 이유가 있었겠지만 
+# 사용 면에서 보면 어떤 논리적인 장점도 없다.
+# :::
+
+# -1, -2, -3, ... 등 음의 정수를 인덱스로 사용하면 오른편에 위치한 항목부터 
+# 차례대로 왼쪽으로 이동하면서 인덱싱을 실행할 수 있다.
+
+# In[12]:
+
+
+colors[-1]
+
+
+# `colors` 변수가 가리키는 리스트에 5개의 문자열이 포함되어 있기 때문에
+# 왼편에서 넷째, 오른편에 둘째 항목은 동일한 문자열이 된다.
+
+# In[13]:
+
+
+왼쪽에서셋째 = colors[3]
+오른쪽에서둘째 = colors[-2]
+
+왼쪽에서셋째 == 오른쪽에서둘째
+
+
+# :::{admonition} 한글 변수 이름
+# :class: warning
+# 
+# 한글을 변수와 함수의 이름으로 사용할 수도 있다. 
+# 하지만 다른 버전 또는 타 언어와의 호환성 등의 문제가 발생할 수 있기에
+# 아직은 일반적이지 않으며 추천되지 않는다.
+# :::
+
+# 포함된 항목의 개수를 벗어나는 인덱스는 오류를 유발한다.
+# `colors` 리스트가 5개의 항목을 포함하기에 사용할 수 있는 인덱스는 
+# 왼편에서 시작하는 경우엔 0부터 4까지이고
+# 오른편에서 시작하면 -1부터 -5까지이다. 
+# 
+# 예를 들어 5를 인덱스로 사용하면 왼편에서 여섯째 항목을 확인하기 때문에
+# 인덱스의 범위를 벗어난다.
+# 따라서 `index out of range` 라는 설명과 함께 `IndexError`가 
+# 다음과 같이 발생한다.
 # 
 # ```python
-# >>> vowels = 'aeiouy'
+# >>> colors[5]
+# ---------------------------------------------------------------------------
+# IndexError                                Traceback (most recent call last)
+# <ipython-input-3-5976064932c2> in <module>
+# ----> 1 colors[5]
 # 
-# >>> for i in 'powerful':
-# ...     if i in vowels:
-# ...         print(i)
-# o
-# e
-# u
+# IndexError: list index out of range
 # ```
 
-# ```python
-# >>> message = "Hello how are you?"
-# >>> message.split() # returns a list
-# ['Hello', 'how', 'are', 'you?']
-# >>> for word in message.split():
-# ...     print(word)
-# ...
-# Hello
-# how
-# are
-# you?
-# ```
+# ## 슬라이싱
 
-# Few languages (in particular, languages for scientific computing) allow to
-# loop over anything but integers/indices. With Python it is possible to
-# loop exactly over the objects of interest without bothering with indices
-# you often don't care about. This feature can often be used to make
-# code more readable.
-
-# **warning**: Not safe to modify the sequence you are iterating over.
-
-# **Keeping track of enumeration number**
+# 인덱스의 구간을 지정하여 순차 자료형의 일부를 추출하는 것을
+# **슬라이싱**<font size="2">slicing</font>이라 한다.
 # 
-# Common task is to iterate over a sequence while keeping track of the
-# item number.
+# 예를 들어 `colors` 리스트의 둘째부터 넷째 까지의 항목으로
+# 구성된 리스트를 생성하려면 다음과 같이 한다.
 
-# * Could use while loop with a counter as above. Or a for loop:
+# In[14]:
+
+
+colors[1:4]
+
+
+# `[1:4]` 는 1번 인덱스, 즉 둘째부터 4번 인덱스 이전까지, 즉 3번 인덱스인 넷째 항목까지 
+# 추출 대상으로 삼는다는 의미이다.
+
+# 슬라이싱의 일반 형식은 다음과 같다.
 # 
 # ```python
-# >>> words = ('cool', 'powerful', 'readable')
-# >>> for i in range(0, len(words)):
-# ...     print((i, words[i]))
-# (0, 'cool')
-# (1, 'powerful')
-# (2, 'readable')
+# colors[시작:끝:보폭]
 # ```
+# 
+# **시작**과 **끝**의 의 의미는 `colors[1:4]`의 경우에서 설명한 것과 동일하다.
+# 반면에 **보폭**은 항목 추출법을 설명한다.
+# 예를 들어 2를 보폭으로 사용하면
+# 시작 인덱스로 부터 2씩 건너 뛰며 항목을 추출한다.
+# `colors[1:4:2]`는 따라서 1번, 3번 두 개의 인덱스에 위치한 항목을 추출해서 
+# 리스트를 생성한다.
 
-# * But, Python provides a built-in function - `enumerate` - for this:
-# 
-# ```python
-# >>> for index, item in enumerate(words):
-# ...     print((index, item))
-# (0, 'cool')
-# (1, 'powerful')
-# (2, 'readable')
-# ```
+# In[15]:
 
-# **Looping over a dictionary**
-# 
-# Use **items**:
-# 
-# ```python
-# >>> d = {'a': 1, 'b':1.2, 'c':1j}
-# 
-# >>> for key, val in sorted(d.items()):
-# ...     print('Key: %s has value: %s' % (key, val))
-# Key: a has value: 1
-# Key: b has value: 1.2
-# Key: c has value: 1j
-# ```
 
-# **note**
-# 
-# The ordering of a dictionary is random, thus we use :func:`sorted`
-# which will sort on the keys.
+colors[1:4:2]
 
-# **Exercise**
-# ref: `pi_wallis`
+
+# 시작, 끝, 보폭 모두 생략될 수 있으며 각각에 대해 기본값이 사용된다.
 # 
-# Compute the decimals of Pi using the Wallis formula:
-# 
-# $$
-# \pi = 2 \prod_{i=1}^{\infty} \frac{4i^2}{4i^2 - 1}
-# $$
-# 
+# - 시작의 기본값: 0
+# - 끝의 기본값: 항목의 개수 + 1. 즉, 시작부터 끝까지.
+# - 보폭의 기본값: 1
+
+# In[16]:
+
+
+colors[3:]
+
+
+# In[17]:
+
+
+colors[:3]
+
+
+# In[18]:
+
+
+colors[::2]
+

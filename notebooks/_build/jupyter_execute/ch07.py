@@ -1,61 +1,346 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 객체 지향 프로그래밍(OOP)
+# # 입력과 출력
 
-# Python supports object-oriented programming (OOP). The goals of OOP are:
-# 
-# * to organize the code, and
-# * to re-use code in similar contexts.
+# To be exhaustive, here are some information about input and output in
+# Python. Since we will use the Numpy methods to read and write files,
+# **you may skip this chapter at first reading**.
 
-# Here is a small example: we create a Student *class*, which is an object
-# gathering several custom functions (*methods*) and variables (*attributes*),
-# we will be able to use::
+# We write or read **strings** to/from files (other types must be converted to
+# strings). To write in a file::
 # 
 # ```python
-# >>> class Student(object):
-# ...     def __init__(self, name):
-# ...         self.name = name
-# ...     def set_age(self, age):
-# ...         self.age = age
-# ...     def set_major(self, major):
-# ...         self.major = major
-# ...
-# >>> anna = Student('anna')
-# >>> anna.set_age(21)
-# >>> anna.set_major('physics')
+# >>> f = open('workfile', 'w') # opens the workfile file
+# >>> type(f)    # doctest: +SKIP 
+# <type 'file'>
+# >>> f.write('This is a test \nand another test')   # doctest: +SKIP 
+# >>> f.close()
 # ```
 
-# In the previous example, the Student class has `__init__`, `set_age` and
-# `set_major` methods. Its attributes are `name`, `age` and `major`. We
-# can call these methods and attributes with the following notation:
-# `classinstance.method` or  `classinstance.attribute`.  The `__init__`
-# constructor is a special method we call with: `MyClass(init parameters if
-# any)`.
-
-# Now, suppose we want to create a new class MasterStudent with the same
-# methods and attributes as the previous one, but with an additional
-# `internship` attribute. We won't copy the previous class, but
-# **inherit** from it::
+# To read from a file
 # 
 # ```python
-# >>> class MasterStudent(Student):
-# ...     internship = 'mandatory, from March to June'
-# ...
-# >>> james = MasterStudent('james')
-# >>> james.internship
-# 'mandatory, from March to June'
-# >>> james.set_age(23)
-# >>> james.age
-# 23
-# ```
+# In [1]: f = open('workfile', 'r')
 # 
-# The MasterStudent class inherited from the Student attributes and methods.
+# In [2]: s = f.read()
+# 
+# In [3]: print(s)
+# This is a test 
+# and another test
+# 
+# In [4]: f.close()
+# ```
 
-# Thanks to classes and object-oriented programming, we can organize code
-# with different classes corresponding to different objects we encounter
-# (an Experiment class, an Image class, a Flow class, etc.), with their own
-# methods and attributes. Then we can use inheritance to consider
-# variations around a base class and **re-use** code. Ex : from a Flow
-# base class, we can create derived StokesFlow, TurbulentFlow,
-# PotentialFlow, etc.
+# ## Iterating over a file
+
+# ```python
+# In [6]: f = open('workfile', 'r')
+# 
+# In [7]: for line in f:
+#    ...:     print(line)
+#    ...:
+# This is a test 
+# 
+# and another test
+# 
+# In [8]: f.close()
+# ```
+
+# **File modes**
+# 
+# * Read-only: `r`
+# * Write-only: `w`
+#     * Note: Create a new file or *overwrite* existing file.
+# * Append a file: `a`
+# * Read and Write: `r+`
+# * Binary mode: `b`
+#     * Note: Use for binary files, especially on Windows.
+
+# ## Standard Library
+
+# **Note**: Reference document for this section:
+# 
+# * The Python Standard Library documentation: https://docs.python.org/library/index.html
+# 
+# * Python Essential Reference, David Beazley, ddison-Wesley Professional
+
+# ### `os` module: operating system functionality
+
+# *"A portable way of using operating system dependent functionality."*
+
+# #### Directory and file manipulation
+
+# Current directory:
+# 
+# ```python
+# In [17]: os.getcwd()
+# Out[17]: '/Users/cburns/src/scipy2009/scipy_2009_tutorial/source'
+# ```
+
+# List a directory:
+# 
+# ```python
+# In [31]: os.listdir(os.curdir)
+# Out[31]:
+# ['.index.rst.swo',
+#  '.python_language.rst.swp',
+#  '.view_array.py.swp',
+#  '_static',
+#  '_templates',
+#  'basic_types.rst',
+#  'conf.py',
+#  'control_flow.rst',
+#  'debugging.rst',
+#  ...
+# ```
+
+# Make a directory:
+# 
+# ```python
+# In [32]: os.mkdir('junkdir')
+# 
+# In [33]: 'junkdir' in os.listdir(os.curdir)
+# Out[33]: True
+# ```
+
+# Rename the directory:
+# 
+# ```python
+# In [36]: os.rename('junkdir', 'foodir')
+# 
+# In [37]: 'junkdir' in os.listdir(os.curdir)
+# Out[37]: False
+# 
+# In [38]: 'foodir' in os.listdir(os.curdir)
+# Out[38]: True
+# 
+# In [41]: os.rmdir('foodir')
+# 
+# In [42]: 'foodir' in os.listdir(os.curdir)
+# Out[42]: False
+# ```
+
+# Delete a file:
+# 
+# ```python
+# In [44]: fp = open('junk.txt', 'w')
+# 
+# In [45]: fp.close()
+# 
+# In [46]: 'junk.txt' in os.listdir(os.curdir)
+# Out[46]: True
+# 
+# In [47]: os.remove('junk.txt')
+# 
+# In [48]: 'junk.txt' in os.listdir(os.curdir)
+# Out[48]: False
+# ```
+
+# #### `os.path`: path manipulations
+
+# `os.path` provides common operations on pathnames.
+# 
+# ```python
+# In [70]: fp = open('junk.txt', 'w')
+# 
+# In [71]: fp.close()
+# 
+# In [72]: a = os.path.abspath('junk.txt')
+# 
+# In [73]: a
+# Out[73]: '/Users/cburns/src/scipy2009/scipy_2009_tutorial/source/junk.txt'
+# 
+# In [74]: os.path.split(a)
+# Out[74]: ('/Users/cburns/src/scipy2009/scipy_2009_tutorial/source',
+#           'junk.txt')
+# 
+# In [78]: os.path.dirname(a)
+# Out[78]: '/Users/cburns/src/scipy2009/scipy_2009_tutorial/source'
+# 
+# In [79]: os.path.basename(a)
+# Out[79]: 'junk.txt'
+# 
+# In [80]: os.path.splitext(os.path.basename(a))
+# Out[80]: ('junk', '.txt')
+# 
+# In [84]: os.path.exists('junk.txt')
+# Out[84]: True
+# 
+# In [86]: os.path.isfile('junk.txt')
+# Out[86]: True
+# 
+# In [87]: os.path.isdir('junk.txt')
+# Out[87]: False
+# 
+# In [88]: os.path.expanduser('~/local')
+# Out[88]: '/Users/cburns/local'
+# 
+# In [92]: os.path.join(os.path.expanduser('~'), 'local', 'bin')
+# Out[92]: '/Users/cburns/local/bin'
+# ```
+
+# #### Running an external command
+
+# ```python
+# In [8]: os.system('ls')
+# basic_types.rst   demo.py          functions.rst  python_language.rst  standard_library.rst
+# control_flow.rst  exceptions.rst   io.rst         python-logo.png
+# demo2.py          first_steps.rst  oop.rst        reusing_code.rst
+# ```
+
+# **Note**: Alternative to `os.system`
+# 
+# A noteworthy alternative to `os.system` is the 
+# [sh module](http://amoffat.github.com/sh/). 
+# Which provides much more convenient ways to
+# obtain the output, error stream and exit code of the external command.
+# 
+# ```python
+# In [20]: import sh
+# In [20]: com = sh.ls()
+# 
+# In [21]: print(com)
+# basic_types.rst   exceptions.rst   oop.rst              standard_library.rst
+# control_flow.rst  first_steps.rst  python_language.rst
+# demo2.py          functions.rst    python-logo.png
+# demo.py           io.rst           reusing_code.rst
+# 
+# In [22]: print(com.exit_code)
+# 0
+# In [23]: type(com)
+# Out[23]: sh.RunningCommand
+# ```
+
+# #### Walking a directory
+
+# `os.path.walk` generates a list of filenames in a directory tree.
+# 
+# ```python
+# In [10]: for dirpath, dirnames, filenames in os.walk(os.curdir):
+# ....:     for fp in filenames:
+# ....:         print(os.path.abspath(fp))
+# ....:
+# ....:
+# /Users/cburns/src/scipy2009/scipy_2009_tutorial/source/.index.rst.swo
+# /Users/cburns/src/scipy2009/scipy_2009_tutorial/source/.view_array.py.swp
+# /Users/cburns/src/scipy2009/scipy_2009_tutorial/source/basic_types.rst
+# /Users/cburns/src/scipy2009/scipy_2009_tutorial/source/conf.py
+# /Users/cburns/src/scipy2009/scipy_2009_tutorial/source/control_flow.rst
+# ...
+# ```
+
+# #### Environment variables:
+# 
+# ```python
+# In [9]: import os
+# 
+# In [11]: os.environ.keys()
+# Out[11]:
+# ['_',
+# 'FSLDIR',
+# 'TERM_PROGRAM_VERSION',
+# 'FSLREMOTECALL',
+# 'USER',
+# 'HOME',
+# 'PATH',
+# 'PS1',
+# 'SHELL',
+# 'EDITOR',
+# 'WORKON_HOME',
+# 'PYTHONPATH',
+# ...
+# 
+# In [12]: os.environ['PYTHONPATH']
+# Out[12]: '.:/Users/cburns/src/utils:/Users/cburns/src/nitools:
+# /Users/cburns/local/lib/python2.5/site-packages/:
+# /usr/local/lib/python2.5/site-packages/:
+# /Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5'
+# 
+# In [16]: os.getenv('PYTHONPATH')
+# Out[16]: '.:/Users/cburns/src/utils:/Users/cburns/src/nitools:
+# /Users/cburns/local/lib/python2.5/site-packages/:
+# /usr/local/lib/python2.5/site-packages/:
+# /Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5'
+# ```
+
+# ### `shutil`: high-level file operations
+
+# The `shutil` provides useful file operations:
+# 
+# * `shutil.rmtree`: Recursively delete a directory tree.
+# * `shutil.move`: Recursively move a file or directory to another location.
+# * `shutil.copy`: Copy files or directories.
+
+# ### `glob`: Pattern matching on files
+# 
+# The `glob` module provides convenient file pattern matching.
+# 
+# Find all files ending in `.txt`:
+# 
+# ```python
+# In [18]: import glob
+# 
+# In [19]: glob.glob('*.txt')
+# Out[19]: ['holy_grail.txt', 'junk.txt', 'newfile.txt']
+# ```
+
+# ### `sys` module: system-specific information
+
+# System-specific information related to the Python interpreter.
+# 
+# * Which version of python are you running and where is it installed:
+# 
+#     ```python
+#     In [117]: sys.platform
+#     Out[117]: 'darwin'
+# 
+#     In [118]: sys.version
+#     Out[118]: '2.5.2 (r252:60911, Feb 22 2008, 07:57:53) \n
+#           [GCC 4.0.1 (Apple Computer, Inc. build 5363)]'
+# 
+#     In [119]: sys.prefix
+#     Out[119]: '/Library/Frameworks/Python.framework/Versions/2.5'
+#     ```
+
+# * List of command line arguments passed to a Python script:
+# 
+# ```python
+# In [100]: sys.argv
+# Out[100]: ['/Users/cburns/local/bin/ipython']
+# ```
+
+# `sys.path` is a list of strings that specifies the search path for
+# modules.  Initialized from PYTHONPATH:
+# 
+# ```python
+# In [121]: sys.path
+# Out[121]:
+# ['',
+# '/Users/cburns/local/bin',
+# '/Users/cburns/local/lib/python2.5/site-packages/grin-1.1-py2.5.egg',
+# '/Users/cburns/local/lib/python2.5/site-packages/argparse-0.8.0-py2.5.egg',
+# '/Users/cburns/local/lib/python2.5/site-packages/urwid-0.9.7.1-py2.5.egg',
+# '/Users/cburns/local/lib/python2.5/site-packages/yolk-0.4.1-py2.5.egg',
+# '/Users/cburns/local/lib/python2.5/site-packages/virtualenv-1.2-py2.5.egg',
+# ...
+# ```
+
+# ### `pickle`: easy persistence
+
+# Useful to store arbitrary objects to a file. Not safe or fast!
+# 
+# ```python
+# In [1]: import pickle
+# 
+# In [2]: l = [1, None, 'Stan']
+# 
+# In [3]: pickle.dump(l, file('test.pkl', 'w'))
+# 
+# In [4]: pickle.load(file('test.pkl'))
+# Out[4]: [1, None, 'Stan']
+# ```
+
+# ## Exercise
+
+# Write a program to search your `PYTHONPATH` for the module `site.py`.

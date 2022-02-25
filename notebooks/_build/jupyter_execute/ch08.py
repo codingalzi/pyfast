@@ -1,319 +1,157 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 조건문
+# # 예외 처리
 
-# **조건문**<font size="2">conditional statement</font>은
-# 특정 조건의 성립여부에 따라 다른 일을 하게 만드는 명령문이다.
-# 조건문의 가장 간단한 형식은 다음과 같다.
+# It is likely that you have raised Exceptions if you have
+# typed all the previous commands of the tutorial. For example, you may
+# have raised an exception if you entered a command with a typo.
+# 
+# Exceptions are raised by different kinds of errors arising when executing
+# Python code. In your own code, you may also catch errors, or define custom
+# error types. You may want to look at the descriptions of the 
+# [the built-in Exceptions](https://docs.python.org/2/library/exceptions.html)
+# when looking for the right exception type.
+
+# ## Exceptions
+
+# Exceptions are raised by errors in Python:
 # 
 # ```python
-# if x < 0:
-#     print('x는 음수')
+# In [1]: 1/0
+# ---------------------------------------------------------------------------
+# ZeroDivisionError: integer division or modulo by zero
+# 
+# In [2]: 1 + 'e'
+# ---------------------------------------------------------------------------
+# TypeError: unsupported operand type(s) for +: 'int' and 'str'
+# 
+# In [3]: d = {1:1, 2:2}
+# 
+# In [4]: d[3]
+# ---------------------------------------------------------------------------
+# KeyError: 3
+# 
+# In [5]: l = [1, 2, 3]
+# 
+# In [6]: l[4]
+# ---------------------------------------------------------------------------
+# IndexError: list index out of range
+# 
+# In [7]: l.foobar
+# ---------------------------------------------------------------------------
+# AttributeError: 'list' object has no attribute 'foobar'
 # ```
-# 
-# 위 조건문이 실행되는 순간 변수 `x`가 가리키는 값이 0보다 작으면 `'x는 음수'` 
-# 라는 문장을 출력하고, 그렇지 않으면 다음 명령문으로 넘어간다. 
-# 
-# 조건문의 헤더<font size="2">header</font>는 
-# `if` 키워드와 **조건**<font size="2">condition</font>으로 구성된다.
-# 조건은 참 또는 거짓을 가리키는 **부울식**<font size="2">boolean expression</font>으로
-# 표현되며
-# 조건이 참일 때 조건문의 본문이 실행된다.
-# 
-# 조건문의 본문에 사용된 명령문은 함수의 본문처럼 들여쓰며
-# 비어둘 수 없다.
-# 조건문의 본문을 비워 둔 다음에 나중에 다시 살펴보고자 하는 경우
-# 아무 것도 하지 말고 지나가라는 의미의 `pass` 명령문을 사용하곤 한다.
-# 
+
+# As you can see, there are **different types** of exceptions for different errors.
+
+# ## Catching exceptions
+
+# ### try/except
+
 # ```python
-# if x < 0:
-#     pass          # 음수인 경우 할 일을 나중에 추가할 것!
-# ```
-
-# (sec:boolean_expression)=
-# ## 부울식
-
-# **부울식**<font size="2">boolean expression</font>은
-# `True`와 `False` 두 개의 값중 하나를 가리키는 표현식이다.
-# 예를 들어, 두 표현식의 동치성 여부를 판단하는 연산자 `==`를
-# 이용한 부울식은 다음과 같다.
-
-# In[1]:
-
-
-5 == 4 + 1
-
-
-# In[2]:
-
-
-3 + 2 ==  3 * 2
-
-
-# :::{admonition} `==` vs. `=`
-# :class: warning
+# In [10]: while True:
+#    ....:     try:
+#    ....:         x = int(raw_input('Please enter a number: '))
+#    ....:         break
+#    ....:     except ValueError:
+#    ....:         print('That was no valid number.  Try again...')
+#    ....: 
+# Please enter a number: a
+# That was no valid number.  Try again...
+# Please enter a number: 1
 # 
-# 등호 기호가 하나인 경우와 두 개인 경우는 완전히 다르다.
-# 두 개의 등호 기호 `==` 는 동치<font size="2">equality</font>
-# 여부를 판단하는 비교 연산자인 반면에
-# 하나의 등호 기호 `=` 는 변수 할당에 사용되는 특별한 기호이다.
-# 
-# 만약 `x = 3` 이 변수 `x`와 정수 `3`이 동일함을 의미한다면
-# `3 = x` 또한 의미가 있어야 한다.
-# 그런데 이는 허용되지 않는 구문이다. 
-# 파이썬을 포함한 대부분의 프로그래밍 언어는 등호 기호 왼편애 변수만 허용한다.
-# 
+# In [9]: x
+# Out[9]: 1
 # ```python
-# >>> x = 3
-# >>> 3 = x
-#   File "<stdin>", line 1
-#     3 = x
-#     ^
-# SyntaxError: cannot assign to literal
-# ```
-# :::
 
-# 두 표현식이 서로 다른 값을 가리키는지 여부, 즉 동치성의 반대를 판단하는 연산자는 `!=`이며,
-# `==` 와 반대로 작동한다.
+# ### try/finally
 
-# In[3]:
-
-
-5 != 4 + 1
-
-
-# In[4]:
-
-
-3 + 2 !=  3 * 2
-
-
-# 부울식이 가리키는 `True`와 `False`는 `bool` 자료형의 유일한 값이다.
-# 즉 `bool` 자료형은 참과 거짓 이외의 값은 존재하지 않는다.
-
-# In[5]:
-
-
-type(True)
-
-
-# In[6]:
-
-
-type(False)
-
-
-# ### 비교 연산자
-
-# `==`는 두 값의 동치여부를 판단하는 **비교 연산자**이다.
-# 이외에 다음 비교 연산자가 참, 거짓을 가리키는 부울식에 많이 사용된다.
-# 
 # ```python
-#     x != y       # x와 y가 서로 다른 값을 가리킬 때 참
-#     x > y        # x가 y보다 클 때 참
-#     x < y        # x가 y보다 작을 때 참
-#     x >= y       # x가 y보다 크거나 같을 때 참
-#     x <= y       # x가 y보다 작거나 같을 때 참
+# In [10]: try:
+#    ....:     x = int(raw_input('Please enter a number: '))
+#    ....: finally:
+#    ....:     print('Thank you for your input')
+#    ....:
+#    ....:
+# Please enter a number: a
+# Thank you for your input
+# ---------------------------------------------------------------------------
+# ValueError: invalid literal for int() with base 10: 'a'
 # ```
 
-# ::::{prf:example}
-# :label: exp_comparison
-# 
-# 변수 `x`가 가리키는 값이 짝수이면 2로 나눈 값을,
-# 그렇지 않으면 두 배한 값을 출력하도록 해보자.
-# 
-# 정수의 짝수 여부는 2로 나눈 나머지가 0 또는 1인지 여부로 판단할 수 있다.
-# 파이썬의 나머지 연산자는 `%` 이다.
-# 
+# Important for resource management (e.g. closing a file)
+
+# ### Easier to ask for forgiveness than for permission
+
 # ```python
-# >>> 21 % 6
-# 3
-# >>> 21 % 4
-# 1
-# ```
+# In [11]: def print_sorted(collection):
+#    ....:     try:
+#    ....:         collection.sort()
+#    ....:     except AttributeError:
+#    ....:         pass # The pass statement does nothing
+#    ....:     print(collection)
+#    ....:
+#    ....:
 # 
-# 따라서 다음 부울식이 짝수 여부를 판단한다.
+# In [12]: print_sorted([1, 3, 2])
+# [1, 2, 3]
 # 
-# ```python
-# x % 2 == 0
-# ```
+# In [13]: print_sorted(set((1, 3, 2)))
+# set([1, 2, 3])
 # 
-# 반면에 몫을 계산하는 연산자는 `//` 이다.
-# 
-# ```python
-# >>> 27 // 6
-# 4
-# >>> 27 // 4
-# 6
-# ```
-# 
-# 정리하면 짝수일 때와 홀수일 때 지정된 일을 하도록 하는 명령문은 다음과 같다.
-# 
-# ```python
-# if x % 2 == 0:
-#     print(x // 2)
-# else:
-#     print(x * 2)
-# ```
-# ::::
-
-# ### 논리 연산자
-
-# 논리 연산자를 이용하여 보다 복잡한 부울식을 생성할 수 있다.
-# `and`, `or`, `not` 세 개의 논리 연산자가 기본으로 제공되며
-# 기능과 사용법은 영어 단어의 일반적인 의미와 유사하다.
-# 
-# | 연산자 | 기능 | 예제 | 의미 |
-# | :---:  | :---: | :---: | :--- |
-# |`and` | 논리곱 연산자| `x > 0 and x < 10` | `x`가 0보다 크고 10보다 작음 | 
-# | `or` | 논리합 연산자 |`n % 2 == 0 or n % 3 == 0` | `n`이 2의 배수 또는 3의 배수 |
-# | `not` | 논리곱 연산자 | `not (x > y)` | x가 y보다 크가 않음 |
-
-# 파이썬이 제공하는 편리 기능 중에 하나로 
-# 논리 연산자의 인자로 부울식이 아닌 값이 사용될 수 있다.
-# 예를 들어, 0이 아닌 수는 참, 0은 거짓으로 처리된다.
-
-# In[7]:
-
-
-17 and True
-
-
-# 이외에 `None`은 거짓, 빈 리스트는 거짓으로 그렇지 않은 리스트는 참으로 등등처럼
-# 많은 값들에 대해 비어 있거나 또는 의미가 없는 값은 거짓으로
-# 그렇지 않으면 참으로 처리한다.
-# 하지만 이런 방식은 코드의 이해를 어렵게 만들 수 있기에 조심해서 사용해야 한다.
-
-# ## `if ... else ...` 조건문
-
-# 변수 `x`가 가리키는 값이 음수가 아닐 때에는 음수가 아니다 라는 내용도 출력하는
-# 기능을 추가하려면 다음과 같이 조건문을 작성한다.
-# 
-# ```python
-# if x < 0:
-#     print('x는 음수')
-# else:
-#     print('x는 음수 아님!')
-# ```
-# 
-# 이처럼 조건 제어문의 일반적인 형식은 다음과 같다.
-# 
-# ```python
-# if 조건식:
-#     명령문1
-# else:
-#     명령문2
-# ```
-# 
-# - `명령문1`: 조건식이 참일 때 실행
-# - `명령문2`: 조건식이 거짓일 때 실행
-
-# ## `elif` 키워드
-
-# 세 개 이상의 경우를 다루고자 할 경우
-# 다음과 같은 형식을 사용한다.
-# 
-# ```python
-# if x < y:
-#     print('x가 y보다 작다')
-# elif x > y:
-#     print('x가 y보다 크다')
-# else:
-#     print('x와 y가 같다')
+# In [14]: print_sorted('132')
+# 132
 # ```
 
-# `elif`는 영어의 ''else if''의 줄임말이며,
-# 임의로 많이 사용될 수 있고,
-# `else` 는 생략될 수 있지만 사용된다면 항상 마지막에 위치해야 한다.
-# `if`와 `elif` 문에 사용된 조건은 위에서 차례대로 확인되어
-# 참이되는 경우의 명령문이 실행되며 나머지 경우는 무조건 무시된다.
+# ## Raising exceptions
 
-# 예를 들어 `y`를 5로 나눈 나머지에 따라 다른 명령문을 다음과 같이 지정할 수 있다.
+# * Capturing and reraising an exception:
 # 
-# ```python
-# x = y % 5
+#     ```python
+#     In [15]: def filter_name(name):
+#        ....:	try:
+#        ....:	    name = name.encode('ascii')
+#        ....:	except UnicodeError as e:
+#        ....:	    if name == 'Gaël':
+#        ....:		print('OK, Gaël')
+#        ....:	    else:
+#        ....:		raise e
+#        ....:	return name
+#        ....:
 # 
-# if x == 0:
-#     print('나머지가 0')
-# elif x == 1:
-#     print('나머지가 1')
-# elif x == 2:
-#     print('나머지가 2')
-# elif x == 3:
-#     print('나머지가 3')
-# else
-#     print('나머지가 4')
-# ```
+#     In [16]: filter_name('Gaël')
+#     OK, Gaël
+#     Out[16]: 'Ga\xc3\xabl'
+# 
+#     In [17]: filter_name('Stéfan')
+#     ---------------------------------------------------------------------------
+#     UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 2: ordinal not in range(128)
+#     ```
 
-# `else`를 사용하지 않을 수도 있다.
+# * Exceptions to pass messages between parts of the code:
 # 
-# ```python
-# x = y % 5
+#     ```python
+#     In [17]: def achilles_arrow(x):
+#        ....:    if abs(x - 1) < 1e-3:
+#        ....:        raise StopIteration
+#        ....:    x = 1 - (1-x)/2.
+#        ....:    return x
+#        ....:
 # 
-# if x == 0:
-#     print('나머지가 0')
-# elif x == 1:
-#     print('나머지가 1')
-# elif x == 2:
-#     print('나머지가 2')
-# elif x == 3:
-#     print('나머지가 3')
-# elif x == 4:
-#     print('나머지가 4')
-# ```
+#     In [18]: x = 0
+# 
+#     In [19]: while True:
+#        ....:     try:
+#        ....:         x = achilles_arrow(x)
+#        ....:     except StopIteration:
+#        ....:         break
+#        ....:
+#        ....:
+# 
+#     In [20]: x
+#     Out[20]: 0.9990234375
+#     ```
 
-# ## 중첩 조건문
-
-# `elif` 키워드는 사실 없어도 된다.
-# 예를 들어 크거나, 작거나, 같은 세 가지 경우를 다음과 같이 다룰 수 있다.
-# 
-# ```python
-# if x < y:
-#     print('x가 y보다 작다')
-# else:
-#     if x > y:
-#         print('x가 y보다 크다')
-#     else:
-#         print('x와 y가 같다')
-# ```
-
-# 위와 같이 `if ... else ...` 조건문을 중첩해서 사용하면
-# 원하는 대로 경우를 나누어서 처리할 수 있다.
-# 경우의 확인 순서는 바깥 쪽에 위치한 경우부터 시작해서
-# 점차 `else` 문 안쪽으로 진행한다.
-# 
-# 일반적으로 3번 이상의 중첩을 사용하는 것은 권장되지 않는다.
-# 이유는 경우의 구분이 너무 복잡해질 수 있기 때문이다.
-# 가능하면 중첩 조건문 대신에 `elif` 문을 활용할 것이 권장된다.
-
-# ::::{prf:example}
-# :label: exp_nested_conditionals
-# 
-# 논리 연산자를 활용하여 중첩 조건문의 활용을 피할 수도 있다.
-# 
-# 아래 코드는 중첩 조건문을 사용하여 `x`가 0보다 크면서 동시에 10보다 작은 경우를 다룬다.
-# 
-# ```python
-# if 0 < x:
-#     if x < 10:
-#         print('x가 0보다 크고 동시에 10보다 작은 경우')
-# ```
-# 
-# `print()` 함수가 `0 < x`와 `x < 10` 두 조건을 모두 만족하는 경우에만
-# 실행되기에 아래와 같이 `and` 연산자를 이용하면 굳이 조건문을 
-# 중첩으로 사용할 필요가 없다. 
-# 
-# ```python
-# if 0 < x and x < 10:
-#     print('x가 0보다 크고 동시에 10보다 작은 경우')
-# ```
-# 
-# 참고로 `0 < x and x < 10` 을 `0 < x < 10`로 표현할 수 있다.
-# 
-# ```python
-# if 0 < x < 10:
-#     print('x가 0보다 크고 동시에 10보다 작은 경우')
-# ```
-# ::::
-# 
+# Use exceptions to notify certain conditions are met (e.g.
+# StopIteration) or not (e.g. custom error raising)

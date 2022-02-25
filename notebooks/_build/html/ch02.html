@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. 기본 명령문 &#8212; 파이썬 프로그래밍 특강</title>
+    <title>2. 모음 자료형 1편 &#8212; 파이썬 프로그래밍 특강</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -38,16 +38,11 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -57,7 +52,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3. 함수" href="ch03.html" />
+    <link rel="next" title="3. 모음 자료형 2편" href="ch03.html" />
     <link rel="prev" title="1. 기본 자료형" href="ch01.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -105,32 +100,42 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   2. 기본 명령문
+   2. 모음 자료형 1편
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch03.html">
-   3. 함수
+   3. 모음 자료형 2편
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch04.html">
-   4. 모듈과 패키지
+   4. 명령문
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch05.html">
-   5. 입력과 출력
+   5. 함수
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch06.html">
-   6. 예외 처리
+   6. 모듈과 패키지
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ch07.html">
-   7. 객체 지향 프로그래밍(OOP)
+   7. 입력과 출력
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ch08.html">
+   8. 예외 처리
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ch09.html">
+   9. 객체 지향 프로그래밍(OOP)
   </a>
  </li>
 </ul>
@@ -238,41 +243,36 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#assignment-operator">
-   2.1. Assignment operator
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#control-flow">
-   2.2. Control Flow
+  <a class="reference internal nav-link" href="#id2">
+   2.1. 문자열
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#if-elif-else">
-     2.2.1. if/elif/else
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#for-range">
-     2.2.2. for/range
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#while-break-continue">
-     2.2.3. while/break/continue
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conditional-expressions">
-     2.2.4. Conditional Expressions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#advanced-iteration">
-     2.2.5. Advanced iteration
+    <a class="reference internal nav-link" href="#id3">
+     2.1.1. 백슬래시와 이스케이프 문자
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   2.2. 리스트
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tuples">
+   2.3. Tuples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   2.4. 인덱싱
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   2.5. 슬라이싱
+  </a>
  </li>
 </ul>
 
@@ -284,7 +284,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>기본 명령문</h1>
+                <h1>모음 자료형 1편</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -295,41 +295,36 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#assignment-operator">
-   2.1. Assignment operator
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#control-flow">
-   2.2. Control Flow
+  <a class="reference internal nav-link" href="#id2">
+   2.1. 문자열
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#if-elif-else">
-     2.2.1. if/elif/else
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#for-range">
-     2.2.2. for/range
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#while-break-continue">
-     2.2.3. while/break/continue
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conditional-expressions">
-     2.2.4. Conditional Expressions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#advanced-iteration">
-     2.2.5. Advanced iteration
+    <a class="reference internal nav-link" href="#id3">
+     2.1.1. 백슬래시와 이스케이프 문자
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   2.2. 리스트
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tuples">
+   2.3. Tuples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   2.4. 인덱싱
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   2.5. 슬라이싱
+  </a>
  </li>
 </ul>
 
@@ -341,269 +336,502 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">2. </span>기본 명령문<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="assignment-operator">
-<h2><span class="section-number">2.1. </span>Assignment operator<a class="headerlink" href="#assignment-operator" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https//docs.python.org/reference/simple_stmts.html#assignment-statements">Python library reference</a>
-says</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Assignment statements are used to (re)bind names to values and to
-modify attributes or items of mutable objects.
-</pre></div>
-</div>
-<p>In short, it works as follows (simple assignment)</p>
-<ol class="simple">
-<li><p>an expression on the right hand side is evaluated, the corresponding
-object is created/obtained</p></li>
-<li><p>a <strong>name</strong> on the left hand side is assigned, or bound, to the
-r.h.s. object</p></li>
-</ol>
-<p>Things to note</p>
+<h1><span class="section-number">2. </span>모음 자료형 1편<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p><strong>모음</strong><font size="2">collection</font> 자료형은
+여러 개의 값을 하나로 묶어 놓은 값의 유형이다.
+파이썬은 문자열, 리스트, 튜플, 집합, 사전 등의 모음 자료형을
+기본으로 제공하며,
+여러 값을 묶어 둔다는 의미로 모음 자료형의 값을
+<strong>컨테이너</strong><font size="2">container</font>라고도 부른다.</p>
+<p>모음 자료형은 크게 두 종류로 나뉜다.</p>
 <ul class="simple">
-<li><p>a single object can have several names bound to it</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">a</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">b</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="kc">True</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;hi!&#39;</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="n">a</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;hi!&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>to change a list <em>in place</em>, use indexing/slices</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">a</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="c1"># Creates another object.</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="n">a</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="mi">138641676</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="n">a</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="c1"># Modifies object in place.</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="n">a</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="mi">138641676</span> <span class="c1"># Same as in Out[6], yours will differ...</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>the key concept here is <strong>mutable vs. immutable</strong></p>
+<li><p>순차형<font size="2">sequence type</font>: 포함된 항목들의 순서를 가리는 모음 자료형</p>
 <ul>
-<li><p>mutable objects can be changed in place</p></li>
-<li><p>immutable objects cannot be modified once created</p></li>
+<li><p>문자열</p></li>
+<li><p>리스트</p></li>
+<li><p>튜플</p></li>
+</ul>
+</li>
+<li><p>집합형<font size="2">set type</font>: 포함된 항목들의 순서를 무시하는 모음 자료형</p>
+<ul>
+<li><p>집합</p></li>
+<li><p>사전</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="control-flow">
-<h2><span class="section-number">2.2. </span>Control Flow<a class="headerlink" href="#control-flow" title="Permalink to this headline">¶</a></h2>
-<p>Controls the order in which the code is executed.</p>
-<div class="section" id="if-elif-else">
-<h3><span class="section-number">2.2.1. </span>if/elif/else<a class="headerlink" href="#if-elif-else" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="mi">2</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Obvious!&#39;</span><span class="p">)</span>
-<span class="gp">...</span>
-<span class="go">Obvious!</span>
-</pre></div>
-</div>
-<p><strong>Blocks are delimited by indentation</strong></p>
-<p>Type the following lines in your Python interpreter, and be careful
-to <strong>respect the indentation depth</strong>. The Ipython shell automatically
-increases the indentation depth after a colon <code class="docutils literal notranslate"><span class="pre">:</span></code> sign; to
-decrease the indentation depth, go four spaces to the left with the
-Backspace key. Press the Enter key twice to leave the logical block.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">... </span><span class="k">elif</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A lot&#39;</span><span class="p">)</span>
-<span class="go">A lot</span>
-</pre></div>
-</div>
-<p>Indentation is compulsory in scripts as well. As an exercise, re-type the
-previous lines with the same indentation in a script <code class="docutils literal notranslate"><span class="pre">condition.py</span></code>, and
-execute the script with <code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">condition.py</span></code> in Ipython.</p>
-</div>
-<div class="section" id="for-range">
-<h3><span class="section-number">2.2.2. </span>for/range<a class="headerlink" href="#for-range" title="Permalink to this headline">¶</a></h3>
-<p>Iterating with an index:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<span class="go">0</span>
-<span class="go">1</span>
-<span class="go">2</span>
-<span class="go">3</span>
-</pre></div>
-</div>
-<p>But most often, it is more readable to iterate over values:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;cool&#39;</span><span class="p">,</span> <span class="s1">&#39;powerful&#39;</span><span class="p">,</span> <span class="s1">&#39;readable&#39;</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Python is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">word</span><span class="p">)</span>
-<span class="go">Python is cool</span>
-<span class="go">Python is powerful</span>
-<span class="go">Python is readable</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="while-break-continue">
-<h3><span class="section-number">2.2.3. </span>while/break/continue<a class="headerlink" href="#while-break-continue" title="Permalink to this headline">¶</a></h3>
-<p>Typical C-style while loop (Mandelbrot problem):</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span>
-<span class="go">(-134+352j)</span>
-</pre></div>
-</div>
-<p><strong>More advanced features</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">break</span></code> out of enclosing for/while loop:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="k">if</span> <span class="n">z</span><span class="o">.</span><span class="n">imag</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="gp">... </span>        <span class="k">break</span>
-<span class="gp">... </span>    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">continue</span></code> the next iteration of a loop.:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="k">if</span> <span class="n">element</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="gp">... </span>        <span class="k">continue</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="mf">1.</span> <span class="o">/</span> <span class="n">element</span><span class="p">)</span>
-<span class="go">1.0</span>
-<span class="go">0.5</span>
-<span class="go">0.25</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="conditional-expressions">
-<h3><span class="section-number">2.2.4. </span>Conditional Expressions<a class="headerlink" href="#conditional-expressions" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">&lt;OBJECT&gt;</span></code></p>
-<p>Evaluates to False:</p>
+<p>먼저 순차형을 소개한다.</p>
+<div class="section" id="id2">
+<h2><span class="section-number">2.1. </span>문자열<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><strong>문자열</strong><font size="2">string</font>은 문자 기호로 이루어진 단어, 문장 등을 가리킨다.
+키보드에 포함된 영문 알파벳, 한글 자음과 모음 등을 기본적으로 사용한다.
+문자열은 세 가지 방식으로 작성될 수 있다.</p>
 <ul class="simple">
-<li><p>any number equal to zero (<code class="docutils literal notranslate"><span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">0.0</span></code>, <code class="docutils literal notranslate"><span class="pre">0+0</span></code>)</p></li>
-<li><p>an empty container (list, tuple, set, dictionary, …)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p>작은 따옴표 활용</p></li>
 </ul>
-<p>Evaluates to True:</p>
-<ul class="simple">
-<li><p>everything else</p></li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">b</span></code></p>
-<p>Tests equality, with logics:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">==</span> <span class="mf">1.</span>
-<span class="go">True</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;잘 지내세요?&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">is</span> <span class="pre">b</span></code></p>
-<p>Tests identity: both sides are the same object:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="ow">is</span> <span class="mf">1.</span>
-<span class="go">False</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
-<span class="go">True</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>잘 지내세요?
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">in</span> <span class="pre">b</span></code></p>
-<p>For any collection <code class="docutils literal notranslate"><span class="pre">b</span></code>: <code class="docutils literal notranslate"><span class="pre">b</span></code> contains <code class="docutils literal notranslate"><span class="pre">a</span></code> :</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="ow">in</span> <span class="n">b</span>
-<span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="ow">in</span> <span class="n">b</span>
-<span class="go">False</span>
-</pre></div>
 </div>
-<p>If <code class="docutils literal notranslate"><span class="pre">b</span></code> is a dictionary, this tests that <code class="docutils literal notranslate"><span class="pre">a</span></code> is a key of <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
-</div>
-<div class="section" id="advanced-iteration">
-<h3><span class="section-number">2.2.5. </span>Advanced iteration<a class="headerlink" href="#advanced-iteration" title="Permalink to this headline">¶</a></h3>
-<p><strong>Iterate over any sequence</strong></p>
-<p>You can iterate over any sequence (string, list, keys in a dictionary, lines in
-a file, …):</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vowels</span> <span class="o">=</span> <span class="s1">&#39;aeiouy&#39;</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;powerful&#39;</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">vowels</span><span class="p">:</span>
-<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<span class="go">o</span>
-<span class="go">e</span>
-<span class="go">u</span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Hello how are you?&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">message</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="c1"># returns a list</span>
-<span class="go">[&#39;Hello&#39;, &#39;how&#39;, &#39;are&#39;, &#39;you?&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
-<span class="gp">...</span>
-<span class="go">Hello</span>
-<span class="go">how</span>
-<span class="go">are</span>
-<span class="go">you?</span>
-</pre></div>
-</div>
-<p>Few languages (in particular, languages for scientific computing) allow to
-loop over anything but integers/indices. With Python it is possible to
-loop exactly over the objects of interest without bothering with indices
-you often don’t care about. This feature can often be used to make
-code more readable.</p>
-<p><strong>warning</strong>: Not safe to modify the sequence you are iterating over.</p>
-<p><strong>Keeping track of enumeration number</strong></p>
-<p>Common task is to iterate over a sequence while keeping track of the
-item number.</p>
-<ul class="simple">
-<li><p>Could use while loop with a counter as above. Or a for loop:</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">words</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;cool&#39;</span><span class="p">,</span> <span class="s1">&#39;powerful&#39;</span><span class="p">,</span> <span class="s1">&#39;readable&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)):</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-<span class="go">(0, &#39;cool&#39;)</span>
-<span class="go">(1, &#39;powerful&#39;)</span>
-<span class="go">(2, &#39;readable&#39;)</span>
-</pre></div>
 </div>
 <ul class="simple">
-<li><p>But, Python provides a built-in function - <code class="docutils literal notranslate"><span class="pre">enumerate</span></code> - for this:</p></li>
+<li><p>큰 따옴표 활용</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">((</span><span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">))</span>
-<span class="go">(0, &#39;cool&#39;)</span>
-<span class="go">(1, &#39;powerful&#39;)</span>
-<span class="go">(2, &#39;readable&#39;)</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;별일 없으세요?&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Looping over a dictionary</strong></p>
-<p>Use <strong>items</strong>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mf">1.2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="mi">1</span><span class="n">j</span><span class="p">}</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>별일 없으세요?
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>연속된 세 개의 작은 또는 큰 따옴표 활용: 여러 줄로 이루어진 문자열 작성</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;안녕.</span>
+<span class="s1">별일 없어?&#39;&#39;&#39;</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Key: </span><span class="si">%s</span><span class="s1"> has value: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">))</span>
-<span class="go">Key: a has value: 1</span>
-<span class="go">Key: b has value: 1.2</span>
-<span class="go">Key: c has value: 1j</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>note</strong></p>
-<p>The ordering of a dictionary is random, thus we use :func:<code class="docutils literal notranslate"><span class="pre">sorted</span></code>
-which will sort on the keys.</p>
-<p><strong>Exercise</strong>
-ref: <code class="docutils literal notranslate"><span class="pre">pi_wallis</span></code></p>
-<p>Compute the decimals of Pi using the Wallis formula:</p>
-<div class="math notranslate nohighlight">
-\[
-\pi = 2 \prod_{i=1}^{\infty} \frac{4i^2}{4i^2 - 1}
-\]</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>안녕.
+별일 없어?
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;안녕.</span>
+<span class="s2">별일 없어?&quot;&quot;&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>안녕.
+별일 없어?
+</pre></div>
+</div>
+</div>
+</div>
+<p>스페이스와 탭을 활용해서 생성된 여백<font size="2">white space</font>도 문자열로 처리된다.
+또한 줄바꿈을 나타내는 문자는 <code class="docutils literal notranslate"><span class="pre">\n</span></code>이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;안녕.</span>
+<span class="s1">    별일 없어?&#39;&#39;&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>안녕.
+    별일 없어?
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;안녕.</span>
+<span class="s2">    별일 없어?&quot;&quot;&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>안녕.
+    별일 없어?
+</pre></div>
+</div>
+</div>
+</div>
+<div class="info admonition">
+<p class="admonition-title">유니코드</p>
+<p>키보드 상에 존재하지 않는 다른 기호나 문자도 <strong>유니코드</strong><font size="2">unicode</font>
+형식으로 지원된다.
+예를 들어 웃는 얼굴의 이모티콘을 나타내는 문자열은 다음과 같다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\U0001f604</span><span class="s1">&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">😄</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="go">&#39;😄😄&#39;</span>
+</pre></div>
+</div>
+<p>유니코드로 지원되는 모든 이모티콘은 <a class="reference external" href="https://unicode.org/emoji/charts/emoji-list.html">Emoji Charts</a>에서
+확인할 수 있다. 단, <code class="docutils literal notranslate"><span class="pre">U+</span></code> 시작하는 부분을 <code class="docutils literal notranslate"><span class="pre">U000</span></code> 으로 대체해서 사용해야 한다.</p>
+</div>
+<div class="section" id="id3">
+<h3><span class="section-number">2.1.1. </span>백슬래시와 이스케이프 문자<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>문자열에 따옴표를 사용하려면 문자열을 감싸는 방식에 주의해야 한다.
+예를 들어, 작은 따옴표를 사용하는 문자열을 다음과 같이 지정하면 오류가 발생한다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;Python&#39;</span><span class="n">s</span> <span class="n">grammar</span><span class="s1">&#39;</span>
+<span class="go">------------------------------------------------------------</span>
+<span class="go">File &quot;&lt;ipython console&gt;&quot;, line 1</span>
+<span class="go">&#39;Python&#39;s grammar&#39;</span>
+<span class="go">        ^</span>
+<span class="go">SyntaxError invalid syntax</span>
+</pre></div>
+</div>
+<p>이유는 작은 따옴표로 문자열의 시작을 지정했기 때문에
+<code class="docutils literal notranslate"><span class="pre">Python's</span></code> 문장에 사용된 작은 따옴표가
+문자열의 끝을 의미하게된다.
+그런데 이후에도 문자열이 이어지게 되어 결국 문자열의 끝이 불분명해져서
+구문 오류를 뜻하는 <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>가 발생하였다.</p>
+<p>이런 오류를 방지하는 다양한 방식이 존재한다.
+예를 들어 작은 따옴표 바로 앞에 백슬래시<font size="2">backslash</font> 기호 (<code class="docutils literal notranslate"><span class="pre">\</span></code>)를 추가하면 된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Python</span><span class="se">\&#39;</span><span class="s1">s grammer&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python&#39;s grammer
+</pre></div>
+</div>
+</div>
+</div>
+<div class="info admonition">
+<p class="admonition-title">슬래시 기호(\)와 원화 기호(₩)</p>
+<p>백슬래시 키는 오른쪽 <kbd>Enter</kbd> 키 바로 위에 위치하는데
+한글 키보드의 경우 원화 기호 키 <kbd>₩</kbd> 가 대신 표시되어 있을 수 있다.
+그리고 모니터 화면 상에는 사용하는 운영체제 언어 설정에 따라
+원화 기호(₩) 대신 백슬래시 기호(\)로 보일 수 있다.
+하지만 단순한 언어 설정의 차이일 뿐 기능은 동일하다.</p>
+</div>
+<p>백슬래시는 이처럼 특정 문자와 함께 사용되면 특별한 기능을 갖는
+이스케이프 문자<font size="2">escape character</font>를 구성한다.
+가장 많이 사용되는 이스케이프 문자의 목록은 다음과 같다.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>이스케이프 문자</p></th>
+<th class="text-align:center head"><p>의미</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">\'</span></code></p></td>
+<td class="text-align:center"><p>작은 따옴표</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">\\</span></code></p></td>
+<td class="text-align:center"><p>백슬래시 기호</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">\n</span></code></p></td>
+<td class="text-align:center"><p>줄바꿈</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">\t</span></code></p></td>
+<td class="text-align:center"><p>탭</p></td>
+</tr>
+</tbody>
+</table>
+<p>Strings are collections like lists. Hence they can be indexed and
+sliced, using the same syntax and rules.</p>
+<p>Indexing</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">&#39;h&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">&#39;e&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">&#39;o&#39;</span>
+</pre></div>
+</div>
+<p>(Remember that negative indices correspond to counting from the right
+end.)</p>
+<p>Slicing</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;hello, world!&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">36</span><span class="p">]</span> <span class="c1"># 3rd to 6th (excluded) elements elements 3, 4, 5</span>
+<span class="go">&#39;lo,&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">2102</span><span class="p">]</span> <span class="c1"># Syntax a[startstopstep]</span>
+<span class="go">&#39;lo o&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># every three characters, from beginning to end</span>
+<span class="go">&#39;hl r!&#39;</span>
+</pre></div>
+</div>
+<p>Accents and special characters can also be handled as in Python 3
+strings consist of Unicode characters.</p>
+<p>A string is an <strong>immutable object</strong> and it is not possible to modify its
+contents. One may however create new strings from the original one.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">53</span><span class="p">]</span> <span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;hello, world!&quot;</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">54</span><span class="p">]</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span>
+<span class="o">---------------------------------------------------------------------------</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+<span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">TypeError</span> <span class="s1">&#39;str&#39;</span> <span class="nb">object</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">item</span> <span class="n">assignment</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">55</span><span class="p">]</span> <span class="n">a</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">55</span><span class="p">]</span> <span class="s1">&#39;hezlo, world!&#39;</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">56</span><span class="p">]</span> <span class="n">a</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">56</span><span class="p">]</span> <span class="s1">&#39;hezzo, worzd!&#39;</span>
+</pre></div>
+</div>
+<p>Strings have many useful methods, such as <code class="docutils literal notranslate"><span class="pre">a.replace</span></code> as seen
+above. Remember the <code class="docutils literal notranslate"><span class="pre">a.</span></code> object-oriented notation and use tab
+completion or <code class="docutils literal notranslate"><span class="pre">help(str)</span></code> to search for new methods.</p>
+<p><strong>seealso</strong></p>
+<p>Python offers advanced possibilities for manipulating strings,
+looking for patterns or formatting. The interested reader is referred to
+https//docs.python.org/library/stdtypes.html#string-methods and
+https//docs.python.org/3/library/string.html#format-string-syntax</p>
+<p>String formatting</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;An integer </span><span class="si">%i</span><span class="s1">; a float </span><span class="si">%f</span><span class="s1">; another string </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">)</span> <span class="c1"># with more values use tuple after %</span>
+<span class="go">&#39;An integer 1; a float 0.100000; another string string&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="mi">102</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;processing_of_dataset_</span><span class="si">%d</span><span class="s1">.txt&#39;</span> <span class="o">%</span> <span class="n">i</span>   <span class="c1"># no need for tuples with just one value after %</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filename</span>
+<span class="go">&#39;processing_of_dataset_102.txt&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">2.2. </span>리스트<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>리스트<font size="2">list</font>는 여러 종류의 값을 순서지어 포함한다.
+포함되는 항목의 개수에 제한이 없다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">]</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="tuples">
+<h2><span class="section-number">2.3. </span>Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">¶</a></h2>
+<p>Tuples are basically immutable lists. The elements of a tuple are written
+between parentheses, or just separated by commas</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="mi">12345</span><span class="p">,</span> <span class="mi">54321</span><span class="p">,</span> <span class="s1">&#39;hello!&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">12345</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
+<span class="go">(12345, 54321, &#39;hello!&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">2.4. </span>인덱싱<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>순차형 컨테이너는 모두 정수를 이용하여 항목을 확인하고,
+경우에 따라 항목을 다른 값으로 변경하는
+<strong>인덱싱</strong><font size="2">indexing</font> 기능을 갖는다.</p>
+<p>왼편에 위치한 항목으로부터 차례대로 0, 1, 2, … 등의
+<strong>인덱스</strong><font size="2">index</font>를 다음과 같이 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;red&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;blue&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;green&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">인덱스는 0부터 시작!</p>
+<p>가장 왼편에 위치한 항목의 인덱스가 1이 아닌 0임에 주의해야 한다.
+순차 자료형의 가장 왼편에 위치한 값으로부터 첫째, 둘째, 셋째 등으로
+언급하는 반면에 인덱스는 0, 1, 2 등으로 사용해야 해서
+익숙해질 때까지 시간이 조금 걸린다.</p>
+<p>C 언어 계열의 언어를 비롯하여 자바, 자바스크립트 등 대부분의
+프로그래밍 언어가 0부터 인덱스를 시작한다.
+반면에 포트란<font size="2">Fortran</font>, 매트랩 등
+수치 계산 전용 프로그래밍 언어는 인덱스를 1부터 시작한다.</p>
+<p>참고로 인덱스를 0부터 시작해야 하는 논리적 이유는 없다.
+누군가 어떤 이유로 그렇게 정했고 나름 이유가 있었겠지만
+사용 면에서 보면 어떤 논리적인 장점도 없다.</p>
+</div>
+<p>-1, -2, -3, … 등 음의 정수를 인덱스로 사용하면 오른편에 위치한 항목부터
+차례대로 왼쪽으로 이동하면서 인덱싱을 실행할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;white&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">colors</span></code> 변수가 가리키는 리스트에 5개의 문자열이 포함되어 있기 때문에
+왼편에서 넷째, 오른편에 둘째 항목은 동일한 문자열이 된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">왼쪽에서셋째</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">오른쪽에서둘째</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="n">왼쪽에서셋째</span> <span class="o">==</span> <span class="n">오른쪽에서둘째</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">한글 변수 이름</p>
+<p>한글을 변수와 함수의 이름으로 사용할 수도 있다.
+하지만 다른 버전 또는 타 언어와의 호환성 등의 문제가 발생할 수 있기에
+아직은 일반적이지 않으며 추천되지 않는다.</p>
+</div>
+<p>포함된 항목의 개수를 벗어나는 인덱스는 오류를 유발한다.
+<code class="docutils literal notranslate"><span class="pre">colors</span></code> 리스트가 5개의 항목을 포함하기에 사용할 수 있는 인덱스는
+왼편에서 시작하는 경우엔 0부터 4까지이고
+오른편에서 시작하면 -1부터 -5까지이다.</p>
+<p>예를 들어 5를 인덱스로 사용하면 왼편에서 여섯째 항목을 확인하기 때문에
+인덱스의 범위를 벗어난다.
+따라서 <code class="docutils literal notranslate"><span class="pre">index</span> <span class="pre">out</span> <span class="pre">of</span> <span class="pre">range</span></code> 라는 설명과 함께 <code class="docutils literal notranslate"><span class="pre">IndexError</span></code>가
+다음과 같이 발생한다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">IndexError                                Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-3-5976064932c2&gt; in &lt;module&gt;</span>
+<span class="go">----&gt; 1 colors[5]</span>
+
+<span class="go">IndexError: list index out of range</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><span class="section-number">2.5. </span>슬라이싱<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>인덱스의 구간을 지정하여 순차 자료형의 일부를 추출하는 것을
+<strong>슬라이싱</strong><font size="2">slicing</font>이라 한다.</p>
+<p>예를 들어 <code class="docutils literal notranslate"><span class="pre">colors</span></code> 리스트의 둘째부터 넷째 까지의 항목으로
+구성된 리스트를 생성하려면 다음과 같이 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;blue&#39;, &#39;green&#39;, &#39;black&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">[1:4]</span></code> 는 1번 인덱스, 즉 둘째부터 4번 인덱스 이전까지, 즉 3번 인덱스인 넷째 항목까지
+추출 대상으로 삼는다는 의미이다.</p>
+<p>슬라이싱의 일반 형식은 다음과 같다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[</span><span class="n">시작</span><span class="p">:</span><span class="n">끝</span><span class="p">:</span><span class="n">보폭</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>시작</strong>과 <strong>끝</strong>의 의 의미는 <code class="docutils literal notranslate"><span class="pre">colors[1:4]</span></code>의 경우에서 설명한 것과 동일하다.
+반면에 <strong>보폭</strong>은 항목 추출법을 설명한다.
+예를 들어 2를 보폭으로 사용하면
+시작 인덱스로 부터 2씩 건너 뛰며 항목을 추출한다.
+<code class="docutils literal notranslate"><span class="pre">colors[1:4:2]</span></code>는 따라서 1번, 3번 두 개의 인덱스에 위치한 항목을 추출해서
+리스트를 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;blue&#39;, &#39;black&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>시작, 끝, 보폭 모두 생략될 수 있으며 각각에 대해 기본값이 사용된다.</p>
+<ul class="simple">
+<li><p>시작의 기본값: 0</p></li>
+<li><p>끝의 기본값: 항목의 개수 + 1. 즉, 시작부터 끝까지.</p></li>
+<li><p>보폭의 기본값: 1</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;black&#39;, &#39;white&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;red&#39;, &#39;green&#39;, &#39;white&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -643,7 +871,7 @@ ref: <code class="docutils literal notranslate"><span class="pre">pi_wallis</spa
     <a class='right-next' id="next-link" href="ch03.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>함수</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>모음 자료형 2편</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

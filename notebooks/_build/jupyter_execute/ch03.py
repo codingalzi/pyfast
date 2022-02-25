@@ -1,374 +1,171 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 함수
+# # 모음 자료형 2편
 
-# ## Function definition
+# 집합형 컨테이너 두 개를 소개한다.
 
-# ```python
-# In [56]: def test():
-#    ....:     print('in test function')
-#    ....:
-#    ....:
-# 
-# In [57]: test()
-# in test function
-# ```
+# ## 집합
 
-# **Warning**
-# 
-# Function blocks must be indented as other control-flow blocks.
-
-# ## Return statement
-
-# Functions can *optionally* return values.
-
-# ```python
-# In [6]: def disk_area(radius):
-#    ...:     return 3.14 * radius * radius
-#    ...:
-# 
-# In [8]: disk_area(1.5)
-# Out[8]: 7.0649999999999995
-# ```
-
-# **Note** By default, functions return ``None``.
-
-# **Note** Note the syntax to define a function:
-# 
-# * the `def` keyword;
-# * is followed by the function's **name**, then
-# * the arguments of the function are given between parentheses followed
-#   by a colon.
-# * the function body;
-# * and `return object` for optionally returning values.
-
-# ## Parameters
-
-# Mandatory parameters (positional arguments)
+# unordered, unique items
 # 
 # ```python
-# In [81]: def double_it(x):
-#    ....:     return x * 2
-#    ....:
-# 
-# In [82]: double_it(3)
-# Out[82]: 6
-# 
-# In [83]: double_it()
-# ---------------------------------------------------------------------------
-# Traceback (most recent call last):
-#   File "<stdin>", line 1, in <module>
-# TypeError: double_it() takes exactly 1 argument (0 given)
+# >>> s = set(('a', 'b', 'c', 'a'))
+# >>> s    # doctest +SKIP
+# set(['a', 'c', 'b'])
+# >>> s.difference(('a', 'b'))    # doctest +SKIP
+# set(['c'])
 # ```
 
-# Optional parameters (keyword or named arguments)
-# 
-# ```python
-# In [84]: def double_it(x=2):
-#    ....:     return x * 2
-#    ....:
-# 
-# In [85]: double_it()
-# Out[85]: 4
-# 
-# In [86]: double_it(3)
-# Out[86]: 6
-# ```
+# ## 사전
 
-# Keyword arguments allow you to specify *default values*.
-
-# **Warning**
-# 
-# Default values are evaluated when the function is defined, not when
-# it is called. This can be problematic when using mutable types (e.g.
-# dictionary or list) and modifying them in the function body, since the
-# modifications will be persistent across invocations of the function.
-# 
-# Using an immutable type in a keyword argument:
-# 
-# ```python
-# In [124]: bigx = 10
-# 
-# In [125]: def double_it(x=bigx):
-#   .....:     return x * 2
-#   .....:
-# 
-# In [126]: bigx = 1e9  # Now really big
-# 
-# In [128]: double_it()
-# Out[128]: 20
-# ```
-# 
-# Using an mutable type in a keyword argument (and modifying it inside the
-# function body):
-# 
-# ```python
-# In [2]: def add_to_dict(args={'a': 1, 'b': 2}):
-#   ...:     for i in args.keys():
-#   ...:         args[i] += 1
-#   ...:     print(args)
-#   ...:
-# 
-# In [3]: add_to_dict
-# Out[3]: <function __main__.add_to_dict>
-# 
-# In [4]: add_to_dict()
-# {'a': 2, 'b': 3}
-# 
-# In [5]: add_to_dict()
-# {'a': 3, 'b': 4}
-# 
-# In [6]: add_to_dict()
-# {'a': 4, 'b': 5}
-# ```
-
-# More involved example implementing python's slicing:
+# A dictionary is basically an efficient table that **maps keys to
+# values**. It is an **unordered** container
 
 # ```python
-# In [98]: def slicer(seq, start=None, stop=None, step=None):
-#    ....:     """Implement basic python slicing."""
-#    ....:     return seq[start:stop:step]
-#    ....:
-# 
-# In [101]: rhyme = 'one fish, two fish, red fish, blue fish'.split()
-# 
-# In [102]: rhyme
-# Out[102]: ['one', 'fish,', 'two', 'fish,', 'red', 'fish,', 'blue', 'fish']
-# 
-# In [103]: slicer(rhyme)
-# Out[103]: ['one', 'fish,', 'two', 'fish,', 'red', 'fish,', 'blue', 'fish']
-# 
-# In [104]: slicer(rhyme, step=2)
-# Out[104]: ['one', 'two', 'red', 'blue']
-# 
-# In [105]: slicer(rhyme, 1, step=2)
-# Out[105]: ['fish,', 'fish,', 'fish,', 'fish']
-# 
-# In [106]: slicer(rhyme, start=1, stop=4, step=2)
-# Out[106]: ['fish,', 'fish,']
+# >>> tel = {'emmanuelle' 5752, 'sebastian' 5578}
+# >>> tel['francis'] = 5915
+# >>> tel     # doctest +SKIP
+# {'sebastian' 5578, 'francis' 5915, 'emmanuelle' 5752}
+# >>> tel['sebastian']
+# 5578
+# >>> tel.keys()   # doctest +SKIP
+# ['sebastian', 'francis', 'emmanuelle']
+# >>> tel.values()   # doctest +SKIP
+# [5578, 5915, 5752]
+# >>> 'francis' in tel
+# True
 # ```
 
-# The order of the keyword arguments does not matter:
+# It can be used to conveniently store and retrieve values
+# associated with a name (a string for a date, a name, etc.). See
+# https//docs.python.org/tutorial/datastructures.html#dictionaries
+# for more information.
+
+# A dictionary can have keys (resp. values) with different types
 # 
 # ```python
-# In [107]: slicer(rhyme, step=2, start=1, stop=4)
-# Out[107]: ['fish,', 'fish,']
+# >>> d = {'a'1, 'b'2, 3'hello'}
+# >>> d       # doctest +SKIP
+# {'a' 1, 3 'hello', 'b' 2}
 # ```
-# 
-# but it is good practice to use the same ordering as the function's
-# definition.
 
-# *Keyword arguments* are a very convenient feature for defining functions
-# with a variable number of arguments, especially when default values are
-# to be used in most calls to the function.
+# ## 수정 가능성
 
-# ## Passing by value
-
-# Can you modify the value of a variable inside a function? Most languages
-# (C, Java, ...) distinguish "passing by value" and "passing by reference".
-# In Python, such a distinction is somewhat artificial, and it is a bit
-# subtle whether your variables are going to be modified or not.
-# Fortunately, there exist clear rules.
-# 
-# Parameters to functions are references to objects, which are passed by
-# value. When you pass a variable to a function, python passes the
-# reference to the object to which the variable refers (the **value**).
-# Not the variable itself.
-
-# If the **value** passed in a function is immutable, the function does not
-# modify the caller's variable.  If the **value** is mutable, the function
-# may modify the caller's variable in-place::
+# Lists are *mutable* objects and can be modified
 # 
 # ```python
-# >>> def try_to_modify(x, y, z):
-# ...     x = 23
-# ...     y.append(42)
-# ...     z = [99] # new reference
-# ...     print(x)
-# ...     print(y)
-# ...     print(z)
-# ...
-# >>> a = 77    # immutable variable
-# >>> b = [99]  # mutable variable
-# >>> c = [28]
-# >>> try_to_modify(a, b, c)
-# 23
-# [99, 42]
-# [99]
-# >>> print(a)
-# 77
-# >>> print(b)
-# [99, 42]
-# >>> print(c)
-# [28]
+# >>> colors[0] = 'yellow'
+# >>> colors
+# ['yellow', 'blue', 'green', 'black', 'white']
+# >>> colors[24] = ['gray', 'purple']
+# >>> colors
+# ['yellow', 'blue', 'gray', 'purple', 'white']
 # ```
 
-# Functions have a local variable table called a *local namespace*.
+# **Note**
 # 
-# The variable `x` only exists within the function `try_to_modify`.
-
-# ## Global variables
-
-# Variables declared outside the function can be referenced within the
-# function:
+# The elements of a list may have different types
 # 
 # ```python
-# In [114]: x = 5
-# 
-# In [115]: def addx(y):
-#    .....:     return x + y
-#    .....:
-# 
-# In [116]: addx(10)
-# Out[116]: 15
+# >>> colors = [3, -200, 'hello']
+# >>> colors
+# [3, -200, 'hello']
+# >>> colors[1], colors[2]
+# (-200, 'hello')
 # ```
 
-# But these "global" variables cannot be modified within the function,
-# unless declared **global** in the function.
-# 
-# This doesn't work:
+# For collections of numerical data that all have the same type, it
+# is often **more efficient** to use the `array` type provided by
+# the `numpy` module. A NumPy array is a chunk of memory
+# containing fixed-sized items.  With NumPy arrays, operations on
+# elements can be faster because elements are regularly spaced in
+# memory and more operations are performed through specialized C
+# functions instead of Python loops.
+
+# Python offers a large panel of functions to modify lists, or query
+# them. Here are a few examples; for more details, see
+# https//docs.python.org/tutorial/datastructures.html#more-on-lists
+
+# Add and remove elements
 # 
 # ```python
-# In [117]: def setx(y):
-#    .....:     x = y
-#    .....:     print('x is %d' % x)
-#    .....:
-#    .....:
-# 
-# In [118]: setx(10)
-# x is 10
-# 
-# In [120]: x
-# Out[120]: 5
+# >>> colors = ['red', 'blue', 'green', 'black', 'white']
+# >>> colors.append('pink')
+# >>> colors
+# ['red', 'blue', 'green', 'black', 'white', 'pink']
+# >>> colors.pop() # removes and returns the last item
+# 'pink'
+# >>> colors
+# ['red', 'blue', 'green', 'black', 'white']
+# >>> colors.extend(['pink', 'purple']) # extend colors, in-place
+# >>> colors
+# ['red', 'blue', 'green', 'black', 'white', 'pink', 'purple']
+# >>> colors = colors[-2]
+# >>> colors
+# ['red', 'blue', 'green', 'black', 'white']
 # ```
 
-# This works:
+# Reverse
 # 
 # ```python
-# In [121]: def setx(y):
-#    .....:     global x
-#    .....:     x = y
-#    .....:     print('x is %d' % x)
-#    .....:
-#    .....:
-# 
-# In [122]: setx(10)
-# x is 10
-# 
-# In [123]: x
-# Out[123]: 10
+# >>> rcolors = colors[-1]
+# >>> rcolors
+# ['white', 'black', 'green', 'blue', 'red']
+# >>> rcolors2 = list(colors) # new object that is a copy of colors in a different memory area
+# >>> rcolors2
+# ['red', 'blue', 'green', 'black', 'white']
+# >>> rcolors2.reverse() # in-place; reversing rcolors2 does not affect colors
+# >>> rcolors2
+# ['white', 'black', 'green', 'blue', 'red']
 # ```
 
-# ## Variable number of parameters
-
-# Special forms of parameters:
-# 
-# * `*args`: any number of positional arguments packed into a tuple
-# * `**kwargs`: any number of keyword arguments packed into a dictionary
+# Concatenate and repeat lists
 # 
 # ```python
-# In [35]: def variable_args(*args, **kwargs):
-#    ....:     print('args is', args)
-#    ....:     print('kwargs is', kwargs)
-#    ....:
-# 
-# In [36]: variable_args('one', 'two', x=1, y=2, z=3)
-# args is ('one', 'two')
-# kwargs is {'x': 1, 'y': 2, 'z': 3}
+# >>> rcolors + colors
+# ['white', 'black', 'green', 'blue', 'red', 'red', 'blue', 'green', 'black', 'white']
+# >>> rcolors * 2
+# ['white', 'black', 'green', 'blue', 'red', 'white', 'black', 'green', 'blue', 'red']
 # ```
 
-# ## Docstrings
-
-# Documentation about what the function does and its parameters.  General
-# convention:
+# Sort
 # 
 # ```python
-# In [67]: def funcname(params):
-#    ....:     """Concise one-line sentence describing the function.
-#    ....:
-#    ....:     Extended summary which can contain multiple paragraphs.
-#    ....:     """
-#    ....:     # function body
-#    ....:     pass
-#    ....:
-# 
-# In [68]: funcname?
-# Type:           function
-# Base Class:     type 'function'>
-# String Form:    <function funcname at 0xeaa0f0>
-# Namespace:      Interactive
-# File:           <ipython console>
-# Definition:     funcname(params)
-# Docstring:
-#     Concise one-line sentence describing the function.
-# 
-#     Extended summary which can contain multiple paragraphs.
+# >>> sorted(rcolors) # new object
+# ['black', 'blue', 'green', 'red', 'white']
+# >>> rcolors
+# ['white', 'black', 'green', 'blue', 'red']
+# >>> rcolors.sort()  # in-place
+# >>> rcolors
+# ['black', 'blue', 'green', 'red', 'white']
 # ```
 
-# **Note** **Docstring guidelines**
+# ## List Comprehensions
 # 
-# For the sake of standardization, the `Docstring
-# Conventions <https://www.python.org/dev/peps/pep-0257>`_ webpage
-# documents the semantics and conventions associated with Python
-# docstrings.
-# 
-# Also, the Numpy and Scipy modules have defined a precise standard
-# for documenting scientific functions, that you may want to follow for
-# your own functions, with a `Parameters` section, an `Examples`
-# section, etc. See
-# https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard
-
-# ## Functions are objects
-
-# Functions are first-class objects, which means they can be:
-# 
-# * assigned to a variable
-# * an item in a list (or any collection)
-# * passed as an argument to another function.
+# Instead of creating a list by means of a loop, one can make use
+# of a list comprehension with a rather self-explaining syntax.
 # 
 # ```python
-# In [38]: va = variable_args
-# 
-# In [39]: va('three', x=1, y=2)
-# args is ('three',)
-# kwargs is {'x': 1, 'y': 2}
+# >>> [i**2 for i in range(4)]
+# [0, 1, 4, 9]
 # ```
 
-# ## Methods
+# ## Methods and Object-Oriented Programming
 
-# Methods are functions attached to objects.  You've seen these in our
-# examples on *lists*, *dictionaries*, *strings*, etc...
-
-# ## Exercises
-
-# 1. Fibonacci sequence
+# The notation `rcolors.method()` (e.g. `rcolors.append(3)` and `colors.pop()`) is our
+# first example of object-oriented programming (OOP). Being a `list`, the
+# object `rcolors` owns the *method* `function` that is called using the notation
+# **.**. No further knowledge of OOP than understanding the notation **.** is
+# necessary for going through this tutorial.
 # 
-#     Write a function that displays the `n` first terms of the Fibonacci
-#     sequence, defined by:
+# **Discovering methods**
 # 
-#     $$
-#     \left\{
-#         \begin{array}{ll}
-#             U_{0} = 0 \\
-#             U_{1} = 1 \\
-#             U_{n+2} = U_{n+1} + U_{n}
-#         \end{array}
-#     \right.
-#     $$
+# Reminder in Ipython tab-completion (press tab)
 # 
-# 1. Quicksort
-# 
-#     Implement the quicksort algorithm, as defined by wikipedia
-#     
-#     ```javascript
-#     function quicksort(array)
-#         var list less, greater
-#         if length(array) < 2
-#             return array
-#         select and remove a pivot value pivot from array
-#         for each x in array
-#             if x < pivot + 1 then append x to less
-#             else append x to greater
-#         return concatenate(quicksort(less), pivot, quicksort(greater))
-#     ```
+# ```python
+# In [28] rcolors.<TAB>
+# rcolors.append   rcolors.index    rcolors.remove   
+# rcolors.count    rcolors.insert   rcolors.reverse  
+# rcolors.extend   rcolors.pop      rcolors.sort    
+# ```
