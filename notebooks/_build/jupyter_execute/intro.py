@@ -155,7 +155,7 @@
 # 파이썬 기본 콘솔은 다음 모양의 대화식 코딩을 지원하는다.
 # 
 # ```python
-# print('Hello world')
+# >>> print('Hello world')
 # Hello world
 # ```
 # 
