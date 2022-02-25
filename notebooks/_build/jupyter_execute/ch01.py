@@ -313,76 +313,396 @@ type(test)
 # 모음 자료형은 크게 두 종류로 나뉜다.
 # 
 # - 순차형<font size="2">sequence type</font>: 포함된 항목들의 순서를 가리는 모음 자료형
-#     - 리스트
 #     - 문자열
+#     - 리스트
 #     - 튜플
 # - 집합형<font size="2">set type</font>: 포함된 항목들의 순서를 무시하는 모음 자료형
 #     - 집합
 #     - 사전
 
+# ### 문자열
+
+# **문자열**<font size="2">string</font>은 문자 기호로 이루어진 단어, 문장 등을 가리킨다.
+# 키보드에 포함된 영문 알파벳, 한글 자음과 모음 등을 기본적으로 사용한다.
+# 문자열은 세 가지 방식으로 작성될 수 있다.
+
+# - 작은 따옴표 활용
+
+# In[28]:
+
+
+s = '잘 지내세요?'
+s
+
+
+# - 큰 따옴표 활용
+
+# In[29]:
+
+
+s = "무슨 일 있나요?"
+s
+
+
+# - 연속된 세 개의 작은 또는 큰 따옴표 활용: 여러 줄로 이루어진 문자열 작성
+
+# In[30]:
+
+
+s = '''안녕.
+무슨 일 있어?'''
+
+s
+
+
+# In[31]:
+
+
+s = """안녕.
+무슨 일 있어?"""
+
+s
+
+
+# 스페이스와 탭을 활용해서 생성된 여백<font size="2">white space</font>도 문자열로 처리된다.
+# 또한 줄바꿈을 나타내는 문자는 `\n`이다.
+
+# In[32]:
+
+
+s = '''안녕.
+    무슨 일 있어?'''
+
+s
+
+
+# In[33]:
+
+
+s = """안녕.
+    무슨 일 있어?"""
+
+s
+
+
+# 문자열에 따옴표를 사용하려면 문자열을 감싸는 방식에 주의해야 한다.
+# 예를 들어, 작은 따옴표를 사용하는 문자열을 다음과 같이 지정하면 오류가 발생한다.
+# 
+# ```python
+# >>> 'Hi, what's up?'
+# ------------------------------------------------------------
+# File "<ipython console>", line 1
+# 'Hi, what's up?'
+#        ^
+# SyntaxError invalid syntax
+# ```
+# 
+# 이유는 작은 따옴표로 문자열의 시작을 지정했기 때문에
+# `what's` 문장에 사용된 작은 따옴표가 
+# 문자열의 끝을 의미하게된다.
+# 그런데 이후에도 문자열이 이어지게 되어 결국 문자열의 끝이 불분명해져서
+# 구문 오류를 뜻하는 `SyntaxError`가 발생하였다.
+# 
+# 이런 오류를 방지하는 다양한 방식이 존재한다.
+# 예를 들어 작은 따옴표 바로 앞에 슬래시 기호 (`\`)를 추가하면 된다.
+
+# In[34]:
+
+
+s = 'Hi, what\'s up?'
+s
+
+
+# 아니면 문자열을 큰 따옴표로 감싸면 혼란이 사라진다.
+
+# In[35]:
+
+
+s = "Hi, what\'s up?"
+s
+
+
+# 하지만 이 방식은 문자열이 작은 따옴표와 큰 따옴표 모두 포함하는 경우에 대해서는 
+# 작동하지 않는다. 
+# 따라서 앞서 언급한 슬래시 기호를 사용할 것을 추천한다.
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# 슬래시 기호(&#x5C;)와 원화 기호(&#x20a9;)
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[36]:
+
+
+print(u'\U0001f604')
+
+
+# This syntax error can be avoided by enclosing the string in double quotes
+# instead of single quotes. Alternatively, one can prepend a backslash to the
+# second single quote. Other uses of the backslash are, e.g., the newline character
+# `\n` and the tab character `\t`.
+
+# Strings are collections like lists. Hence they can be indexed and
+# sliced, using the same syntax and rules.
+
+# Indexing
+# 
+# ```python
+# >>> a = "hello"
+# >>> a[0]
+# 'h'
+# >>> a[1]
+# 'e'
+# >>> a[-1]
+# 'o'
+# ```
+
+# (Remember that negative indices correspond to counting from the right
+# end.)
+
+# Slicing
+# 
+# ```python
+# >>> a = "hello, world!"
+# >>> a[36] # 3rd to 6th (excluded) elements elements 3, 4, 5
+# 'lo,'
+# >>> a[2102] # Syntax a[startstopstep]
+# 'lo o'
+# >>> a[3] # every three characters, from beginning to end
+# 'hl r!'
+# ```
+
+# Accents and special characters can also be handled as in Python 3
+# strings consist of Unicode characters.
+
+# A string is an **immutable object** and it is not possible to modify its
+# contents. One may however create new strings from the original one.
+# 
+# ```python
+# In [53] a = "hello, world!"
+# In [54] a[2] = 'z'
+# ---------------------------------------------------------------------------
+# Traceback (most recent call last)
+# File "<stdin>", line 1, in <module>
+# TypeError 'str' object does not support item assignment
+# 
+# In [55] a.replace('l', 'z', 1)
+# Out[55] 'hezlo, world!'
+# In [56] a.replace('l', 'z')
+# Out[56] 'hezzo, worzd!'
+# ```
+
+# Strings have many useful methods, such as `a.replace` as seen
+# above. Remember the `a.` object-oriented notation and use tab
+# completion or `help(str)` to search for new methods.
+
+# **seealso**
+# 
+# Python offers advanced possibilities for manipulating strings,
+# looking for patterns or formatting. The interested reader is referred to
+# https//docs.python.org/library/stdtypes.html#string-methods and
+# https//docs.python.org/3/library/string.html#format-string-syntax
+
+# String formatting
+# 
+# ```python
+# >>> 'An integer %i; a float %f; another string %s' % (1, 0.1, 'string') # with more values use tuple after %
+# 'An integer 1; a float 0.100000; another string string'
+# 
+# >>> i = 102
+# >>> filename = 'processing_of_dataset_%d.txt' % i   # no need for tuples with just one value after %
+# >>> filename
+# 'processing_of_dataset_102.txt'
+# ```
+
 # ### 리스트
 
-# A list is an ordered collection of objects, that may have different
-# types. For example
+# 리스트<font size="2">list</font>는 여러 종류의 값을 순서지어 포함한다.
+# 포함되는 항목의 개수에 제한이 없다.
+
+# In[37]:
+
+
+colors = ['red', 'blue', 'green', 'black', 'white']
+type(colors)
+
+
+# ### 인덱싱
+
+# 순차형 컨테이너는 모두 정수를 이용하여 항목을 확인하고, 
+# 경우에 따라 항목을 다른 값으로 변경하는
+# **인덱싱**<font size="2">indexing</font> 기능을 갖는다.
+# 
+# 왼편에 위치한 항목으로부터 차례대로 0, 1, 2, ... 등의 
+# **인덱스**<font size="2">index</font>를 다음과 같이 사용한다.
+
+# In[38]:
+
+
+colors[0]
+
+
+# In[39]:
+
+
+colors[1]
+
+
+# In[40]:
+
+
+colors[2]
+
+
+# :::{admonition} 인덱스는 0부터 시작!
+# :class: warning
+# 
+# 가장 왼편에 위치한 항목의 인덱스가 1이 아닌 0임에 주의해야 한다.
+# 순차 자료형의 가장 왼편에 위치한 값으로부터 첫째, 둘째, 셋째 등으로 
+# 언급하는 반면에 인덱스는 0, 1, 2 등으로 사용해야 해서 
+# 익숙해질 때까지 시간이 조금 걸린다.
+# 
+# C 언어 계열의 언어를 비롯하여 자바, 자바스크립트 등 대부분의 
+# 프로그래밍 언어가 0부터 인덱스를 시작한다.
+# 반면에 포트란<font size="2">Fortran</font>, 매트랩 등
+# 수치 계산 전용 프로그래밍 언어는 인덱스를 1부터 시작한다. 
+# 
+# 참고로 인덱스를 0부터 시작해야 하는 논리적 이유는 없다.
+# 누군가 어떤 이유로 그렇게 정했고 나름 이유가 있었겠지만 
+# 사용 면에서 보면 어떤 논리적인 장점도 없다.
+# :::
+
+# -1, -2, -3, ... 등 음의 정수를 인덱스로 사용하면 오른편에 위치한 항목부터 
+# 차례대로 왼쪽으로 이동하면서 인덱싱을 실행할 수 있다.
+
+# In[41]:
+
+
+colors[-1]
+
+
+# `colors` 변수가 가리키는 리스트에 5개의 문자열이 포함되어 있기 때문에
+# 왼편에서 넷째, 오른편에 둘째 항목은 동일한 문자열이 된다.
+
+# In[42]:
+
+
+왼쪽에서셋째 = colors[3]
+오른쪽에서둘째 = colors[-2]
+
+왼쪽에서셋째 == 오른쪽에서둘째
+
+
+# :::{admonition} 한글 변수 이름
+# :class: warning
+# 
+# 한글을 변수와 함수의 이름으로 사용할 수도 있다. 
+# 하지만 다른 버전 또는 타 언어와의 호환성 등의 문제가 발생할 수 있기에
+# 아직은 일반적이지 않으며 추천되지 않는다.
+# :::
+
+# 포함된 항목의 개수를 벗어나는 인덱스는 오류를 유발한다.
+# `colors` 리스트가 5개의 항목을 포함하기에 사용할 수 있는 인덱스는 
+# 왼편에서 시작하는 경우엔 0부터 4까지이고
+# 오른편에서 시작하면 -1부터 -5까지이다. 
+# 
+# 예를 들어 5를 인덱스로 사용하면 왼편에서 여섯째 항목을 확인하기 때문에
+# 인덱스의 범위를 벗어난다.
+# 따라서 `index out of range` 라는 설명과 함께 `IndexError`가 
+# 다음과 같이 발생한다.
 # 
 # ```python
-# >>> colors = ['red', 'blue', 'green', 'black', 'white']
-# >>> type(colors)     # doctest +SKIP
-# <type 'list'>
+# >>> colors[5]
+# ---------------------------------------------------------------------------
+# IndexError                                Traceback (most recent call last)
+# <ipython-input-3-5976064932c2> in <module>
+# ----> 1 colors[5]
+# 
+# IndexError: list index out of range
 # ```
 
-# Python provides many efficient types of containers, in which
-# collections of objects can be stored.
+# ### 슬라이싱
 
-# Indexing accessing individual objects contained in the list
+# 인덱스의 구간을 지정하여 순차 자료형의 일부를 추출하는 것을
+# **슬라이싱**<font size="2">slicing</font>이라 한다.
+# 
+# 예를 들어 `colors` 리스트의 둘째부터 넷째 까지의 항목으로
+# 구성된 리스트를 생성하려면 다음과 같이 한다.
+
+# In[43]:
+
+
+colors[1:4]
+
+
+# `[1:4]` 는 1번 인덱스, 즉 둘째부터 4번 인덱스 이전까지, 즉 3번 인덱스인 넷째 항목까지 
+# 추출 대상으로 삼는다는 의미이다.
+
+# 슬라이싱의 일반 형식은 다음과 같다.
 # 
 # ```python
-# >>> colors[2]
-# 'green'
+# colors[시작:끝:보폭]
 # ```
+# 
+# **시작**과 **끝**의 의 의미는 `colors[1:4]`의 경우에서 설명한 것과 동일하다.
+# 반면에 **보폭**은 항목 추출법을 설명한다.
+# 예를 들어 2를 보폭으로 사용하면
+# 시작 인덱스로 부터 2씩 건너 뛰며 항목을 추출한다.
+# `colors[1:4:2]`는 따라서 1번, 3번 두 개의 인덱스에 위치한 항목을 추출해서 
+# 리스트를 생성한다.
 
-# Counting from the end with negative indices
-# 
-# ```python
-# >>> colors[-1]
-# 'white'
-# >>> colors[-2]
-# 'black'
-# ```
+# In[44]:
 
-# **warning**
-# 
-# **Indexing starts at 0** (as in C), not at 1 (as in Fortran or Matlab)!
 
-# Slicing obtaining sublists of regularly-spaced elements
-# 
-# ```python
-# >>> colors
-# ['red', 'blue', 'green', 'black', 'white']
-# >>> colors[24]
-# ['green', 'black']
-# ```
+colors[1:4:2]
 
-# **Warning**
-# 
-# Note that `colors[startstop]` contains the elements with indices `i`
-# such as  `start<= i < stop` (`i` ranging from `start` to
-# `stop-1`). Therefore, `colors[startstop]` has `(stop - start)` elements.
 
-# **Slicing syntax** `colors[startstopstride]`
+# 시작, 끝, 보폭 모두 생략될 수 있으며 각각에 대해 기본값이 사용된다.
 # 
-# All slicing parameters are optional:
-# 
-# ```python
-# >>> colors
-# ['red', 'blue', 'green', 'black', 'white']
-# >>> colors[3]
-# ['black', 'white']
-# >>> colors[3]
-# ['red', 'blue', 'green']
-# >>> colors[2]
-# ['red', 'green', 'white']
-# ```
+# - 시작의 기본값: 0
+# - 끝의 기본값: 항목의 개수 + 1. 즉, 시작부터 끝까지.
+# - 보폭의 기본값: 1
+
+# In[45]:
+
+
+colors[3:]
+
+
+# In[46]:
+
+
+colors[:3]
+
+
+# In[47]:
+
+
+colors[::2]
+
+
+# ### 수정 가능성
 
 # Lists are *mutable* objects and can be modified
 # 
@@ -490,107 +810,6 @@ type(test)
 # rcolors.append   rcolors.index    rcolors.remove   
 # rcolors.count    rcolors.insert   rcolors.reverse  
 # rcolors.extend   rcolors.pop      rcolors.sort    
-# ```
-
-# #### Strings
-
-# Different string syntaxes (simple, double or triple quotes)
-# 
-# ```python
-# s = 'Hello, how are you?'
-# s = "Hi, what's up"
-# s = '''Hello,
-#    how are you'''         # tripling the quotes allows the
-#                           # string to span more than one line
-# s = """Hi,
-# what's up?"""
-# ```
-
-# ```python
-# In [1] 'Hi, what's up?'
-# ------------------------------------------------------------
-# File "<ipython console>", line 1
-# 'Hi, what's up?'
-#        ^
-# SyntaxError invalid syntax
-# ```
-
-# This syntax error can be avoided by enclosing the string in double quotes
-# instead of single quotes. Alternatively, one can prepend a backslash to the
-# second single quote. Other uses of the backslash are, e.g., the newline character
-# `\n` and the tab character `\t`.
-
-# Strings are collections like lists. Hence they can be indexed and
-# sliced, using the same syntax and rules.
-
-# Indexing
-# 
-# ```python
-# >>> a = "hello"
-# >>> a[0]
-# 'h'
-# >>> a[1]
-# 'e'
-# >>> a[-1]
-# 'o'
-# ```
-
-# (Remember that negative indices correspond to counting from the right
-# end.)
-
-# Slicing
-# 
-# ```python
-# >>> a = "hello, world!"
-# >>> a[36] # 3rd to 6th (excluded) elements elements 3, 4, 5
-# 'lo,'
-# >>> a[2102] # Syntax a[startstopstep]
-# 'lo o'
-# >>> a[3] # every three characters, from beginning to end
-# 'hl r!'
-# ```
-
-# Accents and special characters can also be handled as in Python 3
-# strings consist of Unicode characters.
-
-# A string is an **immutable object** and it is not possible to modify its
-# contents. One may however create new strings from the original one.
-# 
-# ```python
-# In [53] a = "hello, world!"
-# In [54] a[2] = 'z'
-# ---------------------------------------------------------------------------
-# Traceback (most recent call last)
-# File "<stdin>", line 1, in <module>
-# TypeError 'str' object does not support item assignment
-# 
-# In [55] a.replace('l', 'z', 1)
-# Out[55] 'hezlo, world!'
-# In [56] a.replace('l', 'z')
-# Out[56] 'hezzo, worzd!'
-# ```
-
-# Strings have many useful methods, such as `a.replace` as seen
-# above. Remember the `a.` object-oriented notation and use tab
-# completion or `help(str)` to search for new methods.
-
-# **seealso**
-# 
-# Python offers advanced possibilities for manipulating strings,
-# looking for patterns or formatting. The interested reader is referred to
-# https//docs.python.org/library/stdtypes.html#string-methods and
-# https//docs.python.org/3/library/string.html#format-string-syntax
-
-# String formatting
-# 
-# ```python
-# >>> 'An integer %i; a float %f; another string %s' % (1, 0.1, 'string') # with more values use tuple after %
-# 'An integer 1; a float 0.100000; another string string'
-# 
-# >>> i = 102
-# >>> filename = 'processing_of_dataset_%d.txt' % i   # no need for tuples with just one value after %
-# >>> filename
-# 'processing_of_dataset_102.txt'
 # ```
 
 # #### Dictionaries
