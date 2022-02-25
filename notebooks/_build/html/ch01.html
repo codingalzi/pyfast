@@ -38,12 +38,9 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -273,28 +270,30 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lists">
-     1.3.1. Lists
+    <a class="reference internal nav-link" href="#id9">
+     1.3.1. 리스트
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#strings">
-     1.3.2. Strings
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dictionaries">
-     1.3.3. Dictionaries
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#more-container-types">
-     1.3.4. More container types
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strings">
+       1.3.1.1. Strings
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dictionaries">
+       1.3.1.2. Dictionaries
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#more-container-types">
+       1.3.1.3. More container types
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#list-comprehensions">
-     1.3.5. List Comprehensions
+     1.3.2. List Comprehensions
     </a>
    </li>
   </ul>
@@ -357,28 +356,30 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lists">
-     1.3.1. Lists
+    <a class="reference internal nav-link" href="#id9">
+     1.3.1. 리스트
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#strings">
-     1.3.2. Strings
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dictionaries">
-     1.3.3. Dictionaries
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#more-container-types">
-     1.3.4. More container types
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strings">
+       1.3.1.1. Strings
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dictionaries">
+       1.3.1.2. Dictionaries
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#more-container-types">
+       1.3.1.3. More container types
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#list-comprehensions">
-     1.3.5. List Comprehensions
+     1.3.2. List Comprehensions
     </a>
    </li>
   </ul>
@@ -817,21 +818,39 @@ IPython 콘솔처럼 명령문을 실행할 수 있으며
 <p class="admonition-title">함수 이름 표기법</p>
 <p><code class="docutils literal notranslate"><span class="pre">float</span></code>는 부동소수점 자료형을 가리키기도 하고
 형변환 함수를 가리키기도 한다.
-이를 구분하기 위해 여기서는 <code class="docutils literal notranslate"><span class="pre">float()</span></code>, <code class="docutils literal notranslate"><span class="pre">int()</span></code> 처럼
-함수 이름을 표기할 때 괄호를
+이를 구분하기 위해 여기서는
+<code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code> 등과 <code class="docutils literal notranslate"><span class="pre">int()</span></code>, <code class="docutils literal notranslate"><span class="pre">float()</span></code>, <code class="docutils literal notranslate"><span class="pre">str()</span></code>, <code class="docutils literal notranslate"><span class="pre">list()</span></code> 등을
+구분하기 위해 함수 이름을 표기할 때 괄호를
 함께 사용하는 표기법 관행을 따른다.</p>
 </div>
 </div>
 </div>
 <div class="section" id="id8">
 <h2><span class="section-number">1.3. </span>모음 자료형<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<p>컨테이너<font size="2">container</font>라고도 불리는
-<strong>모음</strong><font size="2">collection</font> 자료형은
+<p><strong>모음</strong><font size="2">collection</font> 자료형은
 여러 개의 값을 하나로 묶어 놓은 값의 유형이다.
 파이썬은 문자열, 리스트, 튜플, 집합, 사전 등의 모음 자료형을
-기본으로 제공한다.</p>
-<div class="section" id="lists">
-<h3><span class="section-number">1.3.1. </span>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h3>
+기본으로 제공하며,
+여러 값을 묶어 둔다는 의미로 모음 자료형의 값을
+<strong>컨테이너</strong><font size="2">container</font>라고도 부른다.</p>
+<p>모음 자료형은 크게 두 종류로 나뉜다.</p>
+<ul class="simple">
+<li><p>순차형<font size="2">sequence type</font>: 포함된 항목들의 순서를 가리는 모음 자료형</p>
+<ul>
+<li><p>리스트</p></li>
+<li><p>문자열</p></li>
+<li><p>튜플</p></li>
+</ul>
+</li>
+<li><p>집합형<font size="2">set type</font>: 포함된 항목들의 순서를 무시하는 모음 자료형</p>
+<ul>
+<li><p>집합</p></li>
+<li><p>사전</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="id9">
+<h3><span class="section-number">1.3.1. </span>리스트<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>A list is an ordered collection of objects, that may have different
 types. For example</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">]</span>
@@ -966,9 +985,8 @@ necessary for going through this tutorial.</p>
 <span class="n">rcolors</span><span class="o">.</span><span class="n">extend</span>   <span class="n">rcolors</span><span class="o">.</span><span class="n">pop</span>      <span class="n">rcolors</span><span class="o">.</span><span class="n">sort</span>    
 </pre></div>
 </div>
-</div>
 <div class="section" id="strings">
-<h3><span class="section-number">1.3.2. </span>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h3>
+<h4><span class="section-number">1.3.1.1. </span>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h4>
 <p>Different string syntaxes (simple, double or triple quotes)</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Hello, how are you?&#39;</span>
 <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Hi, what&#39;s up&quot;</span>
@@ -1052,7 +1070,7 @@ https//docs.python.org/3/library/string.html#format-string-syntax</p>
 </div>
 </div>
 <div class="section" id="dictionaries">
-<h3><span class="section-number">1.3.3. </span>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h3>
+<h4><span class="section-number">1.3.1.2. </span>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h4>
 <p>A dictionary is basically an efficient table that <strong>maps keys to
 values</strong>. It is an <strong>unordered</strong> container</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;emmanuelle&#39;</span> <span class="mi">5752</span><span class="p">,</span> <span class="s1">&#39;sebastian&#39;</span> <span class="mi">5578</span><span class="p">}</span>
@@ -1081,7 +1099,7 @@ for more information.</p>
 </div>
 </div>
 <div class="section" id="more-container-types">
-<h3><span class="section-number">1.3.4. </span>More container types<a class="headerlink" href="#more-container-types" title="Permalink to this headline">¶</a></h3>
+<h4><span class="section-number">1.3.1.3. </span>More container types<a class="headerlink" href="#more-container-types" title="Permalink to this headline">¶</a></h4>
 <p><strong>Tuples</strong></p>
 <p>Tuples are basically immutable lists. The elements of a tuple are written
 between parentheses, or just separated by commas</p>
@@ -1102,8 +1120,9 @@ between parentheses, or just separated by commas</p>
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="list-comprehensions">
-<h3><span class="section-number">1.3.5. </span>List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.3.2. </span>List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permalink to this headline">¶</a></h3>
 <p>Instead of creating a list by means of a loop, one can make use
 of a list comprehension with a rather self-explaining syntax.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>

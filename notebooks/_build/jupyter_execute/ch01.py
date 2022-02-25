@@ -295,20 +295,32 @@ type(test)
 # 
 # `float`는 부동소수점 자료형을 가리키기도 하고 
 # 형변환 함수를 가리키기도 한다. 
-# 이를 구분하기 위해 여기서는 `float()`, `int()` 처럼 
-# 함수 이름을 표기할 때 괄호를
+# 이를 구분하기 위해 여기서는 
+# `int`, `float`, `str`, `list` 등과 `int()`, `float()`, `str()`, `list()` 등을
+# 구분하기 위해 함수 이름을 표기할 때 괄호를
 # 함께 사용하는 표기법 관행을 따른다.
 # :::
 
 # ## 모음 자료형
 
-# 컨테이너<font size="2">container</font>라고도 불리는
 # **모음**<font size="2">collection</font> 자료형은
 # 여러 개의 값을 하나로 묶어 놓은 값의 유형이다.
 # 파이썬은 문자열, 리스트, 튜플, 집합, 사전 등의 모음 자료형을
-# 기본으로 제공한다.
+# 기본으로 제공하며,
+# 여러 값을 묶어 둔다는 의미로 모음 자료형의 값을
+# **컨테이너**<font size="2">container</font>라고도 부른다.
+# 
+# 모음 자료형은 크게 두 종류로 나뉜다.
+# 
+# - 순차형<font size="2">sequence type</font>: 포함된 항목들의 순서를 가리는 모음 자료형
+#     - 리스트
+#     - 문자열
+#     - 튜플
+# - 집합형<font size="2">set type</font>: 포함된 항목들의 순서를 무시하는 모음 자료형
+#     - 집합
+#     - 사전
 
-# #### Lists
+# ### 리스트
 
 # A list is an ordered collection of objects, that may have different
 # types. For example
