@@ -33,7 +33,7 @@
 # In[1]:
 
 
-s = '잘 지내세요?'
+s = '안녕하세요.'
 print(s)
 
 
@@ -42,7 +42,7 @@ print(s)
 # In[2]:
 
 
-s = "별일 없으세요?"
+s = "안녕하세요."
 print(s)
 
 
@@ -52,7 +52,7 @@ print(s)
 
 
 s = '''안녕.
-별일 없어?'''
+잘 지내?'''
 
 print(s)
 
@@ -61,7 +61,7 @@ print(s)
 
 
 s = """안녕.
-별일 없어?"""
+잘 지내?"""
 
 print(s)
 
@@ -73,7 +73,7 @@ print(s)
 
 
 s = '''안녕.
-    별일 없어?'''
+    잘 지내?'''
 
 print(s)
 
@@ -82,7 +82,7 @@ print(s)
 
 
 s = """안녕.
-    별일 없어?"""
+    잘 지내?"""
 
 print(s)
 
@@ -92,42 +92,47 @@ print(s)
 # 
 # 키보드 상에 존재하지 않는 다른 기호나 문자도 **유니코드**<font size="2">unicode</font> 
 # 형식으로 지원된다.
+# 대표적으로 서유럽 언어에서 많이 사용되는 
+# &#xE0;, &#xE2;, &#xE7;, &#xE8;,&#xFC; 등 특수 알파벳 등이
+# 유니코드로 지원된다.
+# 
+# 또한 이모티콘도 지원된다. 
 # 예를 들어 웃는 얼굴의 이모티콘을 나타내는 문자열은 다음과 같다. 
 # 
 # ```python
-# >>> s = '\U0001f604'
-# >>> print(s)
-# 😄
+# >>> s = '\U0001f600'
+# >>> s
+# '😀'
 # >>> s * 2
-# '😄😄'
+# '😀😀'
 # ```
 # 
 # 유니코드로 지원되는 모든 이모티콘은 [Emoji Charts](https://unicode.org/emoji/charts/emoji-list.html)에서
-# 확인할 수 있다. 단, `U+` 시작하는 부분을 `U000` 으로 대체해서 사용해야 한다. 
+# 확인할 수 있다. 단, `U+`로 시작하는 부분을 `U000` 으로 대체해서 사용해야 한다. 
 # :::
 
 # ### 백슬래시와 이스케이프 문자
 
-# 문자열에 따옴표를 사용하려면 문자열을 감싸는 방식에 주의해야 한다.
-# 예를 들어, 작은 따옴표를 사용하는 문자열을 다음과 같이 지정하면 오류가 발생한다.
+# 문자열 자체에 따옴표가 포함되면 조심해야 한다.
+# 예를 들어, 작은 따옴표가 포함된 문자열을 다음과 같이 지정하면 오류가 발생한다.
 # 
 # ```python
-# >>> 'Python's grammar'
-# ------------------------------------------------------------
-# File "<ipython console>", line 1
-# 'Python's grammar'
-#         ^
-# SyntaxError invalid syntax
+# >>> s = 'Python's grammar'
+#   File "<stdin>", line 1
+#     s = 'Python's grammar'
+#                 ^
+# SyntaxError: invalid syntax
 # ```
 # 
 # 이유는 작은 따옴표로 문자열의 시작을 지정했기 때문에
 # `Python's` 문장에 사용된 작은 따옴표가 
-# 문자열의 끝을 의미하게된다.
-# 그런데 이후에도 문자열이 이어지게 되어 결국 문자열의 끝이 불분명해져서
-# 구문 오류를 뜻하는 `SyntaxError`가 발생하였다.
+# 문자열의 끝을 의미하게 되는데
+# 이후에도 문자열이 이어지게 되어 결국 문자열의 끝이 불분명해져서
+# 구문 오류를 뜻하는 `SyntaxError`가 발생한다.
 # 
-# 이런 오류를 방지하는 다양한 방식이 존재한다.
-# 예를 들어 작은 따옴표 바로 앞에 백슬래시<font size="2">backslash</font> 기호 (`\`)를 추가하면 된다.
+# 이런 종류의 오류를 방지하는 다양한 방식이 존재하지만,
+# 여기서는 **백슬래시**<font size="2">backslash</font> 기호 (`\`)를 
+# 따옴표 바로 앞에 추가하는 방식만 소개한다.
 
 # In[7]:
 
@@ -139,87 +144,28 @@ print(s)
 # :::{admonition} 슬래시 기호(&#x5C;)와 원화 기호(&#x20a9;)
 # :class: info
 # 
-# 백슬래시 키는 오른쪽 <kbd>Enter</kbd> 키 바로 위에 위치하는데
-# 한글 키보드의 경우 원화 기호 키 <kbd>&#x20a9;</kbd> 가 대신 표시되어 있을 수 있다.
-# 그리고 모니터 화면 상에는 사용하는 운영체제 언어 설정에 따라
-# 원화 기호(&#x20a9;) 대신 백슬래시 기호(&#x5C;)로 보일 수 있다.
+# 백슬래시 키는 키보드의 <kbd>Enter</kbd> 키 바로 위에 위치하는데
+# 한글 키보드의 경우 원화 기호 키 <kbd>&#x20a9;</kbd> 가 대신 
+# 자리잡고 있을 수 있다.
+# 그리고 모니터 화면에도 사용하는 운영체제의 언어 설정에 따라
+# 원화 기호(&#x20a9;)와 백슬래시 기호(&#x5C;) 둘 중에 하나로만 보인다.
 # 하지만 단순한 언어 설정의 차이일 뿐 기능은 동일하다.
 # :::
 
 # 백슬래시는 이처럼 특정 문자와 함께 사용되면 특별한 기능을 갖는
-# 이스케이프 문자<font size="2">escape character</font>를 구성한다.
+# **이스케이프 문자**<font size="2">escape character</font>를 구성한다.
 # 가장 많이 사용되는 이스케이프 문자의 목록은 다음과 같다.
 # 
 # | 이스케이프 문자 | 의미 |
 # | :---: | :---:    |
 # | `\'` | 작은 따옴표 |
+# | `\"` | 큰 따옴표 |
 # | `\\` | 백슬래시 기호 |
 # | `\n` | 줄바꿈 |
 # | `\t` | 탭 |
 
-# Strings are collections like lists. Hence they can be indexed and
-# sliced, using the same syntax and rules.
+# ### 문자열 포매팅
 
-# Indexing
-# 
-# ```python
-# >>> a = "hello"
-# >>> a[0]
-# 'h'
-# >>> a[1]
-# 'e'
-# >>> a[-1]
-# 'o'
-# ```
-
-# (Remember that negative indices correspond to counting from the right
-# end.)
-
-# Slicing
-# 
-# ```python
-# >>> a = "hello, world!"
-# >>> a[36] # 3rd to 6th (excluded) elements elements 3, 4, 5
-# 'lo,'
-# >>> a[2102] # Syntax a[startstopstep]
-# 'lo o'
-# >>> a[3] # every three characters, from beginning to end
-# 'hl r!'
-# ```
-
-# Accents and special characters can also be handled as in Python 3
-# strings consist of Unicode characters.
-
-# A string is an **immutable object** and it is not possible to modify its
-# contents. One may however create new strings from the original one.
-# 
-# ```python
-# In [53] a = "hello, world!"
-# In [54] a[2] = 'z'
-# ---------------------------------------------------------------------------
-# Traceback (most recent call last)
-# File "<stdin>", line 1, in <module>
-# TypeError 'str' object does not support item assignment
-# 
-# In [55] a.replace('l', 'z', 1)
-# Out[55] 'hezlo, world!'
-# In [56] a.replace('l', 'z')
-# Out[56] 'hezzo, worzd!'
-# ```
-
-# Strings have many useful methods, such as `a.replace` as seen
-# above. Remember the `a.` object-oriented notation and use tab
-# completion or `help(str)` to search for new methods.
-
-# **seealso**
-# 
-# Python offers advanced possibilities for manipulating strings,
-# looking for patterns or formatting. The interested reader is referred to
-# https//docs.python.org/library/stdtypes.html#string-methods and
-# https//docs.python.org/3/library/string.html#format-string-syntax
-
-# String formatting
-# 
 # ```python
 # >>> 'An integer %i; a float %f; another string %s' % (1, 0.1, 'string') # with more values use tuple after %
 # 'An integer 1; a float 0.100000; another string string'
@@ -229,6 +175,20 @@ print(s)
 # >>> filename
 # 'processing_of_dataset_102.txt'
 # ```
+
+# ### 문자열 메서드
+
+# Strings have many useful methods, such as `a.replace` as seen
+# above. Remember the `a.` object-oriented notation and use tab
+# completion or `help(str)` to search for new methods.
+
+# ### **seealso**: regex
+# 
+# Python offers advanced possibilities for manipulating strings,
+# looking for patterns or formatting. The interested reader is referred to
+# 
+# - [https//docs.python.org/library/stdtypes.html#string-methods](https//docs.python.org/library/stdtypes.html#string-methods)
+# - [https//docs.python.org/3/library/string.html#format-string-syntax](https//docs.python.org/3/library/string.html#format-string-syntax)
 
 # ## 리스트
 
@@ -264,6 +224,40 @@ type(colors)
 # 
 # 왼편에 위치한 항목으로부터 차례대로 0, 1, 2, ... 등의 
 # **인덱스**<font size="2">index</font>를 다음과 같이 사용한다.
+
+# ### 문자열 인덱싱 
+
+# Strings are collections like lists. Hence they can be indexed and
+# sliced, using the same syntax and rules.
+# 
+# Indexing
+# 
+# ```python
+# >>> a = "hello"
+# >>> a[0]
+# 'h'
+# >>> a[1]
+# 'e'
+# >>> a[-1]
+# 'o'
+# ```
+
+# (Remember that negative indices correspond to counting from the right
+# end.)
+
+# Slicing
+# 
+# ```python
+# >>> a = "hello, world!"
+# >>> a[3:6] # 3rd to 6th (excluded) elements elements 3, 4, 5
+# 'lo,'
+# >>> a[2:10:2] # Syntax a[startstopstep]
+# 'lo o'
+# >>> a[3] # every three characters, from beginning to end
+# 'hl r!'
+# ```
+
+# ### 리스트 인덱싱 
 
 # In[9]:
 

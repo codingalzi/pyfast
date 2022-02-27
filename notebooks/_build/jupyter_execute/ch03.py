@@ -52,6 +52,27 @@
 
 # ## 수정 가능성
 
+# ### 문자열
+
+# A string is an **immutable object** and it is not possible to modify its
+# contents. One may however create new strings from the original one.
+# 
+# ```python
+# In [53] a = "hello, world!"
+# In [54] a[2] = 'z'
+# ---------------------------------------------------------------------------
+# Traceback (most recent call last)
+# File "<stdin>", line 1, in <module>
+# TypeError 'str' object does not support item assignment
+# 
+# In [55] a.replace('l', 'z', 1)
+# Out[55] 'hezlo, world!'
+# In [56] a.replace('l', 'z')
+# Out[56] 'hezzo, worzd!'
+# ```
+
+# ### 리스트
+
 # Lists are *mutable* objects and can be modified
 # 
 # ```python
